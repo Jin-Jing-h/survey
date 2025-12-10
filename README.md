@@ -186,7 +186,7 @@ FaithDiff 针对“既要好看又要保真”的真实场景超分问题，提�
 **不足点：**
 文中没有提到
 
-<a id="#gem-cvpr-2025"></a>
+<a id="gem-cvpr-2025"></a>
 ### GEM: A Generalizable Ego-Vision Multimodal World Model for Fine-Grained Ego-Motion, Object Dynamics, and Scene Composition Control（CVPR 2025）
 
 **数据集：**  
@@ -233,7 +233,7 @@ FaithDiff 针对“既要好看又要保真”的真实场景超分问题，提�
 当前模型在超长时序视频上的生成质量和时空一致性仍然有限，而且用于训练的自动伪标注精度受限，从而对控制和泛化能力带来一定约束
 
 
-<a id="#protodepth-cvpr-2025"></a>
+<a id="protodepth-cvpr-2025"></a>
 ### ProtoDepth: Unsupervised Continual Depth Completion with Prototypes（CVPR 2025）
 **数据集：**  
 [NYU Depth V2](https://cs.nyu.edu/~fergus/datasets/nyu_depth_v2.html)  
@@ -265,7 +265,7 @@ FaithDiff 针对“既要好看又要保真”的真实场景超分问题，提�
 它依赖先验的“数据集边界”来给新域分配 prototype 集，尚不能在无明确边界的真实在线场景中自动检测域变化并创建新 prototype；同时，在 domain-agnostic 场景下的 ProtoDepth-A 无法完全消除遗忘，在户外这类 domain gap 较大的序列中还会因为原型选择错误导致性能下降。
 
 
-<a id="#ddeseg-cvpr-2025"></a>
+<a id="ddeseg-cvpr-2025"></a>
 ### Dynamic Derivation and Elimination: Audio Visual Segmentation with Enhanced Audio Semantics（CVPR 2025）
 **数据集：**  
 [AVS-Object（AVSBench-Object）](https://opennlplab.github.io/AVSBench/)  
@@ -284,7 +284,7 @@ FaithDiff 针对“既要好看又要保真”的真实场景超分问题，提�
 文中没有提到
 
 
-<a id="#mmaudio-cvpr-2025"></a>
+<a id="mmaudio-cvpr-2025"></a>
 ### MMAudio: Taming Multimodal Joint Training for High-Quality Video-to-Audio Synthesis（CVPR 2025）
 **数据集：**  
 [VGGSound](https://www.robots.ox.ac.uk/~vgg/data/vggsound/)  
