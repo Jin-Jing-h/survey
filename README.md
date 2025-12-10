@@ -18,13 +18,17 @@
 
 ## 📖 论文详细笔记
 <a id="fovex-ijcv-2025"></a>
-### FovEx （IJCV 2025）
+### FovEx: Human-Inspired Explanations for Vision Transformers and CNNs （IJCV 2025）
+
+**数据集：**
+[ImageNet-1K](https://www.image-net.org/challenges/LSVRC/)
 
 **创新点：**
 本文提出了 FovEx，这一结合类人凹视机制与梯度驱动扫视、可同时适用于 CNN 与 ViT 的统一 XAI 方法，在多项信赖度指标与人眼凝视一致性上优于现有方法
 
 **不足点：**
 优化目标偏向“保留”关键信息导致在 DELETE 指标上表现欠佳且仅在有限数据集与任务上验证，存在泛化性和人群偏置方面的潜在局限。
+
 <a id="mair-cvpr-2025"></a>
 ### MaIR: A Locality- and Continuity-Preserving Mamba for Image Restoration（CVPR 2025）
 
