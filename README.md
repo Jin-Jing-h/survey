@@ -22,7 +22,11 @@
 
 **数据集：**  
 [ImageNet-1K](https://www.image-net.org/challenges/LSVRC/)  
-[MIT1003](https://people.csail.mit.edu/tjudd/WherePeopleLook/)
+> 用于：在 ImageNet-1K 验证集中随机选取 5000 张**被模型正确分类**的图像，作为 FovEx 评估解释“可信度/定位能力”（如保持度、删除度、局部化等指标）的主要测试集，为 CNN 和 ViT 提供统一的分类场景。  
+
+[MIT1003](https://people.csail.mit.edu/tjudd/WherePeopleLook/)  
+> 用于：提供 1003 张图像及对应的人眼注视/显著性图，FovEx 用其对比“方法生成的解释热力图”和**真实人眼凝视模式**的一致性，用来评估解释的“类人程度（human alignment）”。  
+
 
 
 **创新点：**
@@ -33,20 +37,43 @@
 
 <a id="mair-cvpr-2025"></a>
 ### MaIR: A Locality- and Continuity-Preserving Mamba for Image Restoration（CVPR 2025）
-
 **数据集：**  
 [DIV2K](https://data.vision.ee.ethz.ch/cvl/DIV2K/)  
+> 用于：超分辨率与去噪任务的基础高分辨率训练集之一，为 MaIR 提供多样自然场景图像，并在验证集上评估标准合成退化下的恢复效果。  
+
 [Flickr2K](https://www.kaggle.com/datasets/daehoyang/flickr2k)  
+> 用于：与 DIV2K 组成 DF2K 扩充训练集，进一步增加自然场景与纹理多样性，用于超分与去噪训练。  
+
 [WED](https://ivc.uwaterloo.ca/database/WaterlooExploration/)  
+> 用于：合成高斯噪声去噪任务的训练数据之一（DFWB 训练集合部分），提升 MaIR 在多种内容和噪声强度下的鲁棒性。  
+
 [BSD400 / BSD68](https://github.com/clausmichele/CBSD68-dataset)  
+> 用于：BSD400 参与合成去噪训练；BSD68 作为经典测试集，评估 MaIR 在不同噪声等级下的合成高斯去噪性能。  
+
 [Kodak24](https://r0k.us/graphics/kodak/)  
+> 用于：合成噪声去噪的测试集之一，包含 24 张高质量自然图像，用于检验 MaIR 在真实纹理和色彩保持方面的表现。  
+
 [McMaster](https://www4.comp.polyu.edu.hk/~cslzhang/CDM_Dataset.htm)  
+> 用于：彩色图像去噪测试集，强调纹理与色彩信息，评估 MaIR 在高频纹理和强颜色区域的恢复能力。  
+
 [Urban100](https://huggingface.co/datasets/eugenesiow/Urban100)  
+> 用于：既作为超分辨率任务的测试集（考察城市场景结构和细节恢复），也用于合成噪声去噪评测 MaIR 在复杂几何结构上的表现。  
+
 [SIDD-Medium](https://abdokamel.github.io/sidd/)  
+> 用于：真实噪声去噪任务的训练与测试数据集，来自手机拍摄 RAW/ sRGB 图像，用于评估 MaIR 对真实成像噪声的建模与泛化能力。  
+
 [GoPro](https://seungjunnah.github.io/Datasets/gopro.html)  
+> 用于：动态场景运动模糊去除任务的主要训练与测试集，评估 MaIR 在复杂相机与物体运动环境下的去模糊能力。  
+
 [HIDE](https://github.com/joanshen0508/HA_deblur)  
+> 用于：以人脸和人物为主的去模糊测试集，检验 MaIR 在含人物/人脸场景中的细节恢复和感知质量。  
+
 [RESIDE (ITS/OTS/SOTS)](https://sites.google.com/view/reside-dehaze-datasets/reside-standard)  
-[RESIDE-6K](https://gts.ai/dataset-download/reside-6k/)
+> 用于：合成图像去雾任务的主要训练与测试数据集，其中 ITS/OTS 用于室内/室外合成雾图训练，SOTS-Indoor/Outdoor 用于标准去雾测试，评估 MaIR 在不同雾密度与场景下的表现。  
+
+[RESIDE-6K](https://gts.ai/dataset-download/reside-6k/)  
+> 用于：更大规模、多场景的去雾训练/验证数据集，为 MaIR 提供更丰富的雾天场景和退化分布，进一步提升去雾任务的泛化能力。  
+
 
 **创新点：**
 MaIR 提出在 Mamba 状态空间模型里加入 Nested S-shaped Scanning（NSS）+ Sequence Shuffle Attention（SSA），同时保持图像的局部性和空间连续性，相比以往简单按行或者列展平成 1D 序列的 Mamba 方案，在超分、去噪、去模糊、去雾等 4 大任务、14 个数据集上全面刷了 40 个基线。
