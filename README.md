@@ -23,6 +23,8 @@
 **数据集：**
 [ImageNet-1K](https://www.image-net.org/challenges/LSVRC/)
 
+[MIT1003](https://people.csail.mit.edu/tjudd/WherePeopleLook/)
+
 **创新点：**
 本文提出了 FovEx，这一结合类人凹视机制与梯度驱动扫视、可同时适用于 CNN 与 ViT 的统一 XAI 方法，在多项信赖度指标与人眼凝视一致性上优于现有方法
 
@@ -31,6 +33,20 @@
 
 <a id="mair-cvpr-2025"></a>
 ### MaIR: A Locality- and Continuity-Preserving Mamba for Image Restoration（CVPR 2025）
+
+**数据集：**  
+[DIV2K](https://data.vision.ee.ethz.ch/cvl/DIV2K/)  
+[Flickr2K](https://www.kaggle.com/datasets/daehoyang/flickr2k)  
+[WED](https://ivc.uwaterloo.ca/database/WaterlooExploration/)  
+[BSD400 / BSD68](https://github.com/clausmichele/CBSD68-dataset)  
+[Kodak24](https://r0k.us/graphics/kodak/)  
+[McMaster](https://www4.comp.polyu.edu.hk/~cslzhang/CDM_Dataset.htm)  
+[Urban100](https://huggingface.co/datasets/eugenesiow/Urban100)  
+[SIDD-Medium](https://abdokamel.github.io/sidd/)  
+[GoPro](https://seungjunnah.github.io/Datasets/gopro.html)  
+[HIDE](https://github.com/joanshen0508/HA_deblur)  
+[RESIDE (ITS/OTS/SOTS)](https://sites.google.com/view/reside-dehaze-datasets/reside-standard)  
+[RESIDE-6K](https://gts.ai/dataset-download/reside-6k/)
 
 **创新点：**
 MaIR 提出在 Mamba 状态空间模型里加入 Nested S-shaped Scanning（NSS）+ Sequence Shuffle Attention（SSA），同时保持图像的局部性和空间连续性，相比以往简单按行或者列展平成 1D 序列的 Mamba 方案，在超分、去噪、去模糊、去雾等 4 大任务、14 个数据集上全面刷了 40 个基线。
