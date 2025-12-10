@@ -1,6 +1,6 @@
 # 📚 Survey
 
-| 名称 | 链接 | 年份 | 涉及的<br>领域 | 代码 | 创新点 | 不足点 |
+| 名称 | 链接 | 年份 | 涉及的领域 | 代码 | 创新点 | 不足点 |
 |:----|:----|:----:|:--------------:|:----:|:------|:------|
 | <small>FovEx: Human-Inspired Explanations for Vision Transformers and CNNs</small> | <small>[IJCV](https://arxiv.org/abs/2408.02123)</small> | <small>2025</small> | <small>视觉可解释性</small> | <small>[GitHub](https://github.com/mahadev1995/FovEx)</small> | <small>[概述](#fovex-ijcv-2025)</small> | <small>[概述](#fovex-ijcv-2025)</small> |
 | <small>MaIR: A Locality- and Continuity-Preserving Mamba for Image Restoration</small> | <small>[CVPR](https://arxiv.org/abs/2412.20066)</small> | <small>2025</small> | <small>通用图像恢复 </small> | <small>[GitHub](https://github.com/XLearning-SCU/2025-CVPR-MaIR)</small> | <small>[概述](#mair-cvpr-2025)</small> | <small>[概述](#mair-cvpr-2025)</small> |
