@@ -57,6 +57,43 @@ MaIR 提出在 Mamba 状态空间模型里加入 Nested S-shaped Scanning（NSS�
 <a id="defusion-cvpr-2025"></a>
 ### Visual-Instructed Degradation Diffusion for All-in-One Image Restoration（CVPR 2025）
 
+**数据集：**  
+[DIV2K](https://data.vision.ee.ethz.ch/cvl/DIV2K/)  
+> 用于：超分辨率 & 去噪的训练数据之一（高分辨率自然图像）
+
+[Flickr2K](https://www.kaggle.com/datasets/daehoyang/flickr2k)  
+> 用于：超分辨率 & 去噪的训练数据之一，和 DIV2K 组成 DF2K 扩充训练集
+
+[WED](https://ivc.uwaterloo.ca/database/WaterlooExploration/)  
+> 用于：合成噪声去噪训练（DFWB 训练集的一部分）
+
+[BSD400 / BSD68](https://github.com/clausmichele/CBSD68-dataset)  
+> 用于：BSD400 参与合成去噪训练，BSD68 作为合成高斯噪声去噪的测试集
+
+[Kodak24](https://r0k.us/graphics/kodak/)  
+> 用于：合成高斯噪声去噪的测试集之一（评估自然场景图像去噪质量）
+
+[McMaster](https://www4.comp.polyu.edu.hk/~cslzhang/CDM_Dataset.htm)  
+> 用于：合成高斯噪声去噪测试集（彩色图像，检查纹理和颜色保持情况）
+
+[Urban100](https://huggingface.co/datasets/eugenesiow/Urban100)  
+> 用于：既作为超分的测试集（评估结构和纹理恢复），也用于去噪任务的测试
+
+[SIDD-Medium](https://abdokamel.github.io/sidd/)  
+> 用于：真实噪声去噪任务的训练与测试（手机拍摄真实噪声）
+
+[GoPro](https://seungjunnah.github.io/Datasets/gopro.html)  
+> 用于：动态场景运动去模糊的训练集与测试集
+
+[HIDE](https://github.com/joanshen0508/HA_deblur)  
+> 用于：去模糊任务的额外测试集，重点考察含人物/人脸场景的恢复效果
+
+[RESIDE (ITS/OTS/SOTS)](https://sites.google.com/view/reside-dehaze-datasets/reside-standard)  
+> 用于：合成图像去雾的训练与测试（室内 ITS、室外 OTS 训练；SOTS-Indoor/Outdoor 测试）
+
+[RESIDE-6K](https://gts.ai/dataset-download/reside-6k/)  
+> 用于：更大规模、多场景的去雾训练/验证，提升模型在复杂雾天条件下的泛化能力
+
 **创新点：**
 Defusion把all-in-one 图像恢复做成一个视觉指令驱动的退化扩散，不是用模糊的文本prompt，而是构造与不同退化（去噪、去模糊、去雾、低照度等）显式对齐的视觉指令图，作为条件去引导扩散模型，对未知退化场景也能统一建模，在多种一体化恢复基准上达到了新的SOTA。
 
