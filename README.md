@@ -240,6 +240,15 @@ FaithDiff 针对“既要好看又要保真”的真实场景超分问题，提�
 
 <a id="#ddeseg-cvpr-2025"></a>
 ### Dynamic Derivation and Elimination: Audio Visual Segmentation with Enhanced Audio Semantics（CVPR 2025）
+**数据集：**  
+[AVS-Object（AVSBench-Object）](https://opennlplab.github.io/AVSBench/)  
+> 用于：DDESeg 的核心基准之一，包含 S4（Single Source）和 MS3（Multi Source）两部分，每段 5 秒视频并在每秒最后一帧提供像素级二值掩码，用于评估“单/多声源下是否正确分割出发声区域”。  
+
+[AVS-Semantic（AVSBench-Semantic）](https://opennlplab.github.io/AVSBench/)  
+> 用于：语义级音视频分割基准，含 12,356 段、71 类音视频片段，每个样本提供语义掩码与音频事件类别标签，用于评估 DDESeg 在“既要找对位置又要分类对类别”的语义 AVS 能力。  
+
+[VPO（Visual Post-production）](https://drive.google.com/file/d/12jq7-Ke09ZPoUI1od44q97DNLrThoHc3/view)  
+> 用于：由 COCO 单帧图像与 VGGSound 3 秒音频按类别重配得到的合成 AVS 数据集，包含 VPO-SS / VPO-MS / VPO-MSMI 三个子集，用来检验 DDESeg 在“单/多声源、同类多目标”等更复杂组合场景下的泛化与鲁棒性。  
 
 **创新点：**
 从音频本质出发提出 Dynamic Derivation and Elimination 框架：先通过语义重构从混合音频中派生出具有区分性的音源级表示，再用判别特征学习与动态消除模块过滤与画面无关的音源，使真正与视觉目标相关的声音区域得到更精准的匹配，从而在多种 AVS 数据集上显著提升声音引导分割性能。
@@ -250,6 +259,24 @@ FaithDiff 针对“既要好看又要保真”的真实场景超分问题，提�
 
 <a id="#mmaudio-cvpr-2025"></a>
 ### MMAudio: Taming Multimodal Joint Training for High-Quality Video-to-Audio Synthesis（CVPR 2025）
+**数据集：**  
+[VGGSound](https://www.robots.ox.ac.uk/~vgg/data/vggsound/)  
+> 用于：唯一同时包含视频–音频–文本三模态的核心训练与评测集，MMAudio 在其中进行主的视频→音频训练，并在测试集上评估音频质量、语义对齐度与视听同步性。  
+
+[AudioCaps](https://audiocaps.github.io/)  
+> 用于：高质量音频–文本配对数据集，为多模态联合训练提供人工标注描述，并在其测试集上评估文本→音频生成能力以及语义一致性。  
+
+[Clotho](https://zenodo.org/record/3490684)  
+> 用于：补充 AudioCaps 的另一套音频字幕数据，覆盖更丰富的环境声音和时长分布，用来提升 MMAudio 的音频–语言对齐能力与泛化表现。  
+
+[WavCaps](https://github.com/XinhaoMei/WavCaps)  
+> 用于：约 7600 小时的大规模弱标注音频字幕语料，作为主要的大规模音频–文本训练数据源，用于数据扩展和学习更通用的自然声音分布。  
+
+[Greatest Hits](https://andrewowens.com/vis/)  
+> 用于：鼓棒敲击物体的视频集合，作为额外的视听同步性评测基准，通过模型无关指标（如 onset/AVC 等）检验 MMAudio 的时间对齐能力。  
+
+[Movie Gen Audio Bench](https://github.com/facebookresearch/MovieGenBench)  
+> 用于：合成视频上的出分布评测基准，在无 GT 条件下通过主观评价和 IS、IB-score、CLAP、DeSync 等指标，对比 MMAudio 与 Movie Gen Audio 在复杂生成视频上的音频质量和语义一致性。  
 
 **创新点：**
 提出 MMAudio 多模态联合训练框架，将少量视频-音频配对数据与大规模文本-音频数据一起训练，并引入条件同步模块在音频潜变量上做帧级对齐，在流匹配目标下实现 157M 参数规模的高效视频→音频生成，在音质、语义对齐和视听同步上都优于现有公开方法，同时还在纯文本→音频任务上保持竞争力。
