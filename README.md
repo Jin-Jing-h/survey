@@ -20,10 +20,10 @@
 <a id="fovex-ijcv-2025"></a>
 ### FovEx: Human-Inspired Explanations for Vision Transformers and CNNs （IJCV 2025）
 
-**数据集：**
-[ImageNet-1K](https://www.image-net.org/challenges/LSVRC/)
-
+**数据集：**  
+[ImageNet-1K](https://www.image-net.org/challenges/LSVRC/)  
 [MIT1003](https://people.csail.mit.edu/tjudd/WherePeopleLook/)
+
 
 **创新点：**
 本文提出了 FovEx，这一结合类人凹视机制与梯度驱动扫视、可同时适用于 CNN 与 ViT 的统一 XAI 方法，在多项信赖度指标与人眼凝视一致性上优于现有方法
