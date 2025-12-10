@@ -186,7 +186,7 @@ FaithDiff 针对“既要好看又要保真”的真实场景超分问题，提�
 **不足点：**
 文中没有提到
 
-<a id="gem-cvpr-2025"></a>
+<a id="#gem-cvpr-2025"></a>
 ### GEM: A Generalizable Ego-Vision Multimodal World Model for Fine-Grained Ego-Motion, Object Dynamics, and Scene Composition Control（CVPR 2025）
 
 **数据集：**  
