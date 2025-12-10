@@ -19,19 +19,11 @@
 
 **不足点：**
 优化目标偏向“保留”关键信息导致在 DELETE 指标上表现欠佳且仅在有限数据集与任务上验证，存在泛化性和人群偏置方面的潜在局限。
-<a id="bioclip-cvpr-2024"></a>
-### BioCLIP: A Vision Foundation Model for the Tree of Life（CVPR 2024）
+<a id="mair-cvpr-2025"></a>
+### MaIR: A Locality- and Continuity-Preserving Mamba for Image Restoration
 
 **创新点：**
-构建 TreeOfLife-10M，目前规模最大、按生物分类树组织的图像数据集之一。
-
-训练 BioCLIP，利用图像 + 结构化生物分类信息，使模型自带“层级表示”，在各类细粒度生物识别任务上大幅超越通用 CLIP。
-
-说明了“领域专用 foundation model”路线在科学场景（生物多样性、生态监测）中的巨大价值。
+MaIR 提出在 Mamba 状态空间模型里加入 Nested S-shaped Scanning（NSS）+ Sequence Shuffle Attention（SSA），同时保持图像的局部性和空间连续性，相比以往简单按行/列展平成 1D 序列的 Mamba 方案，在超分、去噪、去模糊、去雾等 4 大任务、14 个数据集上全面刷了 40 个基线。
 
 **不足点：**
-目前只处理静态图像 + 物种标签，对行为、时序、生态位等更复杂生物信息仍然无能为力。
-
-模型和数据规模很大，生物学家团队想自己微调或重训，算力门槛较高。
-
-过于依赖现有分类体系，对分类体系不完善或争议的物种，表现和可解释性都有不确定性
+主要还是在配对的标准低层视觉基准上做实验，对真实未知退化（JPEG 压缩、相机 ISP、混合退化等）的验证有限，而且 Mamba 结构本身比较复杂，训练成本和工程落地门槛都不算低。
