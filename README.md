@@ -29,7 +29,73 @@
 ### MaIR: A Locality- and Continuity-Preserving Mamba for Image Restoration（CVPR 2025）
 
 **创新点：**
-MaIR 提出在 Mamba 状态空间模型里加入 Nested S-shaped Scanning（NSS）+ Sequence Shuffle Attention（SSA），同时保持图像的局部性和空间连续性，相比以往简单按行/列展平成 1D 序列的 Mamba 方案，在超分、去噪、去模糊、去雾等 4 大任务、14 个数据集上全面刷了 40 个基线。
+MaIR 提出在 Mamba 状态空间模型里加入 Nested S-shaped Scanning（NSS）+ Sequence Shuffle Attention（SSA），同时保持图像的局部性和空间连续性，相比以往简单按行或者列展平成 1D 序列的 Mamba 方案，在超分、去噪、去模糊、去雾等 4 大任务、14 个数据集上全面刷了 40 个基线。
 
 **不足点：**
-主要还是在配对的标准低层视觉基准上做实验，对真实未知退化（JPEG 压缩、相机 ISP、混合退化等）的验证有限，而且 Mamba 结构本身比较复杂，训练成本和工程落地门槛都不算低。
+文中没有提到
+
+<a id="defusion-cvpr-2025"></a>
+### Visual-Instructed Degradation Diffusion for All-in-One Image Restoration（CVPR 2025）
+
+**创新点：**
+Defusion把all-in-one 图像恢复做成一个视觉指令驱动的退化扩散，不是用模糊的文本prompt，而是构造与不同退化（去噪、去模糊、去雾、低照度等）显式对齐的视觉指令图，作为条件去引导扩散模型，对未知退化场景也能统一建模，在多种一体化恢复基准上达到了新的SOTA。
+
+**不足点：**
+文中没有提到
+
+<a id="darkir-cvpr-2025"></a>
+### DarkIR: Robust Low-Light Image Restoration（CVPR 2024）
+
+**创新点：**
+DarkIR 针对夜景/低照环境下同时存在的 噪声 + 低照度 + 运动模糊，在高效 CNN 上设计新的注意力机制扩展感受野，构建了一个统一的多任务低照度恢复网络，在 LOLBlur、LOLv2、Real-LOLBlur 等数据集上刷新 SOTA，并在 NTIRE 2025 低照度挑战中获得最佳方法，同时保持参数量和 MAC 数显著低于大多数 Transformer 模型。
+
+**不足点：**
+DarkIR 的主要局限在于：虽然通过大量使用 depth-wise 卷积显著降低了参数量和 MACs，但作者在 Limitations 中明确指出，这类算子在实际 GPU 上算术强度较低、对硬件不够友好，因此推理时间并不会随着计算量成比例下降；此外，多任务 all-in-one 版本在获得更强泛化能力的同时，在 LOLBlur 等数据集上仍存在约 0.5 dB 的轻微性能损失，说明在统一建模多种低照退化时仍面临精度与泛化、效率之间的折中。
+
+<a id="faithdiff-cvpr-2025"></a>
+### FaithDiff: Unleashing Diffusion Priors for Faithful Image Super-resolution（CVPR 2025）
+
+**创新点：**
+FaithDiff 针对“既要好看又要保真”的真实场景超分问题，提出在 latent diffusion 上加入 特征对齐模块 + 编码器与扩散模型的联合微调，显式对齐退化输入特征与扩散噪声空间，让大模型的先验既能生成细节又不过度幻觉，在多种 SR 基准上对结构保持和视觉质量都明显优于以往扩散式 SR 方法
+
+**不足点：**
+文中没有提到
+
+<a id="gem-cvpr-2025"></a>
+### GEM: A Generalizable Ego-Vision Multimodal World Model for Fine-Grained Ego-Motion, Object Dynamics, and Scene Composition Control（CVPR 2025）
+
+**创新点：**
+提出 GEM 这一统一的自监督多模态世界模型，用单个生成骨干在 4000+ 小时的 RGB 图像、深度、人体姿态和自车轨迹数据上联合建模，利用参考帧 + 稀疏特征 + 控制信号生成未来的 RGB 与深度序列，并通过新的 COM 指标系统定量评估对自车运动、物体动态和场景组合的可控性与跨场景泛化。
+
+**不足点：**
+当前模型在超长时序视频上的生成质量和时空一致性仍然有限，而且用于训练的自动伪标注精度受限，从而对控制和泛化能力带来一定约束
+
+
+<a id="#protodepth-cvpr-2025"></a>
+### ProtoDepth: Unsupervised Continual Depth Completion with Prototypes（CVPR 2025）
+
+**创新点：**
+将 RGB+稀疏点云深度补全视作原型驱动的持续学习问题，通过跨域共享的深度原型和域描述符，在无监督光度重投影框架下实现不同分布间的连续适配，在学习新场景的同时显著缓解传统深度补全模型的遗忘问题。
+
+**不足点：**
+它依赖先验的“数据集边界”来给新域分配 prototype 集，尚不能在无明确边界的真实在线场景中自动检测域变化并创建新 prototype；同时，在 domain-agnostic 场景下的 ProtoDepth-A 无法完全消除遗忘，在户外这类 domain gap 较大的序列中还会因为原型选择错误导致性能下降。
+
+
+<a id="#ddeseg-cvpr-2025"></a>
+### Dynamic Derivation and Elimination: Audio Visual Segmentation with Enhanced Audio Semantics（CVPR 2025）
+
+**创新点：**
+从音频本质出发提出 Dynamic Derivation and Elimination 框架：先通过语义重构从混合音频中派生出具有区分性的音源级表示，再用判别特征学习与动态消除模块过滤与画面无关的音源，使真正与视觉目标相关的声音区域得到更精准的匹配，从而在多种 AVS 数据集上显著提升声音引导分割性能。
+
+**不足点：**
+文中没有提到
+
+
+<a id="#mmaudio-cvpr-2025"></a>
+### MMAudio: Taming Multimodal Joint Training for High-Quality Video-to-Audio Synthesis（CVPR 2025）
+
+**创新点：**
+提出 MMAudio 多模态联合训练框架，将少量视频-音频配对数据与大规模文本-音频数据一起训练，并引入条件同步模块在音频潜变量上做帧级对齐，在流匹配目标下实现 157M 参数规模的高效视频→音频生成，在音质、语义对齐和视听同步上都优于现有公开方法，同时还在纯文本→音频任务上保持竞争力。
+
+**不足点：**
+MMAudio 主要面向 Foley 类通用音效，对人类语音这类复杂信号支持较弱——在生成说话声时，经常只产生听不清的含糊声音。
