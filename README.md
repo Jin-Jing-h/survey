@@ -18,7 +18,7 @@
 
 ## 📖 论文详细笔记
 <a id="fovex-ijcv-2025"></a>
-### FovEx: Human-Inspired Explanations for Vision Transformers and CNNs （IJCV 2025）
+### 📖FovEx: Human-Inspired Explanations for Vision Transformers and CNNs （IJCV 2025）
 
 **数据集：**  
 [ImageNet-1K](https://www.image-net.org/challenges/LSVRC/)  
@@ -36,7 +36,7 @@
 优化目标偏向“保留”关键信息导致在 DELETE 指标上表现欠佳且仅在有限数据集与任务上验证，存在泛化性和人群偏置方面的潜在局限。
 
 <a id="mair-cvpr-2025"></a>
-### MaIR: A Locality- and Continuity-Preserving Mamba for Image Restoration（CVPR 2025）
+### 📖MaIR: A Locality- and Continuity-Preserving Mamba for Image Restoration（CVPR 2025）
 **数据集：**  
 [DIV2K](https://data.vision.ee.ethz.ch/cvl/DIV2K/)  
 > 用于：超分辨率与去噪任务的基础高分辨率训练集之一，为 MaIR 提供多样自然场景图像，并在验证集上评估标准合成退化下的恢复效果。  
@@ -82,7 +82,7 @@ MaIR 提出在 Mamba 状态空间模型里加入 Nested S-shaped Scanning（NSS�
 文中没有提到
 
 <a id="defusion-cvpr-2025"></a>
-### Visual-Instructed Degradation Diffusion for All-in-One Image Restoration（CVPR 2025）
+### 📖Visual-Instructed Degradation Diffusion for All-in-One Image Restoration（CVPR 2025）
 
 **数据集：**  
 [DIV2K](https://data.vision.ee.ethz.ch/cvl/DIV2K/)  
@@ -128,7 +128,7 @@ Defusion把all-in-one 图像恢复做成一个视觉指令驱动的退化扩散�
 文中没有提到
 
 <a id="darkir-cvpr-2025"></a>
-### DarkIR: Robust Low-Light Image Restoration（CVPR 2024）
+### 📖DarkIR: Robust Low-Light Image Restoration（CVPR 2024）
 
 **数据集：**  
 [LOL-Blur](https://github.com/sczhou/LEDNet#lol-blur-dataset)  
@@ -156,7 +156,7 @@ DarkIR 针对夜景/低照环境下同时存在的 噪声 + 低照度 + 运动�
 DarkIR 的主要局限在于：虽然通过大量使用 depth-wise 卷积显著降低了参数量和 MACs，但作者在 Limitations 中明确指出，这类算子在实际 GPU 上算术强度较低、对硬件不够友好，因此推理时间并不会随着计算量成比例下降；此外，多任务 all-in-one 版本在获得更强泛化能力的同时，在 LOLBlur 等数据集上仍存在约 0.5 dB 的轻微性能损失，说明在统一建模多种低照退化时仍面临精度与泛化、效率之间的折中。
 
 <a id="faithdiff-cvpr-2025"></a>
-### FaithDiff: Unleashing Diffusion Priors for Faithful Image Super-resolution（CVPR 2025）
+### 📖FaithDiff: Unleashing Diffusion Priors for Faithful Image Super-resolution（CVPR 2025）
 
 **数据集：**  
 [DIV2K](https://data.vision.ee.ethz.ch/cvl/DIV2K/)  
@@ -187,7 +187,7 @@ FaithDiff 针对“既要好看又要保真”的真实场景超分问题，提�
 文中没有提到
 
 <a id="gem-cvpr-2025"></a>
-### GEM: A Generalizable Ego-Vision Multimodal World Model for Fine-Grained Ego-Motion, Object Dynamics, and Scene Composition Control（CVPR 2025）
+### 📖GEM: A Generalizable Ego-Vision Multimodal World Model for Fine-Grained Ego-Motion, Object Dynamics, and Scene Composition Control（CVPR 2025）
 
 **数据集：**  
 [OpenDV](https://github.com/OpenDriveLab/DriveAGI)  
@@ -234,7 +234,7 @@ FaithDiff 针对“既要好看又要保真”的真实场景超分问题，提�
 
 
 <a id="protodepth-cvpr-2025"></a>
-### ProtoDepth: Unsupervised Continual Depth Completion with Prototypes（CVPR 2025）
+### 📖ProtoDepth: Unsupervised Continual Depth Completion with Prototypes（CVPR 2025）
 **数据集：**  
 [NYU Depth V2](https://cs.nyu.edu/~fergus/datasets/nyu_depth_v2.html)  
 > 用于：室内序列的起始数据集 D1，用来**预训练室内深度补全模型**，并作为 NYUv2 → ScanNet → VOID 持续学习序列中的第一个域，用于评估在典型室内场景下的深度补全性能与遗忘程度。  
@@ -266,7 +266,7 @@ FaithDiff 针对“既要好看又要保真”的真实场景超分问题，提�
 
 
 <a id="ddeseg-cvpr-2025"></a>
-### Dynamic Derivation and Elimination: Audio Visual Segmentation with Enhanced Audio Semantics（CVPR 2025）
+### 📖Dynamic Derivation and Elimination: Audio Visual Segmentation with Enhanced Audio Semantics（CVPR 2025）
 **数据集：**  
 [AVS-Object（AVSBench-Object）](https://opennlplab.github.io/AVSBench/)  
 > 用于：DDESeg 的核心基准之一，包含 S4（Single Source）和 MS3（Multi Source）两部分，每段 5 秒视频并在每秒最后一帧提供像素级二值掩码，用于评估“单/多声源下是否正确分割出发声区域”。  
@@ -285,7 +285,7 @@ FaithDiff 针对“既要好看又要保真”的真实场景超分问题，提�
 
 
 <a id="mmaudio-cvpr-2025"></a>
-### MMAudio: Taming Multimodal Joint Training for High-Quality Video-to-Audio Synthesis（CVPR 2025）
+### 📖MMAudio: Taming Multimodal Joint Training for High-Quality Video-to-Audio Synthesis（CVPR 2025）
 **数据集：**  
 [VGGSound](https://www.robots.ox.ac.uk/~vgg/data/vggsound/)  
 > 用于：唯一同时包含视频–音频–文本三模态的核心训练与评测集，MMAudio 在其中进行主的视频→音频训练，并在测试集上评估音频质量、语义对齐度与视听同步性。  
