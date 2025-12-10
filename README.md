@@ -16,7 +16,7 @@
 
 ---
 
-## 📖 论文详细笔记
+##  论文详细笔记
 <a id="fovex-ijcv-2025"></a>
 ### 📖FovEx: Human-Inspired Explanations for Vision Transformers and CNNs （IJCV 2025）
 
