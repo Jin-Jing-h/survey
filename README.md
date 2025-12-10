@@ -103,6 +103,25 @@ Defusion把all-in-one 图像恢复做成一个视觉指令驱动的退化扩散�
 <a id="darkir-cvpr-2025"></a>
 ### DarkIR: Robust Low-Light Image Restoration（CVPR 2024）
 
+**数据集：**  
+[LOL-Blur](https://github.com/sczhou/LEDNet#lol-blur-dataset)  
+> 用于：DarkIR 的**主训练集**和合成低照+运动模糊场景下的**核心测试基准**，评估同时去噪、去模糊与提亮能力  
+
+[Real-LOLBlur](https://github.com/sczhou/LEDNet#lol-blur-dataset)  
+> 用于：从 RealBlur-J 等真实视频中截取的夜景模糊图像，无 GT，作为**真实世界低照+模糊场景的无参考测试集**，检验泛化与视觉效果  
+
+[LOL（LOw-Light paired dataset）](https://daooshee.github.io/BMVC2018website/)  
+> 用于：经典**低照度增强配对数据集**（无模糊），在 DarkIR 中作为额外基准，验证网络在纯 LLIE 任务上的恢复质量  
+
+[LOL-v2-Real](https://huggingface.co/datasets/okhater/lolv2-real)  
+> 用于：包含 689/100 对真实低照–正常光图像的**配对数据集**，在更复杂真实场景下训练/评估 DarkIR 的低照增强与去噪性能  
+
+[LOL-v2-Synthetic](https://huggingface.co/datasets/okhater/lolv2-synthetic)  
+> 用于：900/100 对合成低照–正常光图像，作为补充数据提升 DarkIR 在**合成低照场景**下的泛化与稳定性  
+
+[LSRW-Nikon & LSRW-Huawei](https://github.com/JianghaiSCU/R2RNet#dataset)  
+> 用于：由 Nikon 相机与华为手机采集的**真实低照配对数据集**，在不同设备与曝光条件下评估 DarkIR 的跨设备泛化能力
+
 **创新点：**
 DarkIR 针对夜景/低照环境下同时存在的 噪声 + 低照度 + 运动模糊，在高效 CNN 上设计新的注意力机制扩展感受野，构建了一个统一的多任务低照度恢复网络，在 LOLBlur、LOLv2、Real-LOLBlur 等数据集上刷新 SOTA，并在 NTIRE 2025 低照度挑战中获得最佳方法，同时保持参数量和 MAC 数显著低于大多数 Transformer 模型。
 
@@ -111,6 +130,28 @@ DarkIR 的主要局限在于：虽然通过大量使用 depth-wise 卷积显著�
 
 <a id="faithdiff-cvpr-2025"></a>
 ### FaithDiff: Unleashing Diffusion Priors for Faithful Image Super-resolution（CVPR 2025）
+
+**数据集：**  
+[DIV2K](https://data.vision.ee.ethz.ch/cvl/DIV2K/)  
+> 用于：合成退化超分的基础训练与验证数据之一，在 DIV2K-Valid 上构造不同退化等级 (D-level) 用于评测模型在标准自然场景上的保真重建能力。  
+
+[LSDIR](https://github.com/ofsoundof/LSDIR)  
+> 用于：大规模真实/合成混合恢复数据集，为 FaithDiff 提供多样化高分辨率图像，在 LSDIR-Valid 上合成多种真实感退化以训练和评估对复杂退化的鲁棒性。  
+
+[Flickr2K](https://www.kaggle.com/datasets/daehoyang/flickr2k)  
+> 用于：补充自然场景高分辨率图像，与 DIV2K 等一起扩充训练集，提高模型在多类型真实照片上的泛化能力。  
+
+[DIV8K](https://huggingface.co/datasets/yangtao9009/DIV8K)  
+> 用于：提供高达 8K 分辨率的图像，帮助模型学习更丰富的高频细节和复杂场景纹理，用于高分辨率超分的训练/验证。  
+
+[FFHQ](https://github.com/NVlabs/ffhq-dataset)  
+> 用于：抽取人脸高分辨率图像，专门增强 FaithDiff 在面部细节（皮肤纹理、五官结构等）上的重建能力。  
+
+[RealPhoto60](https://drive.google.com/drive/folders/1yELzm5SvAi9e7kPcO_jPp2XkTs4vK6aR)  
+> 用于：由 SUPIR 提供的 60 张真实退化图像集合，在无 GT 的真实场景下评估 FaithDiff 的视觉质量和结构一致性。  
+
+[RealDeg](https://drive.google.com/file/d/1B8BaaMjXJ-1TfcTgE9MrAg8ufvaGkndP/view)  
+> 用于：作者新收集的 238 张真实退化图像（老照片、电影剧照、社交媒体图片等），专门用于检验模型在多种未知真实退化类型下的稳健性与泛化表现。  
 
 **创新点：**
 FaithDiff 针对“既要好看又要保真”的真实场景超分问题，提出在 latent diffusion 上加入 特征对齐模块 + 编码器与扩散模型的联合微调，显式对齐退化输入特征与扩散噪声空间，让大模型的先验既能生成细节又不过度幻觉，在多种 SR 基准上对结构保持和视觉质量都明显优于以往扩散式 SR 方法
@@ -121,6 +162,43 @@ FaithDiff 针对“既要好看又要保真”的真实场景超分问题，提�
 <a id="gem-cvpr-2025"></a>
 ### GEM: A Generalizable Ego-Vision Multimodal World Model for Fine-Grained Ego-Motion, Object Dynamics, and Scene Composition Control（CVPR 2025）
 
+**数据集：**  
+[OpenDV](https://github.com/OpenDriveLab/DriveAGI)  
+> 用于：GEM 的核心大规模驾驶视频语料（1700+ 小时多城市、多天气前视视频），作为主要训练数据之一，并在其验证集子集上评估长时序视频生成质量与可控性。  
+
+[BDD100K](https://bdd-data.berkeley.edu/)  
+> 用于：提供多城市、多时间段、多天气条件下的车载视频和标注，作为补充驾驶场景数据，增强 GEM 对真实道路外观变化和交通参与者分布的鲁棒性。  
+
+[nuScenes](https://www.nuscenes.org/)  
+> 用于：多传感器自动驾驶数据集（包含 3D 标注与精确轨迹），在 GEM 中既参与训练，又作为带 GT 轨迹的关键评测基准，用于计算 ADE 等控制误差与视频质量指标。  
+
+[DrivingDojo](https://arxiv.org/abs/2410.10738)  
+> 用于：强调多智能体交互与复杂交通行为的大规模驾驶数据集，为 GEM 提供包含变道、跟车、拥堵等复杂动态的场景，提升模型在高交互场景下的可控生成能力。  
+
+[Honda HDD](https://usa.honda-ri.com/hdd)  
+> 用于：包含 100+ 小时真实自然驾驶的视频与车辆 CAN 信号，在 GEM 中作为额外驾驶行为语料，帮助模型学习更贴近日常驾驶风格的世界动态。  
+
+[Honda HAD](https://usa.honda-ri.com/had)  
+> 用于：在 HDD 基础上加入人类建议/干预信息的人类驾驶数据集，用于补充带语义引导的驾驶场景，使 GEM 接触到更多样的驾驶意图与操作模式。  
+
+[Drive360](https://trace.ethz.ch/publications/2019/learning-to-drive/)  
+> 用于：由 360° 车载摄像头采集的高速公路与城市驾驶视频，为 GEM 提供多视角、长序列的驾驶场景，提升模型在长时间生成和视角变化下的稳定性。  
+
+[D²-City](https://arxiv.org/abs/1904.01975)  
+> 用于：中国多城市真实行车记录仪视频数据集，覆盖密集交通与多车道复杂路况，在 GEM 中用于增强在非西方道路环境与高密度交通场景下的泛化能力。  
+
+[DoTA](https://github.com/MoonBlvd/Detection-of-Traffic-Anomaly)  
+> 用于：交通异常检测数据集，包含大量事故与近事故片段，作为 GEM 训练中的稀有/极端场景补充，使世界模型对异常事件和危险情形的建模更为合理。  
+
+[CarCrashDataset](https://github.com/Cogito2012/CarCrashDataset)  
+> 用于：专注真实车祸与正常行驶对比的 dashcam 视频数据集，在 GEM 中进一步丰富安全关键事件样本，提升对碰撞、急刹等极端动态的表达能力。  
+
+[EgoExo4D](https://docs.ego-exo4d-data.org/)  
+> 用于：大规模第一/第三人称多视角人类活动数据集，在 GEM 中作为人类活动域的核心数据，用于训练和评估 human-pose 控制与复杂人–物体–场景交互的世界建模能力。  
+
+[Drone self-collected](https://vita-epfl.github.io/GEM.github.io/)  
+> 用于：作者从 YouTube 自采集的约 27.4 小时无人机第一视角视频，用于扩展 GEM 到无人机导航域，检验模型在不同高度和视角下的泛化与可控生成能力。  
+
 **创新点：**
 提出 GEM 这一统一的自监督多模态世界模型，用单个生成骨干在 4000+ 小时的 RGB 图像、深度、人体姿态和自车轨迹数据上联合建模，利用参考帧 + 稀疏特征 + 控制信号生成未来的 RGB 与深度序列，并通过新的 COM 指标系统定量评估对自车运动、物体动态和场景组合的可控性与跨场景泛化。
 
@@ -130,6 +208,28 @@ FaithDiff 针对“既要好看又要保真”的真实场景超分问题，提�
 
 <a id="#protodepth-cvpr-2025"></a>
 ### ProtoDepth: Unsupervised Continual Depth Completion with Prototypes（CVPR 2025）
+**数据集：**  
+[NYU Depth V2](https://cs.nyu.edu/~fergus/datasets/nyu_depth_v2.html)  
+> 用于：室内序列的起始数据集 D1，用来**预训练室内深度补全模型**，并作为 NYUv2 → ScanNet → VOID 持续学习序列中的第一个域，用于评估在典型室内场景下的深度补全性能与遗忘程度。  
+
+[VOID](https://github.com/alexklwong/void-dataset)  
+> 用于：室内序列中的目标域之一，具有极稀疏深度（≈0.5% 密度）与强相机运动，作为 **室内持续学习序列的后续域**（NYUv2 / ScanNet 之后），评估 ProtoDepth 在低纹理和大位姿变化场景下的鲁棒性与遗忘情况。  
+
+[ScanNet](https://www.scan-net.org/)  
+> 用于：大规模 RGB-D 室内视频数据集，ProtoDepth 在 **NYUv2 → ScanNet → VOID** 序列中将其作为中间域，检验方法在跨多种室内场景和传感器配置时的持续适应能力。  
+
+[KITTI Depth Completion](https://www.cvlibs.net/datasets/kitti/eval_depth.php?benchmark=depth_completion)  
+> 用于：室外序列的起始数据集 D1，作为 **道路场景深度补全预训练基准**，并在 KITTI → Waymo → VKITTI 持续学习序列中提供真实自动驾驶场景下的稀疏 LiDAR + RGB 训练与评测。  
+
+[Waymo Open Dataset](https://waymo.com/open/)  
+> 用于：室外持续学习序列中的第二个真实自动驾驶数据集，具有更高分辨率和更丰富路况，作为 **从 KITTI 迁移到新城市 / 新车队的目标域**，评估 ProtoDepth 在真实跨域驾驶场景中的适应与遗忘。  
+
+[Virtual KITTI (VKITTI)](https://europe.naverlabs.com/proxy-virtual-worlds-vkitti-2/)  
+> 用于：合成的 KITTI 场景克隆数据集，在 ProtoDepth 中作为 **室外序列中的合成目标域**，通过添加不同天气和视角变换来模拟 domain shift，用于研究在合成域上的持续学习和遗忘抑制能力。  
+
+[nuScenes](https://www.nuscenes.org/)  
+> 用于：**未见室外数据集的零样本泛化测试**，在训练顺序 KITTI → Waymo → VKITTI 之后，对 nuScenes 进行推理，以评估 ProtoDepth-A 在新城市、新传感器配置下的零样本深度补全泛化性能。  
+
 
 **创新点：**
 将 RGB+稀疏点云深度补全视作原型驱动的持续学习问题，通过跨域共享的深度原型和域描述符，在无监督光度重投影框架下实现不同分布间的连续适配，在学习新场景的同时显著缓解传统深度补全模型的遗忘问题。
