@@ -84,42 +84,80 @@ MaIR 提出在 Mamba 状态空间模型里加入 Nested S-shaped Scanning（NSS�
 <a id="defusion-cvpr-2025"></a>
 ### 📖Visual-Instructed Degradation Diffusion for All-in-One Image Restoration（CVPR 2025）
 
-**数据集：**  
-[DIV2K](https://data.vision.ee.ethz.ch/cvl/DIV2K/)  
-> 用于：超分辨率 & 去噪的训练数据之一（高分辨率自然图像）
+**数据集：**
 
-[Flickr2K](https://www.kaggle.com/datasets/daehoyang/flickr2k)  
-> 用于：超分辨率 & 去噪的训练数据之一，和 DIV2K 组成 DF2K 扩充训练集
+[Rain1400](https://xueyangfu.github.io/projects/cvpr2017.html)
 
-[WED](https://ivc.uwaterloo.ca/database/WaterlooExploration/)  
-> 用于：合成噪声去噪训练（DFWB 训练集的一部分）
+> 用于：合成雨条/雨丝去雨（single-image deraining）的经典基准数据集。
 
-[BSD400 / BSD68](https://github.com/clausmichele/CBSD68-dataset)  
-> 用于：BSD400 参与合成去噪训练，BSD68 作为合成高斯噪声去噪的测试集
+[Outdoor-Rain](https://github.com/liruoteng/HeavyRainRemoval)
 
-[Kodak24](https://r0k.us/graphics/kodak/)  
-> 用于：合成高斯噪声去噪的测试集之一（评估自然场景图像去噪质量）
+> 用于：复杂户外重雨场景去雨，评估模型在多种雨型和背景条件下的鲁棒性。
 
-[McMaster](https://www4.comp.polyu.edu.hk/~cslzhang/CDM_Dataset.htm)  
-> 用于：合成高斯噪声去噪测试集（彩色图像，检查纹理和颜色保持情况）
+[RESIDE (ITS/OTS/SOTS)](https://sites.google.com/view/reside-dehaze-datasets/reside-standard)
 
-[Urban100](https://huggingface.co/datasets/eugenesiow/Urban100)  
-> 用于：既作为超分的测试集（评估结构和纹理恢复），也用于去噪任务的测试
+> 用于：单幅图像去雾（dehazing），涵盖室内/室外、合成/真实等多种雾场景，是最常用的去雾基准之一。
 
-[SIDD-Medium](https://abdokamel.github.io/sidd/)  
-> 用于：真实噪声去噪任务的训练与测试（手机拍摄真实噪声）
+[Dense-Haze](https://data.vision.ee.ethz.ch/cvl/ntire19/dense-haze/)
 
-[GoPro](https://seungjunnah.github.io/Datasets/gopro.html)  
-> 用于：动态场景运动去模糊的训练集与测试集
+> 用于：高浓度、近似白雾场景的去雾任务，考察在极端雾霾条件下的复原能力。
 
-[HIDE](https://github.com/joanshen0508/HA_deblur)  
-> 用于：去模糊任务的额外测试集，重点考察含人物/人脸场景的恢复效果
+[Snow100K](https://sites.google.com/view/yunfuliu/desnownet)
 
-[RESIDE (ITS/OTS/SOTS)](https://sites.google.com/view/reside-dehaze-datasets/reside-standard)  
-> 用于：合成图像去雾的训练与测试（室内 ITS、室外 OTS 训练；SOTS-Indoor/Outdoor 测试）
+> 用于：合成雪花/雪点去雪（desnowing），支持评估不同雪密度与形态下的性能。
 
-[RESIDE-6K](https://gts.ai/dataset-download/reside-6k/)  
-> 用于：更大规模、多场景的去雾训练/验证，提升模型在复杂雾天条件下的泛化能力
+[RealSnow](https://github.com/zhuyr97/WGWS-Net)
+
+> 用于：真实采集雪景的去雪任务，检验模型从合成数据泛化到真实场景的能力。
+
+[RainDrop](https://github.com/rui1996/DeRaindrop)
+
+> 用于：去除镜头/玻璃上的雨滴遮挡（raindrop removal），同时恢复被遮挡的背景细节。
+
+[RainDS](https://github.com/Songforrr/RainDS_CCN)
+
+> 用于：同时包含“雨丝 + 雨滴”的混合退化场景，适合评估 all-in-one 去雨模型。
+
+[SIDD](https://abdokamel.github.io/sidd/)
+
+> 用于：真实手机拍摄噪声去噪（denoising），提供成对 noisy/clean 图像。
+
+[GoPro](https://seungjunnah.github.io/Datasets/gopro.html)
+
+> 用于：由相机或物体运动产生的运动模糊去模糊（motion deblurring），经典配对数据集。
+
+[RealBlur](https://cg.postech.ac.kr/research/realblur/)
+
+> 用于：真实拍摄模糊图像的去模糊，相比 GoPro 更贴近真实模糊分布。
+
+[DPDD](https://github.com/Abdullah-Abuolaim/defocus-deblurring-dual-pixel)
+
+> 用于：离焦/景深模糊去模糊（defocus deblurring），基于双像素（dual-pixel）成像。
+
+[LIVE1](https://live.ece.utexas.edu/research/Quality/)
+
+> 用于：图像质量评估及压缩伪影/去噪等任务的小型测试集，常用于客观/主观质量对比。
+
+[NH-HAZE](https://data.vision.ee.ethz.ch/cvl/ntire20/nh-haze/)
+
+> 用于：非均匀雾（non-homogeneous haze）场景去雾，更贴近真实复杂雾分布。
+
+[LHP-Rain](https://github.com/yunguo224/LHP-Rain)
+
+> 用于：大规模真实雨场景去雨（real rain removal），用于评估模型在真实雨环境下的泛化能力。
+
+[WED](https://ivc.uwaterloo.ca/database/WaterlooExploration/)
+
+> 用于：通用自然图像质量评估，以及图像增强/复原算法的测试与对比。
+
+[EUVP](https://irvlab.cs.umn.edu/resources/euvp-dataset)
+
+> 用于：水下图像增强与色彩/对比度恢复（underwater image enhancement）。
+
+[TURBID](https://amandaduarte.com.br/turbid/)
+
+> 用于：浑浊水下场景复原，评估在高浊度介质中提升可视性与细节的效果。
+
 
 **创新点：**
 Defusion把all-in-one 图像恢复做成一个视觉指令驱动的退化扩散，不是用模糊的文本prompt，而是构造与不同退化（去噪、去模糊、去雾、低照度等）显式对齐的视觉指令图，作为条件去引导扩散模型，对未知退化场景也能统一建模，在多种一体化恢复基准上达到了新的SOTA。
