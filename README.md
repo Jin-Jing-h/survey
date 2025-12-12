@@ -294,10 +294,10 @@ FaithDiff 针对“既要好看又要保真”的真实场景超分问题，提�
 <a id="ddeseg-cvpr-2025"></a>
 ### 📖Dynamic Derivation and Elimination: Audio Visual Segmentation with Enhanced Audio Semantics（CVPR 2025）
 **数据集：**  
-[AVS-Object](https://opennlplab.github.io/AVSBench/)  
+[AVS-Object](https://github.com/OpenNLPLab/AVSBench)  
 > 用于：DDESeg 的核心基准之一，包含 S4（Single Source）和 MS3（Multi Source）两部分，每段 5 秒视频并在每秒最后一帧提供像素级二值掩码，用于评估“单声源与多声源下是否正确分割出发声区域”。  
 
-[AVS-Semantic](https://opennlplab.github.io/AVSBench/)  
+[AVS-Semantic](https://github.com/OpenNLPLab/AVSBench)  
 > 用于：语义级音视频分割基准，含 12,356 段、71 类音视频片段，每个样本提供语义掩码与音频事件类别标签，用于评估 DDESeg 在“既要找对位置又要分类对类别”的语义 AVS 能力。  
 
 [VPO](https://drive.google.com/file/d/12jq7-Ke09ZPoUI1od44q97DNLrThoHc3/view)  
