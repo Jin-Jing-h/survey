@@ -228,13 +228,10 @@ FaithDiff 针对“既要好看又要保真”的真实场景超分问题，提�
 [OpenDV](https://github.com/OpenDriveLab/DriveAGI)  
 > 用于：GEM 的核心大规模驾驶视频语料（1700+ 小时多城市、多天气前视视频），作为主要训练数据之一，并在其验证集子集上评估长时序视频生成质量与可控性。  
 
-[BDD](https://bdd-data.berkeley.edu/)  
-> 用于：提供多城市、多时间段、多天气条件下的车载视频和标注，作为补充驾驶场景数据，增强 GEM 对真实道路外观变化和交通参与者分布的鲁棒性。  
-
 [nuScenes](https://www.nuscenes.org/)  
 > 用于：多传感器自动驾驶数据集（包含 3D 标注与精确轨迹），在 GEM 中既参与训练，又作为带 GT 轨迹的关键评测基准，用于计算 ADE 等控制误差与视频质量指标。  
 
-[DrivingDojo](https://arxiv.org/abs/2410.10738)  
+[DrivingDojo](https://huggingface.co/datasets/Yuqi1997/DrivingDojo)  
 > 用于：强调多智能体交互与复杂交通行为的大规模驾驶数据集，为 GEM 提供包含变道、跟车、拥堵等复杂动态的场景，提升模型在高交互场景下的可控生成能力。  
 
 [Honda HDD](https://usa.honda-ri.com/hdd)  
