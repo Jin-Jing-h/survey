@@ -154,9 +154,6 @@ MaIR 提出在 Mamba 状态空间模型里加入 Nested S-shaped Scanning（NSS�
 
 > 用于：水下图像增强与色彩/对比度恢复（underwater image enhancement）。
 
-[TURBID](https://amandaduarte.com.br/turbid/)
-
-> 用于：浑浊水下场景复原，评估在高浊度介质中提升可视性与细节的效果。
 
 
 **创新点：**
