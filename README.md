@@ -240,12 +240,6 @@ FaithDiff 针对“既要好看又要保真”的真实场景超分问题，提�
 [Honda HAD](https://usa.honda-ri.com/had)  
 > 用于：在 HDD 基础上加入人类建议/干预信息的人类驾驶数据集，用于补充带语义引导的驾驶场景，使 GEM 接触到更多样的驾驶意图与操作模式。  
 
-[Drive360](https://trace.ethz.ch/publications/2019/learning-to-drive/)  
-> 用于：由 360° 车载摄像头采集的高速公路与城市驾驶视频，为 GEM 提供多视角、长序列的驾驶场景，提升模型在长时间生成和视角变化下的稳定性。  
-
-[D²-City](https://arxiv.org/abs/1904.01975)  
-> 用于：中国多城市真实行车记录仪视频数据集，覆盖密集交通与多车道复杂路况，在 GEM 中用于增强在非西方道路环境与高密度交通场景下的泛化能力。  
-
 [DoTA](https://github.com/MoonBlvd/Detection-of-Traffic-Anomaly)  
 > 用于：交通异常检测数据集，包含大量事故与近事故片段，作为 GEM 训练中的稀有/极端场景补充，使世界模型对异常事件和危险情形的建模更为合理。  
 
