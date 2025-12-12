@@ -184,7 +184,7 @@ Defusion把all-in-one 图像恢复做成一个视觉指令驱动的退化扩散�
 [LOL-v2-Synthetic](https://huggingface.co/datasets/okhater/lolv2-synthetic)  
 > 用于：900/100 对合成低照–正常光图像，作为补充数据提升 DarkIR 在**合成低照场景**下的泛化与稳定性  
 
-[LSRW-Nikon & LSRW-Huawei](https://github.com/JianghaiSCU/R2RNet#dataset)  
+[LSRW](https://github.com/JianghaiSCU/R2RNet#dataset)  
 > 用于：由 Nikon 相机与华为手机采集的**真实低照配对数据集**，在不同设备与曝光条件下评估 DarkIR 的跨设备泛化能力
 
 **创新点：**
@@ -231,7 +231,7 @@ FaithDiff 针对“既要好看又要保真”的真实场景超分问题，提�
 [OpenDV](https://github.com/OpenDriveLab/DriveAGI)  
 > 用于：GEM 的核心大规模驾驶视频语料（1700+ 小时多城市、多天气前视视频），作为主要训练数据之一，并在其验证集子集上评估长时序视频生成质量与可控性。  
 
-[BDD100K](https://bdd-data.berkeley.edu/)  
+[BDD](https://bdd-data.berkeley.edu/)  
 > 用于：提供多城市、多时间段、多天气条件下的车载视频和标注，作为补充驾驶场景数据，增强 GEM 对真实道路外观变化和交通参与者分布的鲁棒性。  
 
 [nuScenes](https://www.nuscenes.org/)  
@@ -261,7 +261,7 @@ FaithDiff 针对“既要好看又要保真”的真实场景超分问题，提�
 [EgoExo4D](https://docs.ego-exo4d-data.org/)  
 > 用于：大规模第一/第三人称多视角人类活动数据集，在 GEM 中作为人类活动域的核心数据，用于训练和评估 human-pose 控制与复杂人–物体–场景交互的世界建模能力。  
 
-[Drone self-collected](https://vita-epfl.github.io/GEM.github.io/)  
+[self-collected](https://vita-epfl.github.io/GEM.github.io/)  
 > 用于：作者从 YouTube 自采集的约 27.4 小时无人机第一视角视频，用于扩展 GEM 到无人机导航域，检验模型在不同高度和视角下的泛化与可控生成能力。  
 
 **创新点：**
@@ -275,25 +275,25 @@ FaithDiff 针对“既要好看又要保真”的真实场景超分问题，提�
 ### 📖ProtoDepth: Unsupervised Continual Depth Completion with Prototypes（CVPR 2025）
 **数据集：**  
 [NYU Depth V2](https://cs.nyu.edu/~fergus/datasets/nyu_depth_v2.html)  
-> 用于：室内序列的起始数据集 D1，用来**预训练室内深度补全模型**，并作为 NYUv2 → ScanNet → VOID 持续学习序列中的第一个域，用于评估在典型室内场景下的深度补全性能与遗忘程度。  
+> 用于：室内序列的起始数据集 D1，用来预训练室内深度补全模型，以及评估在典型室内场景下的深度补全性能与遗忘程度。  
 
 [VOID](https://github.com/alexklwong/void-dataset)  
-> 用于：室内序列中的目标域之一，具有极稀疏深度（≈0.5% 密度）与强相机运动，作为 **室内持续学习序列的后续域**（NYUv2 / ScanNet 之后），评估 ProtoDepth 在低纹理和大位姿变化场景下的鲁棒性与遗忘情况。  
+> 用于：室内序列中的目标域之一，具有极稀疏深度与强相机运动，作为 室内持续学习序列的后续域，评估 ProtoDepth 在低纹理和大位姿变化场景下的鲁棒性与遗忘情况。  
 
 [ScanNet](https://www.scan-net.org/)  
-> 用于：大规模 RGB-D 室内视频数据集，ProtoDepth 在 **NYUv2 → ScanNet → VOID** 序列中将其作为中间域，检验方法在跨多种室内场景和传感器配置时的持续适应能力。  
+> 用于：大规模 RGB-D 室内视频数据集，检验方法在跨多种室内场景和传感器配置时的持续适应能力。  
 
-[KITTI Depth Completion](https://www.cvlibs.net/datasets/kitti/eval_depth.php?benchmark=depth_completion)  
-> 用于：室外序列的起始数据集 D1，作为 **道路场景深度补全预训练基准**，并在 KITTI → Waymo → VKITTI 持续学习序列中提供真实自动驾驶场景下的稀疏 LiDAR + RGB 训练与评测。  
+[KITTI](https://www.cvlibs.net/datasets/kitti/eval_depth.php?benchmark=depth_completion)  
+> 用于：室外序列的起始数据集 D1，作为道路场景深度补全预训练基准，并在 KITTI、Waymo、VKITTI 持续学习序列中提供真实自动驾驶场景下的稀疏 LiDAR + RGB 训练与评测。  
 
 [Waymo Open Dataset](https://waymo.com/open/)  
-> 用于：室外持续学习序列中的第二个真实自动驾驶数据集，具有更高分辨率和更丰富路况，作为 **从 KITTI 迁移到新城市 / 新车队的目标域**，评估 ProtoDepth 在真实跨域驾驶场景中的适应与遗忘。  
+> 用于：室外持续学习序列中的第二个真实自动驾驶数据集，具有更高分辨率和更丰富路况，评估 ProtoDepth 在真实跨域驾驶场景中的适应与遗忘。  
 
-[Virtual KITTI (VKITTI)](https://europe.naverlabs.com/proxy-virtual-worlds-vkitti-2/)  
-> 用于：合成的 KITTI 场景克隆数据集，在 ProtoDepth 中作为 **室外序列中的合成目标域**，通过添加不同天气和视角变换来模拟 domain shift，用于研究在合成域上的持续学习和遗忘抑制能力。  
+[Virtual KITTI](https://europe.naverlabs.com/proxy-virtual-worlds-vkitti-2/)  
+> 用于：合成的 KITTI 场景克隆数据集，在 ProtoDepth 中作为室外序列中的合成目标域，通过添加不同天气和视角变换来模拟 domain shift，用于研究在合成域上的持续学习和遗忘抑制能力。  
 
 [nuScenes](https://www.nuscenes.org/)  
-> 用于：**未见室外数据集的零样本泛化测试**，在训练顺序 KITTI → Waymo → VKITTI 之后，对 nuScenes 进行推理，以评估 ProtoDepth-A 在新城市、新传感器配置下的零样本深度补全泛化性能。  
+> 用于：未见室外数据集的零样本泛化测试，在训练顺序 KITTI → Waymo → VKITTI 之后，对 nuScenes 进行推理，以评估 ProtoDepth-A 在新城市、新传感器配置下的零样本深度补全泛化性能。  
 
 
 **创新点：**
@@ -306,13 +306,13 @@ FaithDiff 针对“既要好看又要保真”的真实场景超分问题，提�
 <a id="ddeseg-cvpr-2025"></a>
 ### 📖Dynamic Derivation and Elimination: Audio Visual Segmentation with Enhanced Audio Semantics（CVPR 2025）
 **数据集：**  
-[AVS-Object（AVSBench-Object）](https://opennlplab.github.io/AVSBench/)  
-> 用于：DDESeg 的核心基准之一，包含 S4（Single Source）和 MS3（Multi Source）两部分，每段 5 秒视频并在每秒最后一帧提供像素级二值掩码，用于评估“单/多声源下是否正确分割出发声区域”。  
+[AVS-Object](https://opennlplab.github.io/AVSBench/)  
+> 用于：DDESeg 的核心基准之一，包含 S4（Single Source）和 MS3（Multi Source）两部分，每段 5 秒视频并在每秒最后一帧提供像素级二值掩码，用于评估“单声源与多声源下是否正确分割出发声区域”。  
 
-[AVS-Semantic（AVSBench-Semantic）](https://opennlplab.github.io/AVSBench/)  
+[AVS-Semantic](https://opennlplab.github.io/AVSBench/)  
 > 用于：语义级音视频分割基准，含 12,356 段、71 类音视频片段，每个样本提供语义掩码与音频事件类别标签，用于评估 DDESeg 在“既要找对位置又要分类对类别”的语义 AVS 能力。  
 
-[VPO（Visual Post-production）](https://drive.google.com/file/d/12jq7-Ke09ZPoUI1od44q97DNLrThoHc3/view)  
+[VPO](https://drive.google.com/file/d/12jq7-Ke09ZPoUI1od44q97DNLrThoHc3/view)  
 > 用于：由 COCO 单帧图像与 VGGSound 3 秒音频按类别重配得到的合成 AVS 数据集，包含 VPO-SS / VPO-MS / VPO-MSMI 三个子集，用来检验 DDESeg 在“单/多声源、同类多目标”等更复杂组合场景下的泛化与鲁棒性。  
 
 **创新点：**
