@@ -13,10 +13,151 @@
 | <small>MMAudio: Taming Multimodal Joint Training for High-Quality Video-to-Audio Synthesis</small> | <small>[CVPR](https://arxiv.org/abs/2412.15322)</small> | <small>2025</small> | <small>视频→音频<br>视听生成</small> | <small>[GitHub](https://github.com/hkchengrex/MMAudio)</small> | <small>[概述](#mmaudio-cvpr-2025)</small> | <small>[概述](#mmaudio-cvpr-2025)</small> |
 | <small>MulFS-CAP: Multimodal Fusion-Supervised Cross-Modality Alignment Perception for Unregistered Infrared-Visible Image Fusion</small> | <small>[TPAMI](https://doi.org/10.1109/TPAMI.2025.3535617)</small> | <small>2025</small> | <small>红外+可见光<br>图像融合</small> | <small>[GitHub](https://github.com/YR0211/MulFS-CAP)</small> | <small>[概述](#mulfs-cap-tpami-2025)</small> | <small>[概述](#mulfs-cap-tpami-2025)</small> |
 
+## 专有名词解释（点击跳转）
+- [CLIP](#clip)
+- [DINO](#dino)
+- [SAM](#sam)
+- [Segment Anything](#segment-anything)
+- [BLIP](#blip)
+- [Diffusion Models](#diffusion-models)
+- [Foundation Models](#foundation-models)
+- [Prompting](#prompting)
+- [Fine-tuning](#fine-tuning)
+- [Adapters](#adapters)
+- [Zero-shot Transfer](#zero-shot-transfer)
+- [Vision-Language Models](#vision-language-models)
+- [Image Enhancement](#image-enhancement)
+- [Detection](#detection)
+- [Segmentation](#segmentation)
+- [Captioning](#captioning)
+- [Benchmark](#benchmark)
+- [Real-world Datasets](#real-world-datasets)
+- [Multimodal Priors](#multimodal-priors)
+- [LiDAR](#lidar)
+- [Thermal](#thermal)
+- [Uncertainty-aware](#uncertainty-aware)
+- [Trustworthy](#trustworthy)
+- [Low-light](#low-light)
+- [Fog](#fog)
+- [Underwater](#underwater)
+- [Motion Blur](#motion-blur)
+- [Low-resolution](#low-resolution)
 
 ---
 
-##  论文详细笔记
+<a id="clip"></a>
+### CLIP
+>CLIP (Contrastive Language-Image Pretraining) 是由 OpenAI 提出的多模态模型，通过对海量图像-文本对进行对比学习，将图像和文本映射到同一向量空间。借助这种图文对齐的表示，CLIP 能够在无需专门训练的情况下执行图像分类等任务，只需提供类别的文本名称作为提示即可完成识别。
+
+<a id="dino"></a>
+### DINO
+> DINO (Self-Distillation with NO labels) 是一种无监督视觉特征学习方法。它通过教师-学生网络架构在没有人工标注的情况下训练视觉Transformer模型，学生网络学习预测动态更新的教师网络输出，从而提取出具有丰富语义信息的特征。DINO 的特征不仅在分类上表现优异，还呈现出自动分割图像语义区域的能力。
+
+<a id="sam"></a>
+### SAM
+> SAM  (Segment Anything Model)是 Meta AI 提出的通用分割模型，可针对任意图像和目标进行可提示的分割。给定点、框等提示，SAM 能够生成目标的高质量分割掩膜，并支持整图的自动分割。它在超过1.1万张图像和11亿分割掩膜的大规模数据集上训练，在各种分割任务上表现出很强的零样本泛化能力，媲美甚至超越以往的有监督方法。
+
+<a id="segment-anything"></a>
+### Segment Anything
+> Segment Anything 是 Meta 提出的一个分割新范式，包括任务定义、模型和数据集。该项目引入了“大模型+大数据”的理念：通过在含11亿掩膜的超大数据集上训练一个“可提示”的分割模型，使其能够适应新的图像分布和任务而无需额外训练。Segment Anything 的核心模型即 SAM，在各种下游分割任务中零样本表现出色，推动了视觉基础模型在分割领域的发展。
+
+<a id="blip"></a>
+### BLIP
+> BLIP（Bootstrapping Language-Image Pre-training）是一种统一的视觉-语言预训练框架，可同时支持图像-文本理解与生成任务。BLIP 通过生成模型产生图像描述并过滤噪声描述，从而更高效地利用弱标注数据。经过预训练后，BLIP 在图像-文本检索、图像描述生成、视觉问答等任务上取得领先性能，并可零样本泛化到视频描述等新场景。
+
+<a id="diffusion-models"></a>
+### Diffusion Models
+> Diffusion Models扩散模型是一类强大的生成模型，包括DDPM等，通过正向逐步向数据添加噪声、反向学会去噪来生成新数据。模型训练的目标是学会逆转噪声扩散过程，将纯随机噪声逐步还原为逼真的数据样本。这种迭代去噪生成方法已在图像生成等视觉任务中取得最先进效果。
+
+<a id="foundation-models"></a>
+### Foundation Models
+> 基础模型指在海量多样数据上训练、可适应众多下游任务的大规模模型。典型特征是使用自监督等方式在广泛语料上学习通用表示，再通过少量微调或提示适配不同任务。这类模型训练成本极高，但下游使用高效。
+
+<a id="prompting"></a>
+### Prompting
+>在人工智能中，提示指通过输入精心设计的指令或示例，引导预训练模型产生期望结果的技术。用户就像给模型提出问题或描述要求，模型则根据提示内容进行推理和生成。
+
+<a id="fine-tuning"></a>
+### Fine-tuning
+> 将预训练模型在新数据新任务上继续训练，以适应特定下游任务的过程。通常做法是加载在大规模数据上训练好的模型权重，然后用小规模的任务数据对部分或全部层进行再次训练。通过微调，模型能够重用原有知识并针对新任务进行优化，比从头训练更高效，已成为迁移学习的标准手段。
+
+<a id="adapters"></a>
+### Adapters
+> 一种轻量级的可训练模块，插入到预训练模型的各层中，实现高效参数微调。每个适配器包含远少于原模型的参数，在新任务训练时仅调整这些小模块的权重，而保持原模型大部分参数冻结。这种方法显著减少了微调开销，并允许一个模型通过不同适配器快速切换服务多个任务，在自然语言处理和计算机视觉的跨任务迁移中被广泛采用。
+
+<a id="zero-shot-transfer"></a>
+### Zero-shot Transfer
+> Zero-shot Transfer（零样本迁移）指模型在未见过目标任务或类别训练样本的情况下，仍能直接泛化完成识别或推理。实现零样本迁移通常依赖辅助信息将已知与未知类别关联起来；CLIP 等多模态模型常以文本作为语义桥梁，从而具备零样本分类能力。
+
+<a id="vision-language-models"></a>
+### Vision-Language Models
+> Vision-Language Models同时处理图像和文本两种模态的AI模型。它通过联合训练图像编码器和文本编码器，学会将视觉和语言信息对齐，从而能够执行图文检索、图像描述生成、视觉问答等跨模态任务。典型VLM架构包含一个图像特征提取网络和一个文本特征提取网络，二者输出的嵌入在共享空间中对应同一语义，实现“看到图像→生成文字”或“读取文字→找出图像”等功能。
+
+<a id="image-enhancement"></a>
+### Image Enhancement
+> 通过算法调整图像的亮度、对比度、颜色等以改善图像视觉质量的过程。简单增强操作包括使图像整体变亮或者变暗、增加对比度等。更高级的照片增强软件还提供去噪、锐化、白平衡校正等滤镜，以消除各种缺陷。图像增强能够提升人眼观感和机器视觉算法的输入质量，例如低光照增强可让后续目标检测在夜间环境下更准确。
+
+<a id="detection"></a>
+### Detection
+> Detection 一种计算机视觉技术，用于在图像或视频中识别并定位出多个感兴趣目标。与仅给出类别标签的图像分类不同，目标检测不仅要判别对象类别，还需用边界框圈出每个对象的位置。例如，在自动驾驶中，检测算法需要找出画面中行人、车辆的位置和种类。常见目标检测模型能够实时处理图像，输出目标边界框及分类结果。
+
+<a id="segmentation"></a>
+### Segmentation
+> Segmentation（图像分割）：图像分割是将图像划分为多个像素区域的过程，其目的是将图像表示转换为对分析更有意义且易处理的形式。具体而言，分割为图像中每个像素赋予类别标签，使同一类别的像素连成区域、具有相似的视觉特征。分割结果通常以掩膜形式呈现，可实现精细的目标边界提取。根据粒度不同，有语义分割和实例分割等类型，是自动驾驶、医疗影像分析等领域的重要基础任务。
+
+<a id="captioning"></a>
+### Captioning
+> Captioning（图像描述）：图像描述任务要求为给定图像自动生成自然语言的文字描述。这是一个典型的多模态问题，结合了计算机视觉和自然语言处理：模型通常使用CNN提取图像特征，再由RNN或Transformer解码生成一句话，逐词描述图像内容。
+
+<a id="benchmark"></a>
+### Benchmark
+> Benchmark (基准)：在机器学习中指标准的数据集、任务或评价指标，用于评测模型性能的统一参照。研究者会将新模型在这些公开基准上测试，以便与前人方法进行公平比较。
+
+<a id="real-world-datasets"></a>
+### Real-world Datasets
+> Real-world Datasets：真实世界数据集指直接来源于实际应用场景、未经严格挑选清洗的原始数据。与为了研究而整理的干净基准不同，这类数据往往更加多样化且包含噪声，能反映出模型在现实任务中的表现。
+
+<a id="multimodal-priors"></a>
+### Multimodal Priors
+> Multimodal Priors：在模型推理或生成过程中，融入来自多种数据模态的先验知识或约束。在图像生成任务中，可将分类标签、文本描述、分割掩膜等高层语义信息一同引入，以指导生成结果更符合语义和视觉常识。这些不同模态的先验相当于人为提供的线索，帮助模型减少歧义、生成更真实可信的输出。在融合视觉与语言的应用中，利用多模态先验能显著提高结果的质量和一致性。
+
+<a id="lidar"></a>
+### LiDAR
+> LiDAR： Light Detection and Ranging, LiDAR是一种主动光学传感技术，通过发射激光脉冲并测量返回时间来计算物体距离，从而生成高精度的三维点云地图。LiDAR 常用于自动驾驶和测绘，能够获取环境的3D结构，即使在弱光或夜间也能探测物体的距离和形状。相比摄像头图像，LiDAR 数据直接提供深度信息且不受光照变化影响，但分辨率较低、数据稀疏。计算机视觉算法常将LiDAR与摄像头结合，综合利用几何和纹理特征以提高感知的可靠性。
+
+<a id="thermal"></a>
+### Thermal
+> Thermal：利用红外传感器捕获物体表面辐射的热红外线，以生成温度分布图像。与可见光相机不同，热成像相机无需环境光照，在全黑环境或恶劣天气下也能工作，通过物体温度差异将其呈现在图像中。热成像广泛用于夜视安防、工业检测和医疗诊断等领域。在计算机视觉任务中，热图像常与可见光图像结合，以提高在低光、强背光等困难条件下的目标检测和识别能力。例如，夜间行人检测算法可以融合热成像以弥补普通摄像头在黑暗中的不足。
+
+<a id="uncertainty-aware"></a>
+### Uncertainty-aware
+> Uncertainty-aware：具备不确定性感知的模型能够在给出预测结果的同时，估计该预测的置信度或不确定度。这种能力让AI系统在应用中更可信。模型可以标识出哪些输入情形下自己的判断不可靠，提示人类或上层系统谨慎处理。实现不确定性估计的方法包括贝叶斯神经网络、蒙特卡洛dropout、多模型集成等，它们为每个输出提供概率分布或置信区间，而非单一值。有了不确定性信息，决策者可据此评估AI建议的可信度，在高风险领域尤其重要，可以避免过度信任错误的高置信度输出。
+
+<a id="trustworthy"></a>
+### Trustworthy
+> Trustworthy：可信赖AI是指在安全性、可靠性、公平性、透明度等方面满足要求，让人类愿意信任和使用的人工智能系统。欧盟高层专家组将可信AI归纳为合法、合乎伦理、健壮三大特性。具体而言，一个可信赖的计算机视觉模型不仅要在技术上鲁棒可靠，还应避免数据和算法偏见导致的不公平决策，并具备一定的可解释性和责任机制来追溯错误来源。
+
+<a id="low-light"></a>
+### Low-light
+> Low-light：低光照是指光线非常暗弱的成像条件，会导致相机图像信噪比极低。低光环境下获取的图像往往偏暗且伴随大量噪声，细节丢失、颜色失真。这使许多视觉算法在夜晚或黑暗环境中性能骤降，不得不借助红外照明等辅助。为改善低光图像质量，研究人员发展了低光增强算法，试图提升亮度和对比度并抑制噪声。例如，多张曝光堆栈合成、基于Retinex理论的增强、以及深度学习的暗光图像增强网络，都能在一定程度上还原夜间图像的明暗细节，使后续的检测、识别算法在弱光下更加稳健。
+
+<a id="fog"></a>
+### Fog
+> Fog：大雾天气时，空气中的水汽和微粒会散射光线，使远处物体看起来模糊、对比度显著下降。浓雾环境下，原本清晰的边界和纹理被朦胧的白色遮盖，摄像头视程显著缩短。这对计算机视觉是严峻挑战，特别是自动驾驶中的传感器，需要在雾中可靠探测障碍物。为此，图像去雾（dehazing）技术利用大气物理模型（光在雾中经历的衰减和环境光效应）来恢复图像对比度。典型算法如暗通道先验可以估计场景透射率并重建接近平晴天气的清晰图像。去雾后的图像能见度提升，有助于提高检测、识别算法在有雾条件下的准确性和安全性。
+
+<a id="underwater"></a>
+### Underwater
+> Underwater：水下成像由于水对光线的强烈吸收和散射而面临特殊困难。首先，不同波长的光在水中衰减程度不同，红光等长波很快被吸收，导致水下照片普遍偏蓝绿色，颜色失真严重。其次，悬浮颗粒对光的散射使得图像对比度降低、清晰度变差，距离稍远的物体就变得朦胧难辨。这些问题给水下目标检测、图像识别带来挑战。为改善水下图像质量，研究者提出了各种水下图像增强方法，包括色偏校正、增大对比度等。通过物理模型校正或学习算法增强，处理后的水下图像能更接近在空气中拍摄的效果，从而提升计算机视觉模型在水下恶劣光学环境下的性能。
+
+<a id="motion-blur"></a>
+### Motion Blur
+> Motion Blur：由于相机在曝光期间抖动或拍摄对象快速移动，导致图像中出现拖影、模糊的现象。模糊会使物体轮廓拉长、细节消失，严重影响识别和检测的准确性。
+
+<a id="low-resolution"></a>
+### Low-resolution
+> Low-resolution ：低分辨率图像是指像素分辨率较低、细节尺度很小的图像。例如，从远距离裁切的小人脸、放大倍率不足的监控截图等都属于低分辨率情况。此类图像直接放大会缺乏细节且显著模糊，通过简单插值往往得到的结果边缘锯齿、纹理模糊。低分辨率严重阻碍视觉算法提取有效特征和语义信息。为克服这一问题，超分辨率技术致力于将低清晰度图像重建为高分辨率图像。典型方法利用深度卷积神经网络学习低高分辨率图像映射关系，在放大图像尺寸的同时预测合理的新像素以弥补细节。经过超分辨率处理，图像的纹理和边缘更清晰，从而提高下游如人脸识别、目标检测在低分辨率条件下的准确率。
+
+##  数据集
 <a id="fovex-ijcv-2025"></a>
 ### 📖FovEx: Human-Inspired Explanations for Vision Transformers and CNNs （IJCV 2025）
 
