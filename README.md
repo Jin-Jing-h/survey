@@ -12,16 +12,16 @@
 | <small>Dynamic Derivation and Elimination: Audio Visual Segmentation with Enhanced Audio Semantics (DDESeg)</small> | <small>[CVPR](https://openaccess.thecvf.com/content/CVPR2025/html/Liu_Dynamic_Derivation_and_Elimination_Audio_Visual_Segmentation_with_Enhanced_Audio_CVPR_2025_paper.html)</small> | <small>2025</small> | <small>音视频<br>目标分割</small> | <small>[GitHub](https://github.com/YenanLiu/DDESeg)</small> | <small>[概述](#ddeseg-cvpr-2025)</small> | <small>[概述](#ddeseg-cvpr-2025)</small> |
 | <small>MMAudio: Taming Multimodal Joint Training for High-Quality Video-to-Audio Synthesis</small> | <small>[CVPR](https://arxiv.org/abs/2412.15322)</small> | <small>2025</small> | <small>视频→音频<br>视听生成</small> | <small>[GitHub](https://github.com/hkchengrex/MMAudio)</small> | <small>[概述](#mmaudio-cvpr-2025)</small> | <small>[概述](#mmaudio-cvpr-2025)</small> |
 | <small>MulFS-CAP: Multimodal Fusion-Supervised Cross-Modality Alignment Perception for Unregistered Infrared-Visible Image Fusion</small> | <small>[TPAMI](https://doi.org/10.1109/TPAMI.2025.3535617)</small> | <small>2025</small> | <small>红外+可见光<br>图像融合</small> | <small>[GitHub](https://github.com/YR0211/MulFS-CAP)</small> | <small>[概述](#mulfs-cap-tpami-2025)</small> | <small>[概述](#mulfs-cap-tpami-2025)</small> |
-| <small>Improving the Generalization of Segmentation Foundation Model under Distribution Shift via Weakly Supervised Adaptation</small> | <small>[CVPR](https://openaccess.thecvf.com/content/CVPR2024/papers/Zhang_Improving_the_Generalization_of_Segmentation_Foundation_Model_under_Distribution_Shift_CVPR_2024_paper.pdf)</small> | <small>2024</small> | <small>SAM<br>弱监督自训练适配<br>分布偏移鲁棒分割</small>  |                                 <small>[GitHub](https://github.com/zhang-haojie/wesam)</small> | <small>[概述](#improving-sfm-generalization-cvpr-2024)</small> | <small>[概述](#improving-sfm-generalization-cvpr-2024)</small> |
-| <small>RobustSAM: Segment Anything Robustly on Degraded Images</small>                                                                 |                                  <small>[CVPR](https://openaccess.thecvf.com/content/CVPR2024/papers/Chen_RobustSAM_Segment_Anything_Robustly_on_Degraded_Images_CVPR_2024_paper.pdf)</small> | <small>2024</small> | <small>SAM<br>退化图像鲁棒分割</small>              |                                <small>[GitHub](https://github.com/robustsam/RobustSAM)</small> |                    <small>[概述](#robustsam-cvpr-2024)</small> |                    <small>[概述](#robustsam-cvpr-2024)</small> |
-| <small>Unsupervised Cumulative Domain Adaptation for Foggy Scene Optical Flow</small>                                                  |                  <small>[CVPR](https://openaccess.thecvf.com/content/CVPR2023/papers/Zhou_Unsupervised_Cumulative_Domain_Adaptation_for_Foggy_Scene_Optical_Flow_CVPR_2023_paper.pdf)</small> | <small>2023</small> | <small>光流估计<br>雾天域自适应</small>               |                                <small>[GitHub](https://github.com/hyzhouboy/UCDA-Flow)</small> |      <small>[概述](#ucda-foggy-optical-flow-cvpr-2023)</small> |      <small>[概述](#ucda-foggy-optical-flow-cvpr-2023)</small> |
-| <small>Mask DINO: Towards a Unified Transformer-Based Framework for Object Detection and Segmentation</small>                          |              <small>[CVPR](https://openaccess.thecvf.com/content/CVPR2023/papers/Li_Mask_DINO_Towards_a_Unified_Transformer-Based_Framework_for_Object_Detection_CVPR_2023_paper.pdf)</small> | <small>2023</small> | <small>目标检测 + 分割<br>统一Transformer框架</small> |                             <small>[GitHub](https://github.com/IDEA-Research/MaskDINO)</small> |                    <small>[概述](#mask-dino-cvpr-2023)</small> |                    <small>[概述](#mask-dino-cvpr-2023)</small> |
-| <small>DiffusionDet: Diffusion Model for Object Detection</small>                                                                      |                                       <small>[ICCV](https://openaccess.thecvf.com/content/ICCV2023/papers/Chen_DiffusionDet_Diffusion_Model_for_Object_Detection_ICCV_2023_paper.pdf)</small> | <small>2023</small> | <small>目标检测<br>扩散模型检测器</small>              |                            <small>[GitHub](https://github.com/ShoufaChen/DiffusionDet)</small> |                 <small>[概述](#diffusiondet-iccv-2023)</small> |                 <small>[概述](#diffusiondet-iccv-2023)</small> |
-| <small>DiffIR: Efficient Diffusion Model for Image Restoration</small>                                                                 |                                   <small>[ICCV](https://openaccess.thecvf.com/content/ICCV2023/papers/Xia_DiffIR_Efficient_Diffusion_Model_for_Image_Restoration_ICCV_2023_paper.pdf)</small> | <small>2023</small> | <small>图像复原<br>高效扩散</small>                 |                                   <small>[GitHub](https://github.com/Zj-BinXia/DiffIR)</small> |                       <small>[概述](#diffir-iccv-2023)</small> |                       <small>[概述](#diffir-iccv-2023)</small> |
-| <small>BLIP-Diffusion: Pre-trained Subject Representation for Controllable Text-to-Image Generation and Editing</small>                |                                                                                                                          <small>[NeurIPS](https://openreview.net/forum?id=g6We1SwaY9)</small> | <small>2023</small> | <small>主体驱动生成/编辑<br>多模态控制</small>           | <small>[GitHub](https://github.com/salesforce/LAVIS/tree/main/projects/blip-diffusion)</small> |            <small>[概述](#blip-diffusion-neurips-2023)</small> |            <small>[概述](#blip-diffusion-neurips-2023)</small> |
-| <small>DreamBooth: Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation</small>                                    |      <small>[CVPR](https://openaccess.thecvf.com/content/CVPR2023/html/Ruiz_DreamBooth_Fine_Tuning_Text-to-Image_Diffusion_Models_for_Subject-Driven_Generation_CVPR_2023_paper.html)</small> | <small>2023</small> | <small>主体驱动个性化生成<br>少样本微调</small>           |                                  <small>[GitHub](https://github.com/google/dreambooth)</small> |                   <small>[概述](#dreambooth-cvpr-2023)</small> |                   <small>[概述](#dreambooth-cvpr-2023)</small> |
-| <small>FreeU: Free Lunch in Diffusion U-Net</small> |  <small>[CVPR](https://openaccess.thecvf.com/content/CVPR2024/papers/Si_FreeU_Free_Lunch_in_Diffusion_U-Net_CVPR_2024_paper.pdf)</small> | <small>2024</small> | <small>扩散采样质量提升<br>训练-free U-Net 调控</small> |                                   <small>[GitHub](https://github.com/ChenyangSi/FreeU)</small> |                        <small>[概述](#freeu-cvpr-2024)</small> |                        <small>[概述](#freeu-cvpr-2024)</small> |
-| <small>AGLLDiff: Guiding Diffusion Models Towards Unsupervised Training-free Real-world Low-light Image Enhancement</small>            | <small>[arXiv](https://arxiv.org/abs/2407.14900)</small> | <small>2024</small> | <small>低照度图像增强<br>训练-free 扩散引导</small>      |                                   <small>[GitHub](https://github.com/LYL1015/AGLLDiff)</small> |                    <small>[概述](#aglldiff-arxiv-2024)</small> |                    <small>[概述](#aglldiff-arxiv-2024)</small> |
+| <small>Improving the Generalization of Segmentation Foundation Model under Distribution Shift via Weakly Supervised Adaptation</small> | <small>[CVPR](https://openaccess.thecvf.com/content/CVPR2024/papers/Zhang_Improving_the_Generalization_of_Segmentation_Foundation_Model_under_Distribution_Shift_CVPR_2024_paper.pdf)</small> | <small>2024</small> | <small>SAM<br>弱监督自训练适配<br>分布偏移鲁棒分割</small>  |           <small>[GitHub](https://github.com/zhang-haojie/wesam)</small> | <small>[概述](#improving-sfm-generalization-cvpr-2024)</small> | <small>[概述](#improving-sfm-generalization-cvpr-2024)</small> |
+| <small>RobustSAM: Segment Anything Robustly on Degraded Images</small>| <small>[CVPR](https://openaccess.thecvf.com/content/CVPR2024/papers/Chen_RobustSAM_Segment_Anything_Robustly_on_Degraded_Images_CVPR_2024_paper.pdf)</small> | <small>2024</small> | <small>SAM<br>退化图像鲁棒分割</small> |  <small>[GitHub](https://github.com/robustsam/RobustSAM)</small> | <small>[概述](#robustsam-cvpr-2024)</small> |<small>[概述](#robustsam-cvpr-2024)</small> |
+| <small>Unsupervised Cumulative Domain Adaptation for Foggy Scene Optical Flow</small> |<small>[CVPR](https://openaccess.thecvf.com/content/CVPR2023/papers/Zhou_Unsupervised_Cumulative_Domain_Adaptation_for_Foggy_Scene_Optical_Flow_CVPR_2023_paper.pdf)</small> | <small>2023</small> | <small>光流估计<br>雾天域自适应</small>               |                                <small>[GitHub](https://github.com/hyzhouboy/UCDA-Flow)</small> |<small>[概述](#ucda-foggy-optical-flow-cvpr-2023)</small> |<small>[概述](#ucda-foggy-optical-flow-cvpr-2023)</small> |
+| <small>Mask DINO: Towards a Unified Transformer-Based Framework for Object Detection and Segmentation</small>|<small>[CVPR](https://openaccess.thecvf.com/content/CVPR2023/papers/Li_Mask_DINO_Towards_a_Unified_Transformer-Based_Framework_for_Object_Detection_CVPR_2023_paper.pdf)</small> | <small>2023</small> | <small>目标检测 + 分割<br>统一Transformer框架</small> |                             <small>[GitHub](https://github.com/IDEA-Research/MaskDINO)</small> |<small>[概述](#mask-dino-cvpr-2023)</small> |<small>[概述](#mask-dino-cvpr-2023)</small> |
+| <small>DiffusionDet: Diffusion Model for Object Detection</small>|   <small>[ICCV](https://openaccess.thecvf.com/content/ICCV2023/papers/Chen_DiffusionDet_Diffusion_Model_for_Object_Detection_ICCV_2023_paper.pdf)</small> | <small>2023</small> | <small>目标检测<br>扩散模型检测器</small> |<small>[GitHub](https://github.com/ShoufaChen/DiffusionDet)</small> | <small>[概述](#diffusiondet-iccv-2023)</small> |<small>[概述](#diffusiondet-iccv-2023)</small> |
+| <small>DiffIR: Efficient Diffusion Model for Image Restoration</small>|  <small>[ICCV](https://openaccess.thecvf.com/content/ICCV2023/papers/Xia_DiffIR_Efficient_Diffusion_Model_for_Image_Restoration_ICCV_2023_paper.pdf)</small> | <small>2023</small> | <small>图像复原<br>高效扩散</small> | <small>[GitHub](https://github.com/Zj-BinXia/DiffIR)</small> |    <small>[概述](#diffir-iccv-2023)</small> |<small>[概述](#diffir-iccv-2023)</small> |
+| <small>BLIP-Diffusion: Pre-trained Subject Representation for Controllable Text-to-Image Generation and Editing</small>  | <small>[NeurIPS](https://openreview.net/forum?id=g6We1SwaY9)</small> | <small>2023</small> | <small>主体驱动生成/编辑<br>多模态控制</small>  | <small>[GitHub](https://github.com/salesforce/LAVIS/tree/main/projects/blip-diffusion)</small> |            <small>[概述](#blip-diffusion-neurips-2023)</small> |<small>[概述](#blip-diffusion-neurips-2023)</small> |
+| <small>DreamBooth: Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation</small> |<small>[CVPR](https://openaccess.thecvf.com/content/CVPR2023/html/Ruiz_DreamBooth_Fine_Tuning_Text-to-Image_Diffusion_Models_for_Subject-Driven_Generation_CVPR_2023_paper.html)</small> | <small>2023</small> | <small>主体驱动个性化生成<br>少样本微调</small> |<small>[GitHub](https://github.com/google/dreambooth)</small> |<small>[概述](#dreambooth-cvpr-2023)</small> | <small>[概述](#dreambooth-cvpr-2023)</small> |
+| <small>FreeU: Free Lunch in Diffusion U-Net</small> |  <small>[CVPR](https://openaccess.thecvf.com/content/CVPR2024/papers/Si_FreeU_Free_Lunch_in_Diffusion_U-Net_CVPR_2024_paper.pdf)</small> | <small>2024</small> | <small>扩散采样质量提升<br>训练-free U-Net 调控</small> | <small>[GitHub](https://github.com/ChenyangSi/FreeU)</small> | <small>[概述](#freeu-cvpr-2024)</small> |  <small>[概述](#freeu-cvpr-2024)</small> |
+| <small>AGLLDiff: Guiding Diffusion Models Towards Unsupervised Training-free Real-world Low-light Image Enhancement</small>            | <small>[arXiv](https://arxiv.org/abs/2407.14900)</small> | <small>2024</small> | <small>低照度图像增强<br>训练-free 扩散引导</small>|<small>[GitHub](https://github.com/LYL1015/AGLLDiff)</small> |  <small>[概述](#aglldiff-arxiv-2024)</small> | <small>[概述](#aglldiff-arxiv-2024)</small> |
 
 
 ## 专有名词解释（点击跳转）
@@ -482,7 +482,7 @@ FaithDiff 针对“既要好看又要保真”的真实场景超分问题，提�
 
 **不足点：**
 MMAudio 主要面向 Foley 类通用音效（给视频配的音效看着画面生成与画面内容和发生时刻都对齐的声音），对人类语音这类复杂信号支持较弱——在生成说话声时，经常只产生听不清的含糊声音。
-
+<a id="improving-sfm-generalization-cvpr-2024"></a>
 ### 📖 Improving the Generalization of Segmentation Foundation Model under Distribution Shift (CVPR 2024)
 
 **数据集：**  
@@ -525,7 +525,7 @@ MMAudio 主要面向 Foley 类通用音效（给视频配的音效看着画面�
 
 
 ---
-
+<a id="robustsam-cvpr-2024"></a>
 ### 📖 RobustSAM: Segment Anything Robustly on Degraded Images (CVPR 2024)
 
 **数据集：**  
@@ -557,7 +557,7 @@ MMAudio 主要面向 Foley 类通用音效（给视频配的音效看着画面�
 
 
 ---
-
+<a id="ucda-foggy-optical-flow-cvpr-2023"></a>
 ### 📖 Unsupervised Cumulative Domain Adaptation for Foggy Scene Optical Flow (CVPR 2023)
 
 **数据集：**  
@@ -582,7 +582,7 @@ MMAudio 主要面向 Foley 类通用音效（给视频配的音效看着画面�
 
 
 ---
-
+<a id="mask-dino-cvpr-2023"></a>
 ### 📖 Mask DINO: Towards a Unified Transformer-based Framework for Object Detection and Segmentation (CVPR 2023)
 
 **数据集：**  
@@ -603,7 +603,7 @@ MMAudio 主要面向 Foley 类通用音效（给视频配的音效看着画面�
 
 
 ---
-
+<a id="diffusiondet-iccv-2023"></a>
 ### 📖 DiffusionDet: Diffusion Model for Object Detection (ICCV 2023)
 
 **数据集：**  
@@ -624,7 +624,7 @@ MMAudio 主要面向 Foley 类通用音效（给视频配的音效看着画面�
 
 
 ---
-
+<a id="diffir-iccv-2023"></a>
 ### 📖 DiffIR: Efficient Diffusion Model for Image Restoration (ICCV 2023)
 
 **数据集：**  
@@ -660,7 +660,7 @@ MMAudio 主要面向 Foley 类通用音效（给视频配的音效看着画面�
 
 
 ---
-
+<a id="blip-diffusion-neurips-2023"></a>
 ### 📖 BLIP-Diffusion: Pre-trained Subject Representation for Controllable Text-to-Image Generation and Editing (NeurIPS 2023)
 
 **数据集：**  
@@ -698,7 +698,7 @@ MMAudio 主要面向 Foley 类通用音效（给视频配的音效看着画面�
 
 
 ---
-
+<a id="dreambooth-cvpr-2023"></a>
 ### 📖 DreamBooth: Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation (CVPR 2023)
 
 **数据集：**  
@@ -721,7 +721,7 @@ MMAudio 主要面向 Foley 类通用音效（给视频配的音效看着画面�
 
 
 ---
-
+<a id="freeu-cvpr-2024"></a>
 ### 📖 FreeU: Free Lunch in Diffusion U-Net (CVPR 2023)
 
 **数据集：**  
@@ -736,7 +736,7 @@ MMAudio 主要面向 Foley 类通用音效（给视频配的音效看着画面�
 
 
 ---
-
+<a id="aglldiff-arxiv-2024"></a>
 ### 📖 AGLLDiff: Attribute Guidance Diffusion for Real-world Low-Light Image Enhancement (arXiv 2024)
 
 **数据集：**  
