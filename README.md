@@ -12,6 +12,17 @@
 | <small>Dynamic Derivation and Elimination: Audio Visual Segmentation with Enhanced Audio Semantics (DDESeg)</small> | <small>[CVPR](https://openaccess.thecvf.com/content/CVPR2025/html/Liu_Dynamic_Derivation_and_Elimination_Audio_Visual_Segmentation_with_Enhanced_Audio_CVPR_2025_paper.html)</small> | <small>2025</small> | <small>音视频<br>目标分割</small> | <small>[GitHub](https://github.com/YenanLiu/DDESeg)</small> | <small>[概述](#ddeseg-cvpr-2025)</small> | <small>[概述](#ddeseg-cvpr-2025)</small> |
 | <small>MMAudio: Taming Multimodal Joint Training for High-Quality Video-to-Audio Synthesis</small> | <small>[CVPR](https://arxiv.org/abs/2412.15322)</small> | <small>2025</small> | <small>视频→音频<br>视听生成</small> | <small>[GitHub](https://github.com/hkchengrex/MMAudio)</small> | <small>[概述](#mmaudio-cvpr-2025)</small> | <small>[概述](#mmaudio-cvpr-2025)</small> |
 | <small>MulFS-CAP: Multimodal Fusion-Supervised Cross-Modality Alignment Perception for Unregistered Infrared-Visible Image Fusion</small> | <small>[TPAMI](https://doi.org/10.1109/TPAMI.2025.3535617)</small> | <small>2025</small> | <small>红外+可见光<br>图像融合</small> | <small>[GitHub](https://github.com/YR0211/MulFS-CAP)</small> | <small>[概述](#mulfs-cap-tpami-2025)</small> | <small>[概述](#mulfs-cap-tpami-2025)</small> |
+| <small>Improving the Generalization of Segmentation Foundation Model under Distribution Shift via Weakly Supervised Adaptation</small> | <small>[CVPR](https://openaccess.thecvf.com/content/CVPR2024/papers/Zhang_Improving_the_Generalization_of_Segmentation_Foundation_Model_under_Distribution_Shift_CVPR_2024_paper.pdf)</small> | <small>2024</small> | <small>SAM<br>弱监督自训练适配<br>分布偏移鲁棒分割</small>  |                                 <small>[GitHub](https://github.com/zhang-haojie/wesam)</small> | <small>[概述](#improving-sfm-generalization-cvpr-2024)</small> | <small>[概述](#improving-sfm-generalization-cvpr-2024)</small> |
+| <small>RobustSAM: Segment Anything Robustly on Degraded Images</small>                                                                 |                                  <small>[CVPR](https://openaccess.thecvf.com/content/CVPR2024/papers/Chen_RobustSAM_Segment_Anything_Robustly_on_Degraded_Images_CVPR_2024_paper.pdf)</small> | <small>2024</small> | <small>SAM<br>退化图像鲁棒分割</small>              |                                <small>[GitHub](https://github.com/robustsam/RobustSAM)</small> |                    <small>[概述](#robustsam-cvpr-2024)</small> |                    <small>[概述](#robustsam-cvpr-2024)</small> |
+| <small>Unsupervised Cumulative Domain Adaptation for Foggy Scene Optical Flow</small>                                                  |                  <small>[CVPR](https://openaccess.thecvf.com/content/CVPR2023/papers/Zhou_Unsupervised_Cumulative_Domain_Adaptation_for_Foggy_Scene_Optical_Flow_CVPR_2023_paper.pdf)</small> | <small>2023</small> | <small>光流估计<br>雾天域自适应</small>               |                                <small>[GitHub](https://github.com/hyzhouboy/UCDA-Flow)</small> |      <small>[概述](#ucda-foggy-optical-flow-cvpr-2023)</small> |      <small>[概述](#ucda-foggy-optical-flow-cvpr-2023)</small> |
+| <small>Mask DINO: Towards a Unified Transformer-Based Framework for Object Detection and Segmentation</small>                          |              <small>[CVPR](https://openaccess.thecvf.com/content/CVPR2023/papers/Li_Mask_DINO_Towards_a_Unified_Transformer-Based_Framework_for_Object_Detection_CVPR_2023_paper.pdf)</small> | <small>2023</small> | <small>目标检测 + 分割<br>统一Transformer框架</small> |                             <small>[GitHub](https://github.com/IDEA-Research/MaskDINO)</small> |                    <small>[概述](#mask-dino-cvpr-2023)</small> |                    <small>[概述](#mask-dino-cvpr-2023)</small> |
+| <small>DiffusionDet: Diffusion Model for Object Detection</small>                                                                      |                                       <small>[ICCV](https://openaccess.thecvf.com/content/ICCV2023/papers/Chen_DiffusionDet_Diffusion_Model_for_Object_Detection_ICCV_2023_paper.pdf)</small> | <small>2023</small> | <small>目标检测<br>扩散模型检测器</small>              |                            <small>[GitHub](https://github.com/ShoufaChen/DiffusionDet)</small> |                 <small>[概述](#diffusiondet-iccv-2023)</small> |                 <small>[概述](#diffusiondet-iccv-2023)</small> |
+| <small>DiffIR: Efficient Diffusion Model for Image Restoration</small>                                                                 |                                   <small>[ICCV](https://openaccess.thecvf.com/content/ICCV2023/papers/Xia_DiffIR_Efficient_Diffusion_Model_for_Image_Restoration_ICCV_2023_paper.pdf)</small> | <small>2023</small> | <small>图像复原<br>高效扩散</small>                 |                                   <small>[GitHub](https://github.com/Zj-BinXia/DiffIR)</small> |                       <small>[概述](#diffir-iccv-2023)</small> |                       <small>[概述](#diffir-iccv-2023)</small> |
+| <small>BLIP-Diffusion: Pre-trained Subject Representation for Controllable Text-to-Image Generation and Editing</small>                |                                                                                                                          <small>[NeurIPS](https://openreview.net/forum?id=g6We1SwaY9)</small> | <small>2023</small> | <small>主体驱动生成/编辑<br>多模态控制</small>           | <small>[GitHub](https://github.com/salesforce/LAVIS/tree/main/projects/blip-diffusion)</small> |            <small>[概述](#blip-diffusion-neurips-2023)</small> |            <small>[概述](#blip-diffusion-neurips-2023)</small> |
+| <small>DreamBooth: Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation</small>                                    |      <small>[CVPR](https://openaccess.thecvf.com/content/CVPR2023/html/Ruiz_DreamBooth_Fine_Tuning_Text-to-Image_Diffusion_Models_for_Subject-Driven_Generation_CVPR_2023_paper.html)</small> | <small>2023</small> | <small>主体驱动个性化生成<br>少样本微调</small>           |                                  <small>[GitHub](https://github.com/google/dreambooth)</small> |                   <small>[概述](#dreambooth-cvpr-2023)</small> |                   <small>[概述](#dreambooth-cvpr-2023)</small> |
+| <small>FreeU: Free Lunch in Diffusion U-Net</small> |  <small>[CVPR](https://openaccess.thecvf.com/content/CVPR2024/papers/Si_FreeU_Free_Lunch_in_Diffusion_U-Net_CVPR_2024_paper.pdf)</small> | <small>2024</small> | <small>扩散采样质量提升<br>训练-free U-Net 调控</small> |                                   <small>[GitHub](https://github.com/ChenyangSi/FreeU)</small> |                        <small>[概述](#freeu-cvpr-2024)</small> |                        <small>[概述](#freeu-cvpr-2024)</small> |
+| <small>AGLLDiff: Guiding Diffusion Models Towards Unsupervised Training-free Real-world Low-light Image Enhancement</small>            | <small>[arXiv](https://arxiv.org/abs/2407.14900)</small> | <small>2024</small> | <small>低照度图像增强<br>训练-free 扩散引导</small>      |                                   <small>[GitHub](https://github.com/LYL1015/AGLLDiff)</small> |                    <small>[概述](#aglldiff-arxiv-2024)</small> |                    <small>[概述](#aglldiff-arxiv-2024)</small> |
+
 
 ## 专有名词解释（点击跳转）
 - [CLIP](#clip)
@@ -471,3 +482,294 @@ FaithDiff 针对“既要好看又要保真”的真实场景超分问题，提�
 
 **不足点：**
 MMAudio 主要面向 Foley 类通用音效（给视频配的音效看着画面生成与画面内容和发生时刻都对齐的声音），对人类语音这类复杂信号支持较弱——在生成说话声时，经常只产生听不清的含糊声音。
+
+### 📖 Improving the Generalization of Segmentation Foundation Model under Distribution Shift (CVPR 2024)
+
+**数据集：**  
+[COCO 2017](https://cocodataset.org/#home)  
+> 用于：作为“自然/干净域”上的基础数据集，用来评测/对比分割基础模型在常规分布下的分割能力，并作为分布迁移实验的一端。  
+
+[COCO-C](https://github.com/bethgelab/robust-detection-benchmark)  
+> 用于：构造“自然 → 破坏/扰动（corruption）”的分布偏移场景，检验模型在噪声、模糊、压缩等退化下的鲁棒性。  
+
+[PASCAL VOC 2012](http://host.robots.ox.ac.uk/pascal/VOC/)  
+> 用于：作为自然场景分割基准之一，并在“自然 → 医疗”等跨域设置中充当源域数据集。  
+
+[ISIC](https://challenge.isic-archive.com/)  
+> 用于：作为“自然 → 医疗皮肤镜图像”目标域，检验跨域泛化与适配能力。  
+
+[Kvasir-SEG](https://datasets.simula.no/kvasir-seg/)  
+> 用于：作为“自然 → 内窥镜/息肉”目标域，检验跨域到医疗内窥镜场景的分割泛化。  
+
+[CAMO](https://sites.google.com/view/camo-dataset)  
+> 用于：作为“自然 → 伪装目标（camouflaged）”目标域，测试在难分辨前景/背景下的分割泛化。  
+
+[CHAMELEON](https://github.com/DengPingFan/SINet)  
+> 用于：伪装目标分割常用测试集之一，配合 CAMO/COD10K 评测跨域到 camouflaged 场景的性能。  
+
+[COD10K](https://dengpingfan.github.io/pages/COD.html)  
+> 用于：更大规模的伪装目标分割数据集，用于系统评测伪装场景下的跨域泛化。  
+
+[OCID](https://www.acin.tuwien.ac.at/en/vision-for-robotics/software-tools/ocid-dataset/)  
+> 用于：作为“自然 → 机器人/室内杂乱遮挡”目标域，评测在 clutter/遮挡场景中的分割鲁棒性。  
+
+[OSD（Occluded Object Segmentation Dataset）](https://www.cs.umd.edu/projects/activevision/OSD/)  
+> 用于：作为遮挡目标分割目标域之一，评测模型在强遮挡下的分割能力。  
+
+**创新点：**  
+- 提出一种“无需源域数据”的弱监督自训练式适配框架：利用弱标注（点/框/粗 mask 等）与伪标签迭代适配分割基础模型，以提升分布偏移下的泛化。  
+- 通过正则/约束让提示（prompt）相关的表示更稳定，并采用参数高效微调（如低秩微调）来降低对大模型全量微调的依赖。  
+
+**不足点：**  
+- 不同弱监督形式的收益不一致：论文实验中“点提示”适配甚至可能不如不适配，说明方法对监督信号类型较敏感、稳定性仍有限。  
+
+
+---
+
+### 📖 RobustSAM: Segment Anything Robustly on Degraded Images (CVPR 2024)
+
+**数据集：**  
+[Robust-Seg（论文构建的鲁棒分割数据集/基准）](https://robustsam.github.io/)  
+> 用于：作为“退化图像分割”的核心训练/评测资源，覆盖多种真实与合成退化（噪声、模糊、低光、雾霾等），用于系统检验 SAM 类基础分割模型的退化鲁棒性。  
+
+[COCO 2017](https://cocodataset.org/#home)  
+> 用于：作为基础分割数据来源之一（论文在构建/对比鲁棒性时会使用常规大规模分割数据作支撑/对照）。  
+
+[LVIS](https://www.lvisdataset.org/)  
+> 用于：长尾类别更丰富的数据源之一，用于检验鲁棒适配对长尾/复杂类别分割的影响。  
+
+[BDD100K](https://bdd-data.berkeley.edu/)  
+> 用于：真实道路场景数据源之一，常用于测试在真实成像条件变化（夜晚/雨雾/运动模糊等）下的鲁棒分割表现。  
+
+（若论文中还使用了特定退化任务数据，如去雾/去模糊对比）  
+[RESIDE-SOTS（SOTS）](https://sites.google.com/view/reside-dehaze-datasets/reside-v0)  
+> 用于：去雾场景的常用评测集（若论文用于展示鲁棒模块对相关低层视觉任务/退化感知的收益）。  
+
+[GoPro Deblurring Dataset](https://seungjunnah.github.io/Datasets/gopro)  
+> 用于：运动去模糊常用基准（同上，若论文用于展示对模糊退化的收益/迁移）。  
+
+**创新点：**  
+- 关注“分割基础模型在退化输入上的鲁棒性”这一缺口，构建鲁棒分割数据与评测，并提出轻量化/可插拔的鲁棒增强设计，避免直接全量微调导致的能力退化。  
+- 通过对退化分布建模/增强，让 SAM 在低光、雾、噪声、模糊等条件下的分割稳定性显著提升。  
+
+**不足点：**  
+- 论文指出直接微调（尤其全量微调）会损害 SAM 的零样本泛化能力，因此方法需要在“增强鲁棒性”和“保持通用性”之间做精细权衡；在某些极端退化/远域细节缺失场景仍可能受限。  
+
+
+---
+
+### 📖 Unsupervised Cumulative Domain Adaptation for Foggy Scene Optical Flow (CVPR 2023)
+
+**数据集：**  
+[KITTI 2015 Optical Flow](https://www.cvlibs.net/datasets/kitti/eval_scene_flow.php?benchmark=flow)  
+> 用于：作为“干净/晴天源域”光流基准（含稀疏/半稠密标注与真实驾驶场景），在累计式域适配中充当起点。  
+
+[UCDA-Flow 官方实现与数据说明（含 Fog-GOF / DenseFog / Real-Fog World 等实验设置指引）](https://github.com/hyzhouboy/UCDA-Flow)  
+> 用于：复现实验的统一入口（论文涉及的 foggy 相关数据/划分/合成方式通常在此给出说明或脚本）。  
+
+[DenseFogFlow（论文提出的 DenseFog 设定来自该方向工作）](https://openaccess.thecvf.com/content_CVPR_2020/papers/Yang_DenseFogFlow_Dense_Optical_Flow_Estimation_for_Foggy_Scenes_CVPR_2020_paper.pdf)  
+> 用于：作为“更强雾化/更贴近真实雾”设定的参考与对比，论文实验中用于验证从合成雾到真实雾的域间差距与改进空间。  
+
+（论文中的 Fog-KITTI2015、Fog-GOF、Real-Fog World 等若未单独提供公开下载页）  
+> 用于：它们分别对应“干净→合成雾”“合成雾→真实雾”的不同阶段/目标域，用来验证累计式（cumulative）域适配在真实雾光流上的有效性。  
+
+**创新点：**  
+- 提出“累计式无监督域适配”思路：不是一步从 clean 直接到 real fog，而是分阶段（clean→synthetic fog→real fog）逐步迁移，降低域间断崖。  
+- 利用雾与深度相关的物理属性，引入与深度/几何相关的适配设计，并通过分布对齐（如相关分布对齐）缩小合成雾与真实雾的差距。  
+
+**不足点：**  
+- 论文明确指出：在雾很重且目标很远时（远处运动物体），方法会失败或明显退化，原因包括远距离深度难以准确获取、以及强雾导致细节丢失。  
+
+
+---
+
+### 📖 Mask DINO: Towards a Unified Transformer-based Framework for Object Detection and Segmentation (CVPR 2023)
+
+**数据集：**  
+[COCO 2017](https://cocodataset.org/#home)  
+> 用于：统一检测/实例分割/全景分割主基准；验证框架在通用场景下的端到端性能。  
+
+[ADE20K](https://groups.csail.mit.edu/vision/datasets/ADE20K/)  
+> 用于：语义分割/场景解析基准；检验方法在密集像素级标注任务上的泛化。  
+
+[Cityscapes](https://www.cityscapes-dataset.com/)  
+> 用于：自动驾驶城市场景语义/实例分割基准；检验在街景数据分布下的统一建模能力。  
+
+**创新点：**  
+- 以 DETR 系列为核心，将“检测 + 分割（实例/语义/全景）”更统一地纳入同一 Transformer 框架；通过掩码（mask）表征与解码设计提升统一框架的密集预测能力。  
+
+**不足点：**  
+- 统一框架往往需要在不同任务头/损失之间做权衡；论文也指出通用统一分割框架整体仍可能落后于某些强专用方法（尤其在特定任务的极致性能上）。  
+
+
+---
+
+### 📖 DiffusionDet: Diffusion Model for Object Detection (ICCV 2023)
+
+**数据集：**  
+[COCO 2017](https://cocodataset.org/#home)  
+> 用于：通用目标检测主基准，评测 AP/AP50/AP75 等指标，并做大量消融实验。  
+
+[LVIS](https://www.lvisdataset.org/)  
+> 用于：长尾大词表检测/分割基准；检验扩散式检测在更难、更长尾场景下的收益。  
+
+[CrowdHuman](https://www.crowdhuman.org/)  
+> 用于：拥挤行人检测场景；检验模型在密集遮挡目标下的检测性能。  
+
+**创新点：**  
+- 将目标检测转化为“从噪声框集合逐步去噪/迭代采样”的生成过程：通过扩散反演把随机框逐步收敛到真实目标框集合，形成一种生成式检测范式。  
+
+**不足点：**  
+- 论文明确说明：尽管方法简单有效，但还没有结合许多“最强 DETR 系”组件，因此在某些基准上仍落后于当时 SOTA（如 DINO 等）。  
+
+
+---
+
+### 📖 DiffIR: Efficient Diffusion Model for Image Restoration (ICCV 2023)
+
+**数据集：**  
+（图像修复 Inpainting）  
+[Places2 / Places](http://places2.csail.mit.edu/)  
+> 用于：作为场景图像修复评测（论文表格中常以 Places/Places-Standard 作为修复基准）。  
+
+[CelebA-HQ](https://github.com/tkarras/progressive_growing_of_gans)  
+> 用于：人脸高质量图像修复评测（窄/宽 mask 等设置）。  
+
+（超分 SR）  
+[DIV2K](https://data.vision.ee.ethz.ch/cvl/DIV2K/)  
+> 用于：常用训练/评测基准之一（高质量图像超分）。  
+
+[Flickr2K（常与 DIV2K 组合成 DF2K 的训练集来源之一）](https://github.com/xinntao/BasicSR/blob/master/docs/DatasetPreparation.md)  
+> 用于：扩充超分训练数据多样性（许多 SR 工作将 Flickr2K 与 DIV2K 混合作训练）。  
+
+[Set14 / Urban100 / Manga109 等常用 SR 测试集合（聚合下载页）](https://figshare.com/articles/dataset/SR_testsets/25218856)  
+> 用于：作为 SR 测试基准，评测 PSNR/LPIPS 等质量与感知指标。  
+
+（去模糊 Deblurring）  
+[GoPro Deblurring Dataset](https://seungjunnah.github.io/Datasets/gopro)  
+> 用于：作为运动去模糊训练/测试主基准。  
+
+[HIDE Deblurring Dataset](https://github.com/Yaoyi-Li/HIDE)  
+> 用于：作为更具挑战的去模糊测试基准之一。  
+
+**创新点：**  
+- 面向“扩散模型很强但很慢”的痛点，提出更高效的扩散式恢复框架：通过两阶段/联合优化等设计，让扩散建模能力在更少计算开销下用于修复、超分、去模糊。  
+
+**不足点：**  
+- 论文主要验证在三类恢复任务（inpainting / SR / deblurring）上的有效性，对更广泛的退化类型（如去雾、去噪、低光等）是否同样稳定，需要进一步扩展验证。  
+
+
+---
+
+### 📖 BLIP-Diffusion: Pre-trained Subject Representation for Controllable Text-to-Image Generation and Editing (NeurIPS 2023)
+
+**数据集：**  
+（预训练/表征学习数据）  
+[MS COCO](https://cocodataset.org/#home)  
+> 用于：图文对齐/视觉-语言预训练与下游评测常用基准之一。  
+
+[Visual Genome](https://visualgenome.org/)  
+> 用于：更细粒度的区域级标注与图文语义信息，增强多模态表征能力。  
+
+[Conceptual Captions (CC3M)](https://ai.google.com/research/ConceptualCaptions)  
+> 用于：大规模弱标注图文数据，支持预训练与泛化。  
+
+[Conceptual 12M (CC12M)](https://github.com/google-research-datasets/conceptual-12m)  
+> 用于：更大规模弱标注图文数据，提升长尾与开放域覆盖。  
+
+[SBU Captions](https://www.cs.virginia.edu/~vicente/sbucaptions/)  
+> 用于：早期常用弱标注图文数据源之一。  
+
+[LAION-400M](https://laion.ai/blog/laion-400-open-dataset/)  
+> 用于：超大规模开放域图文对，增强开放世界生成与编辑能力。  
+
+[Open Images](https://storage.googleapis.com/openimages/web/index.html)  
+> 用于：补充大规模真实图片分布与概念覆盖（论文中提到的子集/用法以其实现为准）。  
+
+（个性化/主体控制评测）  
+[DreamBench（DreamBooth 官方评测集/协议）](https://dreambooth.github.io/)  
+> 用于：评测“主体一致性 + 文本可控性”的标准化基准（也常被后续主体驱动方法沿用）。  
+
+**创新点：**  
+- 用预训练的“主体表征”把个性化主体注入到生成/编辑中：相比直接微调整套扩散模型，能更好地兼顾文本可控与主体一致，并支持编辑任务。  
+
+**不足点：**  
+- 论文指出在对真实图像做编辑时，仍可能出现编辑文本可控性不足或图像退化等问题（例如难以完全满足复杂编辑指令）。  
+
+
+---
+
+### 📖 DreamBooth: Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation (CVPR 2023)
+
+**数据集：**  
+（个性化主体数据）  
+[DreamBooth 项目页（含数据/协议与案例）](https://dreambooth.github.io/)  
+> 用于：主体驱动生成设置：每个主体仅需少量（通常 3–5 张）图像即可进行个性化生成。  
+
+[DreamBench（官方评测集/协议）](https://dreambooth.github.io/)  
+> 用于：标准化评测“主体一致性 + 文本驱动多样性/可控性”，便于不同个性化方法可比。  
+
+（若你需要可复现的下载入口）  
+[DreamBooth 官方代码/资源入口](https://github.com/google/dreambooth)  
+> 用于：复现实验与评测脚本（数据组织方式以仓库说明为准）。  
+
+**创新点：**  
+- 用少量主体图像对文本到图像扩散模型做微调，实现“在多种场景/姿态/风格下仍保持同一主体”的生成；并通过类先验保持（prior preservation）缓解过拟合与语言漂移。  
+
+**不足点：**  
+- 论文明确提到：仍可能出现“语言漂移（language drift）”与输出多样性下降，尤其当训练图像太少或提示词设置不当时更明显。  
+
+
+---
+
+### 📖 FreeU: Free Lunch in Diffusion U-Net (CVPR 2023)
+
+**数据集：**  
+（无固定单一数据集依赖）  
+> 用于：FreeU 是一种“无需训练/即插即用”的 U-Net 特征重加权策略，论文通常在多种文本提示与多种生成基模型（如 Stable Diffusion 系）上做对比；评价更多依赖生成质量指标与人类偏好实验，而不是绑定单一公开数据集划分。  
+
+**创新点：**  
+- 在不重新训练的前提下，通过对 U-Net 的 backbone/skip 分支做简单的频域/幅值重平衡，缓解过平滑与细节缺失，使生成图更清晰、更有质感。  
+
+**不足点：**  
+- 评测很大一部分依赖“人类偏好投票/主观质量”，不同提示集合与不同模型版本上效果可能不完全一致；此外它主要解决细节与纹理问题，对复杂组合概念、精确可控等问题不是直接方案。  
+
+
+---
+
+### 📖 AGLLDiff: Attribute Guidance Diffusion for Real-world Low-Light Image Enhancement (arXiv 2024)
+
+**数据集：**  
+（配对低光增强）  
+[LOL-v1（BMVC 2018 官方页）](https://daooshee.github.io/BMVC2018website/)  
+> 用于：经典配对低光增强训练/测试基准（低光图 ↔ 正常曝光图）。  
+
+[LOLv2（官方划分在论文/代码中给出，常见镜像可在社区数据页获取）](https://huggingface.co/datasets/real-stanford/LOLv2)  
+> 用于：更大规模/更复杂的配对低光数据（含 synthetic/real 等设置，用于检验泛化）。  
+
+[SICE](https://github.com/csjcai/SICE)  
+> 用于：多曝光/多参考的低光增强基准之一，检验在不同曝光程度下的恢复质量。  
+
+（真实无配对低光增强常用基准）  
+[LIME](https://github.com/estija/LIME)  
+> 用于：无参考/无配对的真实低光图像增强评测集之一。  
+
+[NPE](https://github.com/baidut/BIMEF)  
+> 用于：无配对真实低光增强评测集之一（常见聚合下载入口见 BIMEF）。  
+
+[MEF](https://github.com/baidut/BIMEF)  
+> 用于：多曝光融合/真实场景增强相关基准（常用于无参考指标对比）。  
+
+[DICM](https://github.com/baidut/BIMEF)  
+> 用于：真实低光/对比度不足场景评测集之一。  
+
+[VV](https://github.com/baidut/BIMEF)  
+> 用于：论文中使用的真实无配对评测集之一（常在聚合下载仓库提供）。  
+
+**创新点：**  
+- 以“图像属性（曝光、结构、颜色等）”作为引导信号，把低光增强转化为扩散采样过程中的属性引导优化，避免强依赖某一种固定退化模型假设。  
+- 通过动态引导强度/梯度步数等机制，提高在极端低光下的可控性与稳定性。  
+
+**不足点：**  
+- 论文在结论中指出仍有改进空间：采样速度仍偏慢（需要加速采样技巧），以及可探索更丰富的高质量属性来进一步提升恢复效果与泛化。  
+
