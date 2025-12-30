@@ -742,13 +742,17 @@ MMAudio 主要面向 Foley 类通用音效，对人类语音这类复杂信号�
 **数据集：**  
 （配对低光增强）  
 [LOL-v1](https://daooshee.github.io/BMVC2018website/)  
-> 用于：经典配对低光增强训练。  
+> 用于：经典配对低光增强训练。
+ 
 [LOLv2](https://huggingface.co/datasets/real-stanford/LOLv2)  
-> 用于：更大规模/更复杂的配对低光数据。  
+> 用于：更大规模/更复杂的配对低光数据。
+
 [SICE](https://github.com/csjcai/SICE)  
-> 用于：多曝光/多参考的低光增强基准之一，检验在不同曝光程度下的恢复质量。  
+> 用于：多曝光/多参考的低光增强基准之一，检验在不同曝光程度下的恢复质量。
+  
 [LIME](https://github.com/estija/LIME)  
-> 用于：无参考/无配对的真实低光图像增强评测集之一。  
+> 用于：无参考/无配对的真实低光图像增强评测集之一。
+
 [NPE](https://github.com/baidut/BIMEF)  
 > 用于：无配对真实低光增强评测集之一。  
 
