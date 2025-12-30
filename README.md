@@ -492,17 +492,11 @@ MMAudio 主要面向 Foley 类通用音效，对人类语音这类复杂信号�
 [COCO-C](https://github.com/bethgelab/robust-detection-benchmark)  
 > 用于：构造“自然 → 破坏/扰动”的分布偏移场景，检验模型在噪声、模糊、压缩等退化下的鲁棒性。  
 
-[PASCAL VOC 2012](http://host.robots.ox.ac.uk/pascal/VOC/)  
-> 用于：作为自然场景分割基准之一，并在“自然 → 医疗”等跨域设置中充当源域数据集。  
-
 [ISIC](https://challenge.isic-archive.com/)  
 > 用于：作为“自然 → 医疗皮肤镜图像”目标域，检验跨域泛化与适配能力。  
 
 [Kvasir-SEG](https://datasets.simula.no/kvasir-seg/)  
 > 用于：作为“自然 → 内窥镜/息肉”目标域，检验跨域到医疗内窥镜场景的分割泛化。  
-
-[CAMO](https://sites.google.com/view/camo-dataset)  
-> 用于：作为“自然 → 伪装目标”目标域，测试在难分辨前景/背景下的分割泛化。  
 
 [CHAMELEON](https://github.com/DengPingFan/SINet)  
 > 用于：伪装目标分割常用测试集之一，配合 CAMO/COD10K 评测跨域到 camouflaged 场景的性能。  
@@ -512,9 +506,6 @@ MMAudio 主要面向 Foley 类通用音效，对人类语音这类复杂信号�
 
 [OCID](https://www.acin.tuwien.ac.at/en/vision-for-robotics/software-tools/ocid-dataset/)  
 > 用于：作为“自然 → 机器人/室内杂乱遮挡”目标域，评测在 clutter/遮挡场景中的分割鲁棒性。  
-
-[OSD](https://www.cs.umd.edu/projects/activevision/OSD/)  
-> 用于：作为遮挡目标分割目标域之一，评测模型在强遮挡下的分割能力。  
 
 **创新点：**  
 - 提出一种“无需源域数据”的弱监督自训练式适配框架：利用弱标注与伪标签迭代适配分割基础模型，以提升分布偏移下的泛化。  
@@ -564,12 +555,9 @@ MMAudio 主要面向 Foley 类通用音效，对人类语音这类复杂信号�
 [KITTI 2015 Optical Flow](https://www.cvlibs.net/datasets/kitti/eval_scene_flow.php?benchmark=flow)  
 > 用于：作为“干净/晴天源域”光流基准（含稀疏/半稠密标注与真实驾驶场景），在累计式域适配中充当起点。  
 
-[UCDA-Flow 官方实现与数据说明（含 Fog-GOF / DenseFog / Real-Fog World 等实验设置指引）](https://github.com/hyzhouboy/UCDA-Flow)  
+[UCDA-Flow 官方实现与数据说明](https://github.com/hyzhouboy/UCDA-Flow)  
 > 用于：复现实验的统一入口。  
-
-[DenseFogFlow（论文提出的 DenseFog 设定来自该方向工作）](https://openaccess.thecvf.com/content_CVPR_2020/papers/Yang_DenseFogFlow_Dense_Optical_Flow_Estimation_for_Foggy_Scenes_CVPR_2020_paper.pdf)  
-> 用于：作为“更贴近真实雾”设定的参考与对比，论文实验中用于验证从合成雾到真实雾的域间差距与改进空间。  
-
+  
 （论文中的 Fog-KITTI2015、Fog-GOF、Real-Fog World 等若未单独提供公开下载页）  
 > 用于：它们分别对应“干净→合成雾”“合成雾→真实雾”的不同阶段/目标域，用来验证累计式（cumulative）域适配在真实雾光流上的有效性。  
 
@@ -591,9 +579,6 @@ MMAudio 主要面向 Foley 类通用音效，对人类语音这类复杂信号�
 
 [ADE20K](https://groups.csail.mit.edu/vision/datasets/ADE20K/)  
 > 用于：语义分割/场景解析基准；检验方法在密集像素级标注任务上的泛化。  
-
-[Cityscapes](https://www.cityscapes-dataset.com/)  
-> 用于：自动驾驶城市场景语义/实例分割基准；检验在街景数据分布下的统一建模能力。  
 
 **创新点：**  
 - 以 DETR 系列为核心，将“检测 + 分割”更统一地纳入同一 Transformer 框架；通过掩码（mask）表征与解码设计提升统一框架的密集预测能力。  
@@ -628,29 +613,17 @@ MMAudio 主要面向 Foley 类通用音效，对人类语音这类复杂信号�
 ### 📖 DiffIR: Efficient Diffusion Model for Image Restoration (ICCV 2023)
 
 **数据集：**  
-（图像修复 Inpainting）  
-[Places2 / Places](http://places2.csail.mit.edu/)  
-> 用于：作为场景图像修复评测。  
-
 [CelebA-HQ](https://github.com/tkarras/progressive_growing_of_gans)  
 > 用于：人脸高质量图像修复评测。  
 
 （超分 SR）  
 [DIV2K](https://data.vision.ee.ethz.ch/cvl/DIV2K/)  
-> 用于：常用训练/评测基准之一。  
-
-[Flickr2K](https://github.com/xinntao/BasicSR/blob/master/docs/DatasetPreparation.md)  
-> 用于：扩充超分训练数据多样性。  
-
-[Set14 / Urban100 / Manga109 等常用 SR 测试集合（聚合下载页）](https://figshare.com/articles/dataset/SR_testsets/25218856)  
-> 用于：作为 SR 测试基准，评测 PSNR等质量与感知指标。  
+> 用于：常用训练/评测基准之一。    
 
 （去模糊 Deblurring）  
 [GoPro Deblurring Dataset](https://seungjunnah.github.io/Datasets/gopro)  
 > 用于：作为运动去模糊训练。  
 
-[HIDE Deblurring Dataset](https://github.com/Yaoyi-Li/HIDE)  
-> 用于：作为更具挑战的去模糊测试基准之一。  
 
 **创新点：**  
 - 面向“扩散模型很强但很慢”的痛点，提出更高效的扩散式恢复框架：通过联合优化等设计，让扩散建模能力在更少计算开销下用于修复、超分、去模糊。  
@@ -668,20 +641,11 @@ MMAudio 主要面向 Foley 类通用音效，对人类语音这类复杂信号�
 [MS COCO](https://cocodataset.org/#home)  
 > 用于：图文对齐/视觉-语言预训练与下游评测常用基准之一。  
 
-[Visual Genome](https://visualgenome.org/)  
-> 用于：更细粒度的区域级标注与图文语义信息，增强多模态表征能力。  
-
 [Conceptual Captions](https://ai.google.com/research/ConceptualCaptions)  
 > 用于：大规模弱标注图文数据，支持预训练与泛化。  
 
 [Conceptual 12M ](https://github.com/google-research-datasets/conceptual-12m)  
 > 用于：更大规模弱标注图文数据，提升长尾与开放域覆盖。  
-
-[SBU Captions](https://www.cs.virginia.edu/~vicente/sbucaptions/)  
-> 用于：早期常用弱标注图文数据源之一。  
-
-[LAION-400M](https://laion.ai/blog/laion-400-open-dataset/)  
-> 用于：超大规模开放域图文对，增强开放世界生成与编辑能力。  
 
 [Open Images](https://storage.googleapis.com/openimages/web/index.html)  
 > 用于：补充大规模真实图片分布与概念覆盖。  
@@ -743,9 +707,6 @@ MMAudio 主要面向 Foley 类通用音效，对人类语音这类复杂信号�
 
 [LOL-v1](https://daooshee.github.io/BMVC2018website/)  
 > 用于：经典配对低光增强训练。
- 
-[LOLv2](https://huggingface.co/datasets/real-stanford/LOLv2)  
-> 用于：更大规模/更复杂的配对低光数据。
 
 [SICE](https://github.com/csjcai/SICE)  
 > 用于：多曝光/多参考的低光增强基准之一，检验在不同曝光程度下的恢复质量。
