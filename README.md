@@ -481,7 +481,7 @@ FaithDiff 针对“既要好看又要保真”的真实场景超分问题，提�
 提出 MMAudio 多模态联合训练框架，将少量视频-音频配对数据与大规模文本-音频数据一起训练，并引入条件同步模块在音频潜变量上做帧级对齐，在流匹配目标下实现 157M 参数规模的高效视频音频生成，在音质、语义对齐和视听同步上都优于现有公开方法，同时还在纯文本生成音频任务上保持竞争力。
 
 **不足点：**
-MMAudio 主要面向 Foley 类通用音效（给视频配的音效看着画面生成与画面内容和发生时刻都对齐的声音），对人类语音这类复杂信号支持较弱——在生成说话声时，经常只产生听不清的含糊声音。
+MMAudio 主要面向 Foley 类通用音效，对人类语音这类复杂信号支持较弱——在生成说话声时，经常只产生听不清的含糊声音。
 <a id="improving-sfm-generalization-cvpr-2024"></a>
 ### 📖 Improving the Generalization of Segmentation Foundation Model under Distribution Shift (CVPR 2024)
 
@@ -490,7 +490,7 @@ MMAudio 主要面向 Foley 类通用音效（给视频配的音效看着画面�
 > 用于：作为“自然/干净域”上的基础数据集，用来评测/对比分割基础模型在常规分布下的分割能力，并作为分布迁移实验的一端。  
 
 [COCO-C](https://github.com/bethgelab/robust-detection-benchmark)  
-> 用于：构造“自然 → 破坏/扰动（corruption）”的分布偏移场景，检验模型在噪声、模糊、压缩等退化下的鲁棒性。  
+> 用于：构造“自然 → 破坏/扰动”的分布偏移场景，检验模型在噪声、模糊、压缩等退化下的鲁棒性。  
 
 [PASCAL VOC 2012](http://host.robots.ox.ac.uk/pascal/VOC/)  
 > 用于：作为自然场景分割基准之一，并在“自然 → 医疗”等跨域设置中充当源域数据集。  
@@ -502,7 +502,7 @@ MMAudio 主要面向 Foley 类通用音效（给视频配的音效看着画面�
 > 用于：作为“自然 → 内窥镜/息肉”目标域，检验跨域到医疗内窥镜场景的分割泛化。  
 
 [CAMO](https://sites.google.com/view/camo-dataset)  
-> 用于：作为“自然 → 伪装目标（camouflaged）”目标域，测试在难分辨前景/背景下的分割泛化。  
+> 用于：作为“自然 → 伪装目标”目标域，测试在难分辨前景/背景下的分割泛化。  
 
 [CHAMELEON](https://github.com/DengPingFan/SINet)  
 > 用于：伪装目标分割常用测试集之一，配合 CAMO/COD10K 评测跨域到 camouflaged 场景的性能。  
@@ -513,12 +513,12 @@ MMAudio 主要面向 Foley 类通用音效（给视频配的音效看着画面�
 [OCID](https://www.acin.tuwien.ac.at/en/vision-for-robotics/software-tools/ocid-dataset/)  
 > 用于：作为“自然 → 机器人/室内杂乱遮挡”目标域，评测在 clutter/遮挡场景中的分割鲁棒性。  
 
-[OSD（Occluded Object Segmentation Dataset）](https://www.cs.umd.edu/projects/activevision/OSD/)  
+[OSD](https://www.cs.umd.edu/projects/activevision/OSD/)  
 > 用于：作为遮挡目标分割目标域之一，评测模型在强遮挡下的分割能力。  
 
 **创新点：**  
-- 提出一种“无需源域数据”的弱监督自训练式适配框架：利用弱标注（点/框/粗 mask 等）与伪标签迭代适配分割基础模型，以提升分布偏移下的泛化。  
-- 通过正则/约束让提示（prompt）相关的表示更稳定，并采用参数高效微调（如低秩微调）来降低对大模型全量微调的依赖。  
+- 提出一种“无需源域数据”的弱监督自训练式适配框架：利用弱标注与伪标签迭代适配分割基础模型，以提升分布偏移下的泛化。  
+- 通过约束让提示相关的表示更稳定，并采用参数高效微调来降低对大模型全量微调的依赖。  
 
 **不足点：**  
 - 不同弱监督形式的收益不一致：论文实验中“点提示”适配甚至可能不如不适配，说明方法对监督信号类型较敏感、稳定性仍有限。  
@@ -539,11 +539,11 @@ MMAudio 主要面向 Foley 类通用音效（给视频配的音效看着画面�
 > 用于：长尾类别更丰富的数据源之一，用于检验鲁棒适配对长尾/复杂类别分割的影响。  
 
 [BDD100K](https://bdd-data.berkeley.edu/)  
-> 用于：真实道路场景数据源之一，常用于测试在真实成像条件变化（夜晚/雨雾/运动模糊等）下的鲁棒分割表现。  
+> 用于：真实道路场景数据源之一，常用于测试在真实成像条件变化下的鲁棒分割表现。  
 
 （若论文中还使用了特定退化任务数据，如去雾/去模糊对比）  
 [RESIDE-SOTS（SOTS）](https://sites.google.com/view/reside-dehaze-datasets/reside-v0)  
-> 用于：去雾场景的常用评测集（若论文用于展示鲁棒模块对相关低层视觉任务/退化感知的收益）。  
+> 用于：去雾场景的常用评测集。  
 
 [GoPro Deblurring Dataset](https://seungjunnah.github.io/Datasets/gopro)  
 > 用于：运动去模糊常用基准（同上，若论文用于展示对模糊退化的收益/迁移）。  
@@ -553,7 +553,7 @@ MMAudio 主要面向 Foley 类通用音效（给视频配的音效看着画面�
 - 通过对退化分布建模/增强，让 SAM 在低光、雾、噪声、模糊等条件下的分割稳定性显著提升。  
 
 **不足点：**  
-- 论文指出直接微调（尤其全量微调）会损害 SAM 的零样本泛化能力，因此方法需要在“增强鲁棒性”和“保持通用性”之间做精细权衡；在某些极端退化/远域细节缺失场景仍可能受限。  
+- 论文指出直接微调会损害 SAM 的零样本泛化能力，因此方法需要在“增强鲁棒性”和“保持通用性”之间做精细权衡；在某些极端退化/远域细节缺失场景仍可能受限。  
 
 
 ---
@@ -565,10 +565,10 @@ MMAudio 主要面向 Foley 类通用音效（给视频配的音效看着画面�
 > 用于：作为“干净/晴天源域”光流基准（含稀疏/半稠密标注与真实驾驶场景），在累计式域适配中充当起点。  
 
 [UCDA-Flow 官方实现与数据说明（含 Fog-GOF / DenseFog / Real-Fog World 等实验设置指引）](https://github.com/hyzhouboy/UCDA-Flow)  
-> 用于：复现实验的统一入口（论文涉及的 foggy 相关数据/划分/合成方式通常在此给出说明或脚本）。  
+> 用于：复现实验的统一入口。  
 
 [DenseFogFlow（论文提出的 DenseFog 设定来自该方向工作）](https://openaccess.thecvf.com/content_CVPR_2020/papers/Yang_DenseFogFlow_Dense_Optical_Flow_Estimation_for_Foggy_Scenes_CVPR_2020_paper.pdf)  
-> 用于：作为“更强雾化/更贴近真实雾”设定的参考与对比，论文实验中用于验证从合成雾到真实雾的域间差距与改进空间。  
+> 用于：作为“更贴近真实雾”设定的参考与对比，论文实验中用于验证从合成雾到真实雾的域间差距与改进空间。  
 
 （论文中的 Fog-KITTI2015、Fog-GOF、Real-Fog World 等若未单独提供公开下载页）  
 > 用于：它们分别对应“干净→合成雾”“合成雾→真实雾”的不同阶段/目标域，用来验证累计式（cumulative）域适配在真实雾光流上的有效性。  
@@ -596,10 +596,10 @@ MMAudio 主要面向 Foley 类通用音效（给视频配的音效看着画面�
 > 用于：自动驾驶城市场景语义/实例分割基准；检验在街景数据分布下的统一建模能力。  
 
 **创新点：**  
-- 以 DETR 系列为核心，将“检测 + 分割（实例/语义/全景）”更统一地纳入同一 Transformer 框架；通过掩码（mask）表征与解码设计提升统一框架的密集预测能力。  
+- 以 DETR 系列为核心，将“检测 + 分割”更统一地纳入同一 Transformer 框架；通过掩码（mask）表征与解码设计提升统一框架的密集预测能力。  
 
 **不足点：**  
-- 统一框架往往需要在不同任务头/损失之间做权衡；论文也指出通用统一分割框架整体仍可能落后于某些强专用方法（尤其在特定任务的极致性能上）。  
+- 统一框架往往需要在不同损失之间做权衡；论文也指出通用统一分割框架整体仍可能落后于某些强专用方法。  
 
 
 ---
@@ -630,33 +630,33 @@ MMAudio 主要面向 Foley 类通用音效（给视频配的音效看着画面�
 **数据集：**  
 （图像修复 Inpainting）  
 [Places2 / Places](http://places2.csail.mit.edu/)  
-> 用于：作为场景图像修复评测（论文表格中常以 Places/Places-Standard 作为修复基准）。  
+> 用于：作为场景图像修复评测。  
 
 [CelebA-HQ](https://github.com/tkarras/progressive_growing_of_gans)  
-> 用于：人脸高质量图像修复评测（窄/宽 mask 等设置）。  
+> 用于：人脸高质量图像修复评测。  
 
 （超分 SR）  
 [DIV2K](https://data.vision.ee.ethz.ch/cvl/DIV2K/)  
-> 用于：常用训练/评测基准之一（高质量图像超分）。  
+> 用于：常用训练/评测基准之一。  
 
-[Flickr2K（常与 DIV2K 组合成 DF2K 的训练集来源之一）](https://github.com/xinntao/BasicSR/blob/master/docs/DatasetPreparation.md)  
-> 用于：扩充超分训练数据多样性（许多 SR 工作将 Flickr2K 与 DIV2K 混合作训练）。  
+[Flickr2K](https://github.com/xinntao/BasicSR/blob/master/docs/DatasetPreparation.md)  
+> 用于：扩充超分训练数据多样性。  
 
 [Set14 / Urban100 / Manga109 等常用 SR 测试集合（聚合下载页）](https://figshare.com/articles/dataset/SR_testsets/25218856)  
-> 用于：作为 SR 测试基准，评测 PSNR/LPIPS 等质量与感知指标。  
+> 用于：作为 SR 测试基准，评测 PSNR等质量与感知指标。  
 
 （去模糊 Deblurring）  
 [GoPro Deblurring Dataset](https://seungjunnah.github.io/Datasets/gopro)  
-> 用于：作为运动去模糊训练/测试主基准。  
+> 用于：作为运动去模糊训练。  
 
 [HIDE Deblurring Dataset](https://github.com/Yaoyi-Li/HIDE)  
 > 用于：作为更具挑战的去模糊测试基准之一。  
 
 **创新点：**  
-- 面向“扩散模型很强但很慢”的痛点，提出更高效的扩散式恢复框架：通过两阶段/联合优化等设计，让扩散建模能力在更少计算开销下用于修复、超分、去模糊。  
+- 面向“扩散模型很强但很慢”的痛点，提出更高效的扩散式恢复框架：通过联合优化等设计，让扩散建模能力在更少计算开销下用于修复、超分、去模糊。  
 
 **不足点：**  
-- 论文主要验证在三类恢复任务（inpainting / SR / deblurring）上的有效性，对更广泛的退化类型（如去雾、去噪、低光等）是否同样稳定，需要进一步扩展验证。  
+- 论文主要验证在三类恢复任务上的有效性，对更广泛的退化类型是否同样稳定，需要进一步扩展验证。  
 
 
 ---
@@ -671,10 +671,10 @@ MMAudio 主要面向 Foley 类通用音效（给视频配的音效看着画面�
 [Visual Genome](https://visualgenome.org/)  
 > 用于：更细粒度的区域级标注与图文语义信息，增强多模态表征能力。  
 
-[Conceptual Captions (CC3M)](https://ai.google.com/research/ConceptualCaptions)  
+[Conceptual Captions](https://ai.google.com/research/ConceptualCaptions)  
 > 用于：大规模弱标注图文数据，支持预训练与泛化。  
 
-[Conceptual 12M (CC12M)](https://github.com/google-research-datasets/conceptual-12m)  
+[Conceptual 12M ](https://github.com/google-research-datasets/conceptual-12m)  
 > 用于：更大规模弱标注图文数据，提升长尾与开放域覆盖。  
 
 [SBU Captions](https://www.cs.virginia.edu/~vicente/sbucaptions/)  
@@ -684,17 +684,17 @@ MMAudio 主要面向 Foley 类通用音效（给视频配的音效看着画面�
 > 用于：超大规模开放域图文对，增强开放世界生成与编辑能力。  
 
 [Open Images](https://storage.googleapis.com/openimages/web/index.html)  
-> 用于：补充大规模真实图片分布与概念覆盖（论文中提到的子集/用法以其实现为准）。  
+> 用于：补充大规模真实图片分布与概念覆盖。  
 
 （个性化/主体控制评测）  
-[DreamBench（DreamBooth 官方评测集/协议）](https://dreambooth.github.io/)  
-> 用于：评测“主体一致性 + 文本可控性”的标准化基准（也常被后续主体驱动方法沿用）。  
+[DreamBench](https://dreambooth.github.io/)  
+> 用于：评测“主体一致性 + 文本可控性”的标准化基准。  
 
 **创新点：**  
 - 用预训练的“主体表征”把个性化主体注入到生成/编辑中：相比直接微调整套扩散模型，能更好地兼顾文本可控与主体一致，并支持编辑任务。  
 
 **不足点：**  
-- 论文指出在对真实图像做编辑时，仍可能出现编辑文本可控性不足或图像退化等问题（例如难以完全满足复杂编辑指令）。  
+- 论文指出在对真实图像做编辑时，仍可能出现编辑文本可控性不足或图像退化等问题。  
 
 
 ---
@@ -703,21 +703,21 @@ MMAudio 主要面向 Foley 类通用音效（给视频配的音效看着画面�
 
 **数据集：**  
 （个性化主体数据）  
-[DreamBooth 项目页（含数据/协议与案例）](https://dreambooth.github.io/)  
-> 用于：主体驱动生成设置：每个主体仅需少量（通常 3–5 张）图像即可进行个性化生成。  
+[DreamBooth](https://dreambooth.github.io/)  
+> 用于：主体驱动生成设置：每个主体仅需少量图像即可进行个性化生成。  
 
-[DreamBench（官方评测集/协议）](https://dreambooth.github.io/)  
-> 用于：标准化评测“主体一致性 + 文本驱动多样性/可控性”，便于不同个性化方法可比。  
+[DreamBench](https://dreambooth.github.io/)  
+> 用于：标准化评测“主体一致性 + 文本驱动多样性”，便于不同个性化方法可比。  
 
 （若你需要可复现的下载入口）  
-[DreamBooth 官方代码/资源入口](https://github.com/google/dreambooth)  
-> 用于：复现实验与评测脚本（数据组织方式以仓库说明为准）。  
+[DreamBooth](https://github.com/google/dreambooth)  
+> 用于：复现实验与评测脚本。  
 
 **创新点：**  
-- 用少量主体图像对文本到图像扩散模型做微调，实现“在多种场景/姿态/风格下仍保持同一主体”的生成；并通过类先验保持（prior preservation）缓解过拟合与语言漂移。  
+- 用少量主体图像对文本到图像扩散模型做微调，实现“在多种场景/姿态/风格下仍保持同一主体”的生成；并通过类先验保持缓解过拟合与语言漂移。  
 
 **不足点：**  
-- 论文明确提到：仍可能出现“语言漂移（language drift）”与输出多样性下降，尤其当训练图像太少或提示词设置不当时更明显。  
+- 论文明确提到：仍可能出现“语言漂移”与输出多样性下降，尤其当训练图像太少或提示词设置不当时更明显。  
 
 
 ---
@@ -726,7 +726,7 @@ MMAudio 主要面向 Foley 类通用音效（给视频配的音效看着画面�
 
 **数据集：**  
 （无固定单一数据集依赖）  
-> 用于：FreeU 是一种“无需训练/即插即用”的 U-Net 特征重加权策略，论文通常在多种文本提示与多种生成基模型（如 Stable Diffusion 系）上做对比；评价更多依赖生成质量指标与人类偏好实验，而不是绑定单一公开数据集划分。  
+> 用于：FreeU 是一种“无需训练”的 U-Net 特征重加权策略，论文通常在多种文本提示与多种生成基模型上做对比；评价更多依赖生成质量指标与人类偏好实验，而不是绑定单一公开数据集划分。  
 
 **创新点：**  
 - 在不重新训练的前提下，通过对 U-Net 的 backbone/skip 分支做简单的频域/幅值重平衡，缓解过平滑与细节缺失，使生成图更清晰、更有质感。  
@@ -741,35 +741,30 @@ MMAudio 主要面向 Foley 类通用音效（给视频配的音效看着画面�
 
 **数据集：**  
 （配对低光增强）  
-[LOL-v1（BMVC 2018 官方页）](https://daooshee.github.io/BMVC2018website/)  
-> 用于：经典配对低光增强训练/测试基准（低光图 ↔ 正常曝光图）。  
-
-[LOLv2（官方划分在论文/代码中给出，常见镜像可在社区数据页获取）](https://huggingface.co/datasets/real-stanford/LOLv2)  
-> 用于：更大规模/更复杂的配对低光数据（含 synthetic/real 等设置，用于检验泛化）。  
-
+[LOL-v1](https://daooshee.github.io/BMVC2018website/)  
+> 用于：经典配对低光增强训练。  
+[LOLv2](https://huggingface.co/datasets/real-stanford/LOLv2)  
+> 用于：更大规模/更复杂的配对低光数据。  
 [SICE](https://github.com/csjcai/SICE)  
 > 用于：多曝光/多参考的低光增强基准之一，检验在不同曝光程度下的恢复质量。  
-
-（真实无配对低光增强常用基准）  
 [LIME](https://github.com/estija/LIME)  
 > 用于：无参考/无配对的真实低光图像增强评测集之一。  
-
 [NPE](https://github.com/baidut/BIMEF)  
-> 用于：无配对真实低光增强评测集之一（常见聚合下载入口见 BIMEF）。  
+> 用于：无配对真实低光增强评测集之一。  
 
 [MEF](https://github.com/baidut/BIMEF)  
-> 用于：多曝光融合/真实场景增强相关基准（常用于无参考指标对比）。  
+> 用于：多曝光融合/真实场景增强相关基准。  
 
 [DICM](https://github.com/baidut/BIMEF)  
 > 用于：真实低光/对比度不足场景评测集之一。  
 
 [VV](https://github.com/baidut/BIMEF)  
-> 用于：论文中使用的真实无配对评测集之一（常在聚合下载仓库提供）。  
+> 用于：论文中使用的真实无配对评测集之一。  
 
 **创新点：**  
-- 以“图像属性（曝光、结构、颜色等）”作为引导信号，把低光增强转化为扩散采样过程中的属性引导优化，避免强依赖某一种固定退化模型假设。  
+- 以“图像属性”作为引导信号，把低光增强转化为扩散采样过程中的属性引导优化，避免强依赖某一种固定退化模型假设。  
 - 通过动态引导强度/梯度步数等机制，提高在极端低光下的可控性与稳定性。  
 
 **不足点：**  
-- 论文在结论中指出仍有改进空间：采样速度仍偏慢（需要加速采样技巧），以及可探索更丰富的高质量属性来进一步提升恢复效果与泛化。  
+- 论文在结论中指出仍有改进空间：采样速度仍偏慢，以及可探索更丰富的高质量属性来进一步提升恢复效果与泛化。  
 
