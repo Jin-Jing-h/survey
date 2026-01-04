@@ -520,11 +520,11 @@ MMAudio 主要面向 Foley 类通用音效，对人类语音这类复杂信号�
 ### 📖 RobustSAM: Segment Anything Robustly on Degraded Images (CVPR 2024)
 
 **数据集：**  
-[Robust-Seg（论文构建的鲁棒分割数据集/基准）](https://robustsam.github.io/)  
+[Robust-Seg](https://robustsam.github.io/)  
 > 用于：作为“退化图像分割”的核心训练/评测资源，覆盖多种真实与合成退化（噪声、模糊、低光、雾霾等），用于系统检验 SAM 类基础分割模型的退化鲁棒性。  
 
 [COCO 2017](https://cocodataset.org/#home)  
-> 用于：作为基础分割数据来源之一（论文在构建/对比鲁棒性时会使用常规大规模分割数据作支撑/对照）。  
+> 用于：作为基础分割数据来源之一。  
 
 [LVIS](https://www.lvisdataset.org/)  
 > 用于：长尾类别更丰富的数据源之一，用于检验鲁棒适配对长尾/复杂类别分割的影响。  
@@ -532,12 +532,11 @@ MMAudio 主要面向 Foley 类通用音效，对人类语音这类复杂信号�
 [BDD100K](https://bdd-data.berkeley.edu/)  
 > 用于：真实道路场景数据源之一，常用于测试在真实成像条件变化下的鲁棒分割表现。  
 
-（若论文中还使用了特定退化任务数据，如去雾/去模糊对比）  
 [RESIDE-SOTS（SOTS）](https://sites.google.com/view/reside-dehaze-datasets/reside-v0)  
 > 用于：去雾场景的常用评测集。  
 
 [GoPro Deblurring Dataset](https://seungjunnah.github.io/Datasets/gopro)  
-> 用于：运动去模糊常用基准（同上，若论文用于展示对模糊退化的收益/迁移）。  
+> 用于：运动去模糊常用基准。  
 
 **创新点：**  
 - 关注“分割基础模型在退化输入上的鲁棒性”这一缺口，构建鲁棒分割数据与评测，并提出轻量化/可插拔的鲁棒增强设计，避免直接全量微调导致的能力退化。  
@@ -558,8 +557,6 @@ MMAudio 主要面向 Foley 类通用音效，对人类语音这类复杂信号�
 [UCDA-Flow 官方实现与数据说明](https://github.com/hyzhouboy/UCDA-Flow)  
 > 用于：复现实验的统一入口。  
   
-（论文中的 Fog-KITTI2015、Fog-GOF、Real-Fog World 等若未单独提供公开下载页）  
-> 用于：它们分别对应“干净→合成雾”“合成雾→真实雾”的不同阶段/目标域，用来验证累计式（cumulative）域适配在真实雾光流上的有效性。  
 
 **创新点：**  
 - 提出“累计式无监督域适配”思路：不是一步从 clean 直接到 real fog，而是分阶段（clean→synthetic fog→real fog）逐步迁移，降低域间断崖。  
@@ -616,11 +613,11 @@ MMAudio 主要面向 Foley 类通用音效，对人类语音这类复杂信号�
 [CelebA-HQ](https://github.com/tkarras/progressive_growing_of_gans)  
 > 用于：人脸高质量图像修复评测。  
 
-（超分 SR）  
+
 [DIV2K](https://data.vision.ee.ethz.ch/cvl/DIV2K/)  
 > 用于：常用训练/评测基准之一。    
 
-（去模糊 Deblurring）  
+
 [GoPro Deblurring Dataset](https://seungjunnah.github.io/Datasets/gopro)  
 > 用于：作为运动去模糊训练。  
 
@@ -637,7 +634,7 @@ MMAudio 主要面向 Foley 类通用音效，对人类语音这类复杂信号�
 ### 📖 BLIP-Diffusion: Pre-trained Subject Representation for Controllable Text-to-Image Generation and Editing (NeurIPS 2023)
 
 **数据集：**  
-（预训练/表征学习数据）  
+
 [MS COCO](https://cocodataset.org/#home)  
 > 用于：图文对齐/视觉-语言预训练与下游评测常用基准之一。  
 
@@ -650,7 +647,6 @@ MMAudio 主要面向 Foley 类通用音效，对人类语音这类复杂信号�
 [Open Images](https://storage.googleapis.com/openimages/web/index.html)  
 > 用于：补充大规模真实图片分布与概念覆盖。  
 
-（个性化/主体控制评测）  
 [DreamBench](https://dreambooth.github.io/)  
 > 用于：评测“主体一致性 + 文本可控性”的标准化基准。  
 
@@ -666,16 +662,12 @@ MMAudio 主要面向 Foley 类通用音效，对人类语音这类复杂信号�
 ### 📖 DreamBooth: Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation (CVPR 2023)
 
 **数据集：**  
-（个性化主体数据）  
+
 [DreamBooth](https://dreambooth.github.io/)  
 > 用于：主体驱动生成设置：每个主体仅需少量图像即可进行个性化生成。  
 
 [DreamBench](https://dreambooth.github.io/)  
 > 用于：标准化评测“主体一致性 + 文本驱动多样性”，便于不同个性化方法可比。  
-
-（若你需要可复现的下载入口）  
-[DreamBooth](https://github.com/google/dreambooth)  
-> 用于：复现实验与评测脚本。  
 
 **创新点：**  
 - 用少量主体图像对文本到图像扩散模型做微调，实现“在多种场景/姿态/风格下仍保持同一主体”的生成；并通过类先验保持缓解过拟合与语言漂移。  
@@ -689,7 +681,6 @@ MMAudio 主要面向 Foley 类通用音效，对人类语音这类复杂信号�
 ### 📖 FreeU: Free Lunch in Diffusion U-Net (CVPR 2023)
 
 **数据集：**  
-（无固定单一数据集依赖）  
 > 用于：FreeU 是一种“无需训练”的 U-Net 特征重加权策略，论文通常在多种文本提示与多种生成基模型上做对比；评价更多依赖生成质量指标与人类偏好实验，而不是绑定单一公开数据集划分。  
 
 **创新点：**  
