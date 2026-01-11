@@ -805,7 +805,7 @@ RobuSTereo 的创新核心是把“恶劣天气数据稀缺”与“退化图像
 
 ### 📖Adapt Foundational Segmentation Models with Heterogeneous Searching Space（ICCV 2025）
 
-**数据集：
+**数据集：**
 
 [NJU2K](https://opendatalab.com/OpenDataLab/NJU2K/download)
 
