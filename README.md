@@ -23,6 +23,9 @@
 | <small>FreeU: Free Lunch in Diffusion U-Net</small> |  <small>[CVPR](https://openaccess.thecvf.com/content/CVPR2024/papers/Si_FreeU_Free_Lunch_in_Diffusion_U-Net_CVPR_2024_paper.pdf)</small> | <small>2024</small> | <small>扩散采样质量提升<br>训练-free U-Net 调控</small> | <small>[GitHub](https://github.com/ChenyangSi/FreeU)</small> | <small>[概述](#freeu-cvpr-2024)</small> |  <small>[概述](#freeu-cvpr-2024)</small> |
 | <small>AGLLDiff: Guiding Diffusion Models Towards Unsupervised Training-free Real-world Low-light Image Enhancement</small>            | <small>[arXiv](https://arxiv.org/abs/2407.14900)</small> | <small>2024</small> | <small>低照度图像增强<br>训练-free 扩散引导</small>|<small>[GitHub](https://github.com/LYL1015/AGLLDiff)</small> |  <small>[概述](#aglldiff-arxiv-2024)</small> | <small>[概述](#aglldiff-arxiv-2024)</small> |
 | <small>Diff-TTA: Genuine Knowledge from Practice: Diffusion Test-Time Adaptation for Video Adverse Weather Removal</small> | <small>[CVPR](https://arxiv.org/abs/2403.07684)</small> | <small>2024</small> | <small>视频恶劣天气去除 / Test-Time Adaptation</small> | <small>[GitHub](https://github.com/scott-yjyang/DiffTTA)</small> | <small>[概述](#diff-tta-cvpr-2024)</small> | <small>[概述](#diff-tta-cvpr-2024)</small> |
+| <small>RobuSTereo: Robust Zero-Shot Stereo Matching under Adverse Weather</small> | <small>[ICCV](https://arxiv.org/abs/2507.01653)</small> | <small>2025</small> | <small>恶劣天气立体匹配 / Zero-shot</small> | <small>[GitHub](https://github.com/laowang404/RobuSTereo)</small> | <small>[概述](#robustereo-iccv-2025)</small> | <small>[概述](#robustereo-iccv-2025)</small> | 
+| <small>Adapt Foundational Segmentation Models with Heterogeneous Searching Space</small> | <small>[ICCV](https://openaccess.thecvf.com/content/ICCV2025/papers/Yi_Adapt_Foundational_Segmentation_Models_with_Heterogeneous_Searching_Space_ICCV_2025_paper.pdf)</small> | <small>2025</small> | <small>基础分割模型跨域适配 / Augment-to-Adapt</small> | <small>-</small> | <small>[概述](#adapt-foundational-segmentation-models-with-heterogeneous-searching-space-iccv-2025)</small> | <small>[概述](#adapt-foundational-segmentation-models-with-heterogeneous-searching-space-iccv-2025)</small> |
+
 
 ## 专有名词解释（点击跳转）
 - [CLIP](#clip)
@@ -754,3 +757,102 @@ Diff-TTA 提出首个将**Test-Time Adaptation（测试时自适应）**“原�
 
 **不足点：** 
 论文也明确指出未来需要进一步**加速推理以满足实时应用**；当前方法仍依赖多步扩散采样 + 在线自适应优化，计算代价不低（文中给出示例：处理 5 帧、256×256 patch 的 clip 平均耗时约 6.01s）。此外，官方仓库目前标注 “Code is coming”，代码尚未完整开源，复现门槛可能较高。
+
+<a id="robustereo-iccv-2025"></a>
+
+### 📖RobuSTereo: Robust Zero-Shot Stereo Matching under Adverse Weather（ICCV 2025）
+
+**数据集：**
+
+[Scene Flow (FlyingThings3D / Driving / Monkaa)](https://lmb.informatik.uni-freiburg.de/resources/datasets/SceneFlowDatasets.en.html)
+
+> 用于：作为训练数据之一，对立体匹配网络进行大规模合成数据训练（论文实验设置中与KITTI/vKITTI一起用于训练）。
+
+[KITTI Stereo 2012](https://www.cvlibs.net/datasets/kitti/eval_stereo.php)
+
+> 用于：作为训练数据之一，提供真实道路场景的立体图像与视差标注，增强模型对真实分布的适应。
+
+[KITTI Stereo 2015](https://www.cvlibs.net/datasets/kitti/eval_scene_flow.php?benchmark=stereo)
+
+> 用于：作为训练数据之一（动态场景更复杂），同时其图像也被用作生成恶劣天气合成立体数据的源域素材之一。 
+
+[Virtual KITTI 2 (vKITTI2)](https://europe.naverlabs.com/proxy-virtual-worlds-vkitti-2/)
+
+> 用于：作为训练数据之一；并与KITTI一起提供“正常天气”源图像，供扩散模型合成雨/雾/雪等恶劣天气立体图像对。 
+
+[DrivingStereo](https://drivingstereo-dataset.github.io/)
+
+> 用于：作为测试集，在不同恶劣天气（如雨、雾等）划分下评估零样本立体匹配性能与可视化效果。 
+
+[SeeingThroughFog](https://github.com/princeton-computational-imaging/SeeingThroughFog)
+
+> 用于：作为“极端恶劣天气”测试集，用于检验在更强分布偏移/低能见度条件下的泛化能力。 
+
+[RST-Dataset (Robust-Dataset, 作者合成数据集)](https://arxiv.org/html/2507.01653v1)
+
+> 用于：作者提出的“扩散合成立体恶劣天气数据集”，由 Stable Diffusion 1.5 + ControlNet(depth) 生成，源图像来自 KITTI 与 vKITTI2，用于训练以缩小“正常天气→恶劣天气”的域差距。
+
+**创新点：**
+RobuSTereo 的创新核心是把“恶劣天气数据稀缺”与“退化图像特征不稳”这两件事**分别用生成式与表征学习**来解决，并且两者耦合成一套可落地的 zero-shot 立体匹配框架：
+
+- 在数据侧，提出**扩散式恶劣天气立体数据生成管线**：利用文本天气提示 + 深度条件（ControlNet）把正常天气立体数据“风格迁移”为雨/雾/雪等退化图像，同时加入**stereo consistency module**来约束左右视图的结构一致性与几何对齐，避免生成导致的视差结构破坏。
+- 在模型侧，提出**鲁棒特征编码器**：将擅长局部细节的卷积网络与“去噪式 Transformer”结合，提升在低能见度、噪声、反射等退化下的特征稳定性；论文实现里采用多尺度Conv特征（如 VGG19 金字塔）并引入 Denoising Vision Transformer 生成更稳健的高维特征以支撑后续匹配。
+
+**不足点：** 
+文中无体现
+
+<a id="adapt-foundational-segmentation-models-with-heterogeneous-searching-space-iccv-2025"></a>
+
+### 📖Adapt Foundational Segmentation Models with Heterogeneous Searching Space（ICCV 2025）
+
+**数据集：
+
+[NJU2K](https://opendatalab.com/OpenDataLab/NJU2K/download)
+
+> 用于：通用场景 + 深度图场景的评测；论文将其同时用于“Common Scene”和“Depth Map”两种设置（共 1985 个 RGB-D 样本元组）。
+
+[VT1000 / VT1k](https://pan.baidu.com/s/1i7gfrHoaaRuateMXBxvmMw)
+
+> 用于：通用场景 + 热红外（RGB-T）场景的评测；论文将其拆分为“Common Scene”和“Thermal Map”两种设置（1000 个 RGB-T 对及标注）。
+
+[CAMO](https://sites.google.com/view/ltnghia/research/camo)
+
+> 用于：伪装目标（Camouflage）场景的评测；论文在该域上搜索最优增强策略以提升 FSM（如 SAM）的跨域分割。
+
+[COD10K](https://dengpingfan.github.io/pages/COD.html)
+
+> 用于：伪装目标场景的评测与泛化验证（论文给出其图像构成与规模信息）。
+
+[NC4K](https://drive.google.com/file/d/1GsEmE8820oOnSa_efqAzRX_8wL3Ha8ll/view?usp=sharing)
+
+> 用于：大规模伪装目标测试集（论文描述为 4121 张互联网采集图），用于检验策略在更大测试集上的稳定性。 
+
+[Kvasir-SEG](https://datasets.simula.no/kvasir-seg/)
+
+> 用于：内镜息肉分割（endoscopic images）域的评测，验证“只改输入不改模型权重”的跨域适配能力。 
+
+[BUSI](https://www.sciencedirect.com/science/article/pii/S2352340919312181)
+
+> 用于：乳腺超声肿瘤分割域的评测（Breast Ultrasound Images Dataset，论文描述为 780 张带标注样本）。
+
+[MTSD](https://github.com/abin24/Magnetic-tile-defect-datasets.)
+
+> 用于：工业磁瓦表面缺陷分割（magnetic tile defects）域的评测；论文描述其按缺陷类型划分（如 uneven、crack 等）。 
+
+[KolektorSDD2](https://www.vicos.si/resources/kolektorsdd2/)
+
+> 用于：工业表面缺陷分割域的评测（论文描述该数据集包含 356 张缺陷图像与多种缺陷类型）。
+
+**创新点：** 
+这篇论文的核心创新不是“再训练一个更强的分割模型”，而是提出 **“Augmenting-to-Adapt（先增强、再适配）”范式**：在不改动基础分割模型（FSM，如 SAM）参数的前提下，把“跨域适配”转化为“为特定域搜索一条最优的输入增强策略”。
+
+-  **异构搜索空间（Heterogeneous Searching Space）**：把 22 个可调强度的规则增强 + 10 个学习型增强（深度/法线/反照率等“不可用强度刻度描述”的输出）统一到一个空间里，并通过 **multi-discrete 映射**解决规则增强与学习型增强的“参数不对齐（parameter misalignment）”问题，形成可稳定搜索的策略表示。
+-  **少样本策略搜索（RL / PPO）**：用强化学习（PPO）在少量标注样本上搜索三步增强策略，奖励用 IoU（并配合额外样本项来降低 few-shot 过拟合风险），得到“域专用”增强 policy。 
+-  **可部署的蒸馏加速**：由于学习型增强（深度估计/去模糊等）推理成本高，论文进一步用 **pix2pix** 把“策略生成的增强结果”蒸馏成一个生成器权重，从而把复杂多步预处理替换成一次 GAN 前向，加速落地。 
+
+**不足点：** 
+
+-  **仍然需要标注样本**：搜索奖励依赖 IoU，因此至少需要 few-shot 标注来做策略搜索（论文报告 5-shot / 10-shot 设置）。 
+-  **每个域要单独“搜策略”，时间成本不低**：论文报告为每个 domain 寻找最优增强策略的训练耗时从数小时到一天不等。 
+-  **效果并非所有域都稳定增益**：从表格结果可见，个别设置下提升有限甚至略降（例如某些 ViT-H + BUSI / MTSD 配置）。 
+-  **工程依赖重**：策略空间包含多个外部学习型模块（深度/法线/去模糊/Retinex 等），即使有蒸馏也带来额外实现复杂度；此外论文仅说明“将发布代码”，当时并未给出公开仓库链接。
