@@ -22,7 +22,7 @@
 | <small>DreamBooth: Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation</small> |<small>[CVPR](https://openaccess.thecvf.com/content/CVPR2023/html/Ruiz_DreamBooth_Fine_Tuning_Text-to-Image_Diffusion_Models_for_Subject-Driven_Generation_CVPR_2023_paper.html)</small> | <small>2023</small> | <small>主体驱动个性化生成<br>少样本微调</small> |<small>[GitHub](https://github.com/google/dreambooth)</small> |<small>[概述](#dreambooth-cvpr-2023)</small> | <small>[概述](#dreambooth-cvpr-2023)</small> |
 | <small>FreeU: Free Lunch in Diffusion U-Net</small> |  <small>[CVPR](https://openaccess.thecvf.com/content/CVPR2024/papers/Si_FreeU_Free_Lunch_in_Diffusion_U-Net_CVPR_2024_paper.pdf)</small> | <small>2024</small> | <small>扩散采样质量提升<br>训练-free U-Net 调控</small> | <small>[GitHub](https://github.com/ChenyangSi/FreeU)</small> | <small>[概述](#freeu-cvpr-2024)</small> |  <small>[概述](#freeu-cvpr-2024)</small> |
 | <small>AGLLDiff: Guiding Diffusion Models Towards Unsupervised Training-free Real-world Low-light Image Enhancement</small>            | <small>[arXiv](https://arxiv.org/abs/2407.14900)</small> | <small>2024</small> | <small>低照度图像增强<br>训练-free 扩散引导</small>|<small>[GitHub](https://github.com/LYL1015/AGLLDiff)</small> |  <small>[概述](#aglldiff-arxiv-2024)</small> | <small>[概述](#aglldiff-arxiv-2024)</small> |
-
+| <small>Diff-TTA: Genuine Knowledge from Practice: Diffusion Test-Time Adaptation for Video Adverse Weather Removal</small> | <small>[CVPR](https://arxiv.org/abs/2403.07684)</small> | <small>2024</small> | <small>视频恶劣天气去除 / Test-Time Adaptation</small> | <small>[GitHub](https://github.com/scott-yjyang/DiffTTA)</small> | <small>[概述](#diff-tta-cvpr-2024)</small> | <small>[概述](#diff-tta-cvpr-2024)</small> |
 
 ## 专有名词解释（点击跳转）
 - [CLIP](#clip)
@@ -724,3 +724,33 @@ MMAudio 主要面向 Foley 类通用音效，对人类语音这类复杂信号�
 **不足点：**  
 - 论文在结论中指出仍有改进空间：采样速度仍偏慢，以及可探索更丰富的高质量属性来进一步提升恢复效果与泛化。  
 
+<a id="diff-tta-cvpr-2024"></a>
+
+### 📖Diff-TTA: Genuine Knowledge from Practice: Diffusion Test-Time Adaptation for Video Adverse Weather Removal（CVPR 2024）
+
+**数据集：** 
+[RainMotion](https://drive.google.com/file/d/1905B_e2RgQGnyfHd5xpjB4lTLYoq0Jm4/view?usp=sharing)
+
+> 用于：作为**已见天气（seen weather）**中的视频去雨基准之一；训练阶段与其他已见天气数据集合并为 mixed set，测试阶段在各自测试集上评估。 ([ar5iv][1])
+
+[REVIDE](https://drive.google.com/file/d/1MYaVMUtcfqXeZpnbsfoJ2JBcpZUUlXGg/view?usp=sharing)
+
+> 用于：作为**已见天气（seen weather）**中的视频去雾基准之一；与 RainMotion、KITTI-snow 一起构成训练混合集并分别测试。 ([ar5iv][1])
+
+[KITTI-snow](https://drive.google.com/file/d/1_1IsyT5nTvYjrCwNgP4LDOh_rXnPP_LE/view?usp=sharing)
+
+> 用于：作为**已见天气（seen weather）**中的视频去雪基准之一（基于 KITTI 合成的雪视频数据）；用于训练混合集与单数据集测试。 ([ar5iv][1])
+
+[VRDS](https://hkustgz-my.sharepoint.com/%3Af%3A/g/personal/hwu375_connect_hkust-gz_edu_cn/EmI_nfrnMyNAohEwNtnq50MB22RWxp-x_mtp264aVzOxlA?e=CjP3kO)
+
+> 用于：作为**未见天气（unseen weather）**评测集之一；为“雨丝 + 雨滴”联合退化的合成视频数据集（论文描述总计 102 个视频），用于检验跨退化泛化与在线自适应能力。
+
+[RVSD](https://drive.google.com/drive/folders/1h21xh9JVhb_gmet8Vj8gxZy1_PpKJr8L?usp=drive_link)
+
+> 用于：作为**未见天气（unseen weather）**评测集之一；为“雪 + 雾”联合退化的真实感视频去雪数据集（论文描述总计 110 个视频），用于验证在复合未知天气下的泛化能力。 
+
+**创新点：**
+Diff-TTA 提出首个将**Test-Time Adaptation（测试时自适应）**“原生嵌入”到**扩散模型反向去噪迭代**中的视频恶劣天气去除框架：训练阶段构建**ARMA-based temporal noise model**，在不引入大量时序参数的前提下显式建模帧间相关噪声（利用视频时序冗余）；测试阶段提出代理任务 **Diffusion Tubelet Self-Calibration（Diff-TSC）**，从视频流中裁剪少量 tubelets 去“品尝”目标分布，并在每个去噪 timestep 中同步更新模型权重，从而实现对**未知天气/分布偏移**的在线校准与鲁棒恢复。
+
+**不足点：** 
+论文也明确指出未来需要进一步**加速推理以满足实时应用**；当前方法仍依赖多步扩散采样 + 在线自适应优化，计算代价不低（文中给出示例：处理 5 帧、256×256 patch 的 clip 平均耗时约 6.01s）。此外，官方仓库目前标注 “Code is coming”，代码尚未完整开源，复现门槛可能较高。
