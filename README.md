@@ -25,6 +25,14 @@
 | <small>Diff-TTA: Genuine Knowledge from Practice: Diffusion Test-Time Adaptation for Video Adverse Weather Removal</small> | <small>[CVPR](https://arxiv.org/abs/2403.07684)</small> | <small>2024</small> | <small>视频恶劣天气去除 </small> | <small>[GitHub](https://github.com/scott-yjyang/DiffTTA)</small> | <small>[概述](#diff-tta-cvpr-2024)</small> | <small>[概述](#diff-tta-cvpr-2024)</small> |
 | <small>RobuSTereo: Robust Zero-Shot Stereo Matching under Adverse Weather</small>|<small>[ICCV](https://arxiv.org/abs/2507.01653)</small>|<small>2025</small> | <small>恶劣天气立体匹配 </small> | <small>[GitHub](https://github.com/laowang404/RobuSTereo)</small> | <small>[概述](#robustereo-iccv-2025)</small> | <small>[概述](#robustereo-iccv-2025)</small> | 
 | <small>Adapt Foundational Segmentation Models with Heterogeneous Searching Space</small> | <small>[ICCV](https://openaccess.thecvf.com/content/ICCV2025/papers/Yi_Adapt_Foundational_Segmentation_Models_with_Heterogeneous_Searching_Space_ICCV_2025_paper.pdf)</small> | <small>2025</small> | <small>基础分割模型跨域适配</small> | <small>-</small> | <small>[概述](#adapt-foundational-segmentation-models-with-heterogeneous-searching-space-iccv-2025)</small> | <small>[概述](#adapt-foundational-segmentation-models-with-heterogeneous-searching-space-iccv-2025)</small> |
+| <small>Learning to Prompt for Vision-Language Models (CoOp)</small> | <small>[IJCV](https://link.springer.com/article/10.1007/s11263-022-01653-1)</small> | <small>2022</small> | <small>VLM Prompt Learning（参数高效适配）</small> | <small>[GitHub](https://github.com/KaiyangZhou/CoOp)</small> | <small>[概述](#learning-to-prompt-for-vision-language-models-ijcv-2022)</small> | <small>[概述](#learning-to-prompt-for-vision-language-models-ijcv-2022)</small> |
+| <small>Dual Modality Prompt Tuning for Vision-Language Pre-Trained Model (DPT)</small> | <small>[TMM](https://dl.acm.org/doi/abs/10.1109/TMM.2023.3291588)</small> | <small>2023</small> | <small>双模态 Prompt Tuning（文本+视觉）</small> | <small>[GitHub](https://github.com/fanrena/DPT)</small> | <small>[概述](#dual-modality-prompt-tuning-for-vision-language-pre-trained-model-tmm-2023)</small> | <small>[概述](#dual-modality-prompt-tuning-for-vision-language-pre-trained-model-tmm-2023)</small> |
+| <small>Task-to-Instance Prompt Learning for Vision-Language Models at Test Time (TIPPLE)</small> | <small>[TIP](https://pubmed.ncbi.nlm.nih.gov/40085459/)</small> | <small>2025</small> | <small>Test-time Prompt Learning（无标注适配）</small> | <small>[GitHub](https://github.com/zhiheLu/TIPPLE)</small> | <small>[概述](#task-to-instance-prompt-learning-for-vision-language-models-at-test-time-tip-2025)</small> | <small>[概述](#task-to-instance-prompt-learning-for-vision-language-models-at-test-time-tip-2025)</small> |
+| <small>Frequency-Based Comprehensive Prompt Learning for Vision-Language Models (FCPrompt)</small> | <small>[TPAMI](https://www.computer.org/csdl/journal/tp/2025/12/11129912/29jmYYm9NYs)</small> | <small>2025</small> | <small>频域 Prompt Learning（VLM 泛化）</small> | <small>[GitHub](https://github.com/llcllc1997/FCPrompt)</small> | <small>[概述](#frequency-based-comprehensive-prompt-learning-for-vision-language-models-tpami-2025)</small> | <small>[概述](#frequency-based-comprehensive-prompt-learning-for-vision-language-models-tpami-2025)</small> |
+| <small>Generalizable Prompt Learning via Gradient Constrained Sharpness-Aware Minimization (GCSCoOp)</small> | <small>[TMM](https://dl.acm.org/doi/10.1109/TMM.2024.3521702)</small> | <small>2025</small> | <small>可泛化 Prompt 学习（优化/SAM）</small> | <small>[GitHub](https://github.com/llcllc1997/GCSCoOp)</small> | <small>[概述](#generalizable-prompt-learning-via-gradient-constrained-sharpness-aware-minimization-tmm-2025)</small> | <small>[概述](#generalizable-prompt-learning-via-gradient-constrained-sharpness-aware-minimization-tmm-2025)</small> |
+| <small>Learning Dynamic Prompts for All-in-One Image Restoration (DPPD)</small> | <small>[TIP](https://pubmed.ncbi.nlm.nih.gov/40354220/)</small> | <small>2025</small> | <small>All-in-One 图像恢复（动态 Prompt）</small> | <small>[GitHub](https://github.com/Aitical/DPPD)</small> | <small>[概述](#learning-dynamic-prompts-for-all-in-one-image-restoration-tip-2025)</small> | <small>[概述](#learning-dynamic-prompts-for-all-in-one-image-restoration-tip-2025)</small> |
+| <small>Re-Boosting Self-Collaboration Parallel Prompt GAN for Unsupervised Image Restoration (RSCP2GAN)</small> | <small>[TPAMI](https://doi.org/10.1109/TPAMI.2025.3589606)</small> | <small>2025</small> | <small>无监督图像恢复（Prompt GAN）</small> | <small>[GitHub](https://github.com/linxin0/RSCP2GAN)</small> | <small>[概述](#re-boosting-self-collaboration-parallel-prompt-gan-for-unsupervised-image-restoration-tpami-2025)</small> | <small>[概述](#re-boosting-self-collaboration-parallel-prompt-gan-for-unsupervised-image-restoration-tpami-2025)</small> |
+| <small>Explicit Visual Prompting for Universal Foreground Segmentations (EVP)</small> | <small>[TPAMI](https://pubmed.ncbi.nlm.nih.gov/41066288/)</small> | <small>2026</small> | <small>通用前景分割（显式视觉 Prompt）</small> | <small>[GitHub](https://github.com/NiFangBaAGe/Explicit-Visual-Prompt)</small> | <small>[概述](#explicit-visual-prompting-for-universal-foreground-segmentations-tpami-2026)</small> | <small>[概述](#explicit-visual-prompting-for-universal-foreground-segmentations-tpami-2026)</small> |
 
 
 ## 专有名词解释（点击跳转）
@@ -855,4 +863,157 @@ RobuSTereo 的创新核心是把“恶劣天气数据稀缺”与“退化图像
 -  **仍然需要标注样本**：搜索奖励依赖 IoU，因此至少需要 few-shot 标注来做策略搜索（论文报告 5-shot / 10-shot 设置）。 
 -  **每个域要单独“搜策略”，时间成本不低**：论文报告为每个 domain 寻找最优增强策略的训练耗时从数小时到一天不等。 
 -  **效果并非所有域都稳定增益**：从表格结果可见，个别设置下提升有限甚至略降（例如某些 ViT-H + BUSI / MTSD 配置）。 
+
+
+<a id="learning-to-prompt-for-vision-language-models-ijcv-2022"></a>
+
+### 📖Learning to Prompt for Vision-Language Models（IJCV 2022，CoOp）
+
+**数据集：**
+[ImageNet](https://www.image-net.org/) / [Caltech101](https://data.caltech.edu/records/20086) / [OxfordPets](https://www.robots.ox.ac.uk/~vgg/data/pets/) / [StanfordCars](https://ai.stanford.edu/~jkrause/cars/car_dataset.html) / [Flowers102](https://www.robots.ox.ac.uk/~vgg/data/flowers/102/) / [Food101](https://data.vision.ee.ethz.ch/cvl/datasets_extra/food-101/) / [FGVC-Aircraft](https://www.robots.ox.ac.uk/~vgg/data/fgvc-aircraft/) / [SUN397](https://vision.princeton.edu/projects/2010/SUN/) / [DTD](https://www.robots.ox.ac.uk/~vgg/data/dtd/) / [EuroSAT](https://github.com/phelber/EuroSAT) / [UCF101](https://www.crcv.ucf.edu/data/UCF101.php)
+
+> 用于：论文的 **11 个下游识别数据集**（few-shot 适配）评测集合。
+
+[ImageNetV2](https://github.com/modestyachts/ImageNetV2) / [ImageNet-Sketch](https://github.com/HaohanWang/ImageNet-Sketch) / [ImageNet-A](https://github.com/hendrycks/natural-adv-examples) / [ImageNet-R](https://github.com/hendrycks/imagenet-r)
+
+> 用于：论文的 **4 个 ImageNet 域外/分布偏移变体**评测集合，用来检验 domain shift 下的鲁棒性。
+
+**创新点：**
+CoOp 把“手工写 prompt”变成“**可学习的连续上下文 tokens**”：冻结 CLIP 主干，只学习 prompt 的上下文向量（可做 class-specific / class-agnostic 变体），从而自动化 prompt engineering，并用于下游 few-shot 迁移。
+
+**不足点：**
+论文在结尾明确指出仍有重要问题待探索（例如 **cross-dataset transfer、test-time adaptation** 等），即 CoOp 本身并未覆盖这些更强的跨域/在线适配场景。
+
+
+
+<a id="dual-modality-prompt-tuning-for-vision-language-pre-trained-model-tmm-2023"></a>
+
+### 📖Dual Modality Prompt Tuning for Vision-Language Pre-Trained Model（IEEE TMM 2023，DPT）
+
+**数据集：**
+[EuroSAT](https://github.com/phelber/EuroSAT) / [Caltech101](https://data.caltech.edu/records/20086) / [Flowers102](https://www.robots.ox.ac.uk/~vgg/data/flowers/102/) / [Food101](https://data.vision.ee.ethz.ch/cvl/datasets_extra/food-101/) / [FGVC-Aircraft](https://www.robots.ox.ac.uk/~vgg/data/fgvc-aircraft/) / [DTD](https://www.robots.ox.ac.uk/~vgg/data/dtd/) / [OxfordPets](https://www.robots.ox.ac.uk/~vgg/data/pets/) / [StanfordCars](https://ai.stanford.edu/~jkrause/cars/car_dataset.html) / [SUN397](https://vision.princeton.edu/projects/2010/SUN/) / [UCF101](https://www.crcv.ucf.edu/data/UCF101.php) / [ImageNet](https://www.image-net.org/)
+
+> 用于：论文汇报的 **11 个数据集** few-shot prompt tuning 主评测集。
+
+[ImageNetV2](https://github.com/modestyachts/ImageNetV2) / [ImageNet-Sketch](https://github.com/HaohanWang/ImageNet-Sketch) / [ImageNet-A](https://github.com/hendrycks/natural-adv-examples) / [ImageNet-R](https://github.com/hendrycks/imagenet-r)
+
+> 用于：论文的 **分布偏移鲁棒性评测**（source=ImageNet，target=四个 OOD 变体）。
+
+**创新点：**
+DPT 强调“只调文本 prompt 只能改合成分类器，难以影响视觉特征”，因此提出 **文本 prompt + 视觉 prompt 的双模态提示调优**；并进一步提出 **CAVPT**：用 **cross-attention** 在文本 prompt 特征与图像 patch tokens 之间生成**类感知视觉 prompt**，把“任务信息 + 实例视觉信息”显式注入视觉端。
+
+**不足点：**
+论文在分布偏移实验里指出：相较其它 OOD 集，方法在 **ImageNet-A（自然对抗样本）**上“更不有效/更脆弱”（less effective / more vulnerable），说明对对抗性分布的鲁棒性仍是短板。
+
+
+<a id="task-to-instance-prompt-learning-for-vision-language-models-at-test-time-tip-2025"></a>
+
+### 📖Task-to-Instance Prompt Learning for Vision-Language Models at Test Time（IEEE TIP 2025，TIPPLE）
+
+**数据集：**
+[ImageNet](https://www.image-net.org/)
+
+> 用于：论文明确提到“task-oriented prompt”可在 ImageNet 上学习，并展示其对其它数据集的可迁移性（transferable）。
+
+（论文写明“**15 个下游数据集**”评测；其代码仓库基于 CoOp/TPT 的数据准备流程，因此复现实验常用 **CoOp 的 11 个数据集 + ImageNet 的 4 个 OOD 变体**作为这 15 个评测集——这一点属于“复现设定推断”，具体以论文正式版本实验表格为准。）
+
+**创新点：**
+TIPPLE 面向“**只有无标注测试数据**”的 test-time prompt learning，提出两阶段：
+
+* **Stage I（task-oriented）**：基于在线伪标签范式，同时引入两个组件：**辅助文本分类任务**（提供无噪声文本监督）与**多样性正则**（避免盲信伪标签），学习任务级 prompt。
+* **Stage II（instance-oriented）**：在任务级 prompt 上，为每个测试样本学习一个**可调残差**，把任务级与实例级知识结合。
+
+**不足点：**
+论文自己也强调：Stage I 的视觉监督来自 **online pseudo-labels**，这类监督天然可能带噪；TIPPLE 虽用“文本监督 + 多样性正则”缓解，但方法依赖该范式本身（伪标签质量仍会影响适配过程）。
+
+
+<a id="frequency-based-comprehensive-prompt-learning-for-vision-language-models-tpami-2025"></a>
+
+### 📖Frequency-Based Comprehensive Prompt Learning for Vision-Language Models（TPAMI 2025，FCPrompt）
+
+**数据集：**
+（当前抓取到的公开信息里，论文/仓库首页未直接给出“评测数据集清单”。代码仓库显示其实现基于 CoOp/Dassl 体系，通常会沿用 VLM prompt tuning 的通用评测协议；若你需要我把“论文实验中逐一列出的数据集”按你模板完整写出，建议你把论文 PDF（或实验表格截图）发我，我可以逐项对齐不造假。）
+
+**创新点：**
+FCPrompt 的核心是把 transformer 视觉编码器输出特征做 **DCT 频域变换**来挖掘更“局部且判别”的信息，并用 **双分支（全局/频域局部）**对齐到不同文本 prompts，同时用 **coarse-to-fine** 的 prompts 描述视觉概念。
+
+**不足点：**
+论文动机强调 transformer 视觉编码器“不自然提供判别性局部信息”，因此方法强依赖“频域局部分支 + prompt 设计”来补足；当任务需要的关键信息并非由频域局部成分捕获时，收益可能受限（属于其方法设定的适用边界，具体以论文消融/失败案例为准）。
+
+
+
+<a id="generalizable-prompt-learning-via-gradient-constrained-sharpness-aware-context-optimization-tmm-2024"></a>
+
+### 📖Generalizable Prompt Learning via Gradient Constrained Sharpness-Aware Context Optimization（IEEE TMM 2024，GCSCoOp）
+
+**数据集：** ([ResearchGate][1])
+（当前可直接引用到的摘要/PDF片段里没有把评测数据集逐项列出；论文问题设定是“seen classes vs unseen classes”的 generalizable prompt learning，通常在多数据集 base-to-novel 协议下评测。若你把论文里“实验设置/数据集”那一页截图给我，我可以严格按原文把数据集链接与用途写全。）
+
+**创新点：**
+GCSCoOp 从优化视角切入：指出 trade-off 取决于 **loss 值 + loss sharpness** 两者，同时发现现有方法优化梯度难以同时对齐二者；因此提出 **Gradient-Constrained 的 SAM 风格 prompt 优化**，动态约束梯度以同时优化“低损失 + 平坦性”，缓解“提升 unseen 类别但牺牲 seen 类别”的问题。
+
+**不足点：**
+论文问题本身来自实践痛点：已有 generalizable prompt 方法会带来 **seen 类别判别力下降**；GCSCoOp 旨在缓解，但其适用范围仍围绕“提示学习的优化几何/平坦性”这一范式，属于通用优化策略而非直接面向某一种恶劣视觉退化任务的专用结构。
+
+
+
+<a id="learning-dynamic-prompts-for-all-in-one-image-restoration-tip-2025"></a>
+
+### 📖Learning Dynamic Prompts for All-in-One Image Restoration（IEEE TIP 2025，DPPD）
+
+**数据集：**
+[WED](https://ivc.uwaterloo.ca/databases/waterloo_exploration_database/) / [BSD](https://www2.eecs.berkeley.edu/Research/Projects/CS/vision/bsds/) / [Rain100L](https://drive.google.com) / [RESIDE-OTS](https://sites.google.com/view/reside-dehaze-datasets)
+
+> 用于：仓库给出的 **Noise–Rain–Haze** 三退化 all-in-one 设置。
+
+[CDD-11](https://github.com/Aitical/DPPD)（仓库提供 Download）
+
+> 用于：仓库给出的 **Composite Degradation（复合退化）** all-in-one 设置。
+
+[GoPro](https://seungjunnah.github.io/Datasets/gopro) / [LOL](https://daooshee.github.io/BMVC2018website/)
+
+> 用于：仓库给出的 **Five Task（Rain/Haze/Noise/GoPro/LOL）** 五任务设置（通常对应去雨/去雾/去噪/去模糊/低照度增强）。
+
+**创新点：**
+DPPD 针对 all-in-one 恢复里“静态 prompts 容易学到退化平均分布、难刻画输入特性”的问题，提出 **动态 prompt**：
+
+* **DPA（Degradation Prototype Assignment）**：把退化表征锚定到预定义原型，提升判别性与可扩展性；
+* **PDL（Prompt Distribution Learning）**：把 prompt 建模为**分布**而非固定参数，支持动态采样以适配不同输入。
+
+**不足点：**
+方法显式依赖 **预定义退化原型**（DPA 的 design choice），原型设计/数量/覆盖度会影响“退化表示是否足够可分、是否覆盖真实退化多样性”。
+
+
+
+<a id="re-boosting-self-collaboration-parallel-prompt-gan-for-unsupervised-image-restoration-tpami-2025"></a>
+
+### 📖Re-Boosting Self-Collaboration Parallel Prompt GAN for Unsupervised Image Restoration（TPAMI 2025，RSCP2GAN）
+
+**数据集：**
+（论文摘要强调“不需要 paired 数据”，但摘要/当前可抓取片段未逐一列出具体 benchmark 名称；若你希望我按模板把数据集逐项列出，请把论文 PDF 的“Experiments/Datasets”那一页截图给我，我可以严格按原文补全。）
+
+**创新点：**
+提出 **Self-Collaboration（SC）** 训练策略：由“prompt learning 模块 + restorer”组成，迭代地用更强的 restorer 替换旧 restorer，让 PL 模块生成更好的伪配对数据，从而逐轮提升恢复器；并提出 **re-boosting**，把 self-ensemble 的收益融入 SC 训练流程，同时保持**推理阶段不增加复杂度**。
+
+**不足点：**
+方法收益来自多阶段自协作迭代与伪配对生成，训练流程更复杂；论文重点保证“推理不增复杂度”，但训练侧的迭代开销与稳定性（如伪配对质量）是其天然关注点（摘要层面能确认其“多阶段迭代”设定）。
+
+
+
+<a id="explicit-visual-prompting-for-universal-foreground-segmentations-tpami-2026"></a>
+
+### 📖Explicit Visual Prompting for Universal Foreground Segmentations（TPAMI 扩展版：2025/2026；EVP）
+
+**数据集：**
+（EVP 的 arXiv 摘要写明：覆盖 **5 类前景分割任务、共 14 个数据集**，但摘要本身不逐一列名。
+如果你接受用其 CVPR 2023 版本（“Low-Level Structure Segmentations”）来填充“具体数据集清单”，我可以在你把那篇论文 PDF 的 datasets 表格页发来后，逐项按原文把 4 个任务对应的所有数据集 + 链接 + 用途写全不造假。）
+
+**创新点：**
+EVP 的关键洞见是让 prompt 参数聚焦在“**每张图的显式视觉内容**”：结合 **冻结的 patch embedding 特征**与**输入的高频成分**作为显式提示信号；冻结预训练主干，仅用少量可调参数学习任务知识，从而把多种前景分割任务统一到一个 prompt-tuning 框架。
+
+**不足点：**
+论文设定聚焦于“前景分割任务族（salient/forgery/defocus/shadow/camouflage 等）”，属于“统一多任务”但仍在该任务族内；当迁移到完全不同的 dense prediction 定义时，仍需要重新设计/对齐 prompt 形式与监督。
+
+
+
 
