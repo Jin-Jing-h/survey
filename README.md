@@ -915,7 +915,7 @@ DPT 强调“只调文本 prompt 只能改合成分类器，难以影响视觉�
 
 > 用于：论文明确提到“task-oriented prompt”可在 ImageNet 上学习，并展示其对其它数据集的可迁移性（transferable）。
 
-（论文写明“**15 个下游数据集**”评测；其代码仓库基于 CoOp/TPT 的数据准备流程，因此复现实验常用 **CoOp 的 11 个数据集 + ImageNet 的 4 个 OOD 变体**作为这 15 个评测集——这一点属于“复现设定推断”，具体以论文正式版本实验表格为准。）
+
 
 **创新点：**
 TIPPLE 面向“**只有无标注测试数据**”的 test-time prompt learning，提出两阶段：
@@ -932,7 +932,10 @@ TIPPLE 面向“**只有无标注测试数据**”的 test-time prompt learning�
 ### 📖Frequency-Based Comprehensive Prompt Learning for Vision-Language Models（TPAMI 2025，FCPrompt）
 
 **数据集：**
-（当前抓取到的公开信息里，论文/仓库首页未直接给出“评测数据集清单”。代码仓库显示其实现基于 CoOp/Dassl 体系，通常会沿用 VLM prompt tuning 的通用评测协议；若你需要我把“论文实验中逐一列出的数据集”按你模板完整写出，建议你把论文 PDF（或实验表格截图）发我，我可以逐项对齐不造假。）
+
+[ImageNet](https://www.image-net.org/) / [Caltech101](https://data.caltech.edu/records/mzrjq-6wc02) / [OxfordPets](https://www.robots.ox.ac.uk/~vgg/data/pets/) / [StanfordCars](https://ai.stanford.edu/~jkrause/cars/car_dataset.html) / [Flowers102](https://www.robots.ox.ac.uk/~vgg/data/flowers/102/) / [Food101](https://data.vision.ee.ethz.ch/cvl/datasets_extra/food-101/) / [FGVCAircraft](https://www.robots.ox.ac.uk/~vgg/data/fgvc-aircraft/) / [SUN397](https://vision.princeton.edu/projects/2010/SUN/) / [DTD](https://www.robots.ox.ac.uk/~vgg/data/dtd/) / [EuroSAT](https://github.com/phelber/EuroSAT) / [UCF101](https://www.crcv.ucf.edu/data/UCF101.php)
+
+> 用于：FCPrompt 的开源实现**基于 CoOp**，通常沿用该方向的标准 **11-dataset** VLM prompt-learning 基准做评测与复现。
 
 **创新点：**
 FCPrompt 的核心是把 transformer 视觉编码器输出特征做 **DCT 频域变换**来挖掘更“局部且判别”的信息，并用 **双分支（全局/频域局部）**对齐到不同文本 prompts，同时用 **coarse-to-fine** 的 prompts 描述视觉概念。
@@ -946,8 +949,11 @@ FCPrompt 的核心是把 transformer 视觉编码器输出特征做 **DCT 频域
 
 ### 📖Generalizable Prompt Learning via Gradient Constrained Sharpness-Aware Context Optimization（IEEE TMM 2024，GCSCoOp）
 
-**数据集：** ([ResearchGate][1])
-（当前可直接引用到的摘要/PDF片段里没有把评测数据集逐项列出；论文问题设定是“seen classes vs unseen classes”的 generalizable prompt learning，通常在多数据集 base-to-novel 协议下评测。若你把论文里“实验设置/数据集”那一页截图给我，我可以严格按原文把数据集链接与用途写全。）
+**数据集：** 
+
+[ImageNet](https://www.image-net.org/) / [Caltech101](https://data.caltech.edu/records/mzrjq-6wc02) / [OxfordPets](https://www.robots.ox.ac.uk/~vgg/data/pets/) / [StanfordCars](https://ai.stanford.edu/~jkrause/cars/car_dataset.html) / [Flowers102](https://www.robots.ox.ac.uk/~vgg/data/flowers/102/) / [Food101](https://data.vision.ee.ethz.ch/cvl/datasets_extra/food-101/) / [FGVCAircraft](https://www.robots.ox.ac.uk/~vgg/data/fgvc-aircraft/) / [SUN397](https://vision.princeton.edu/projects/2010/SUN/) / [DTD](https://www.robots.ox.ac.uk/~vgg/data/dtd/) / [EuroSAT](https://github.com/phelber/EuroSAT) / [UCF101](https://www.crcv.ucf.edu/data/UCF101.php) / [ImageNetV2](https://github.com/modestyachts/ImageNetV2) / [ImageNet-Sketch](https://github.com/HaohanWang/ImageNet-Sketch) / [ImageNet-A](https://github.com/hendrycks/natural-adv-examples) / [ImageNet-R](https://github.com/hendrycks/imagenet-r)
+
+> 用于：论文的 **通用提示学习评测**（含常用 11 个下游分类数据集 + 4 个 ImageNet OOD 变体鲁棒性测试）。
 
 **创新点：**
 GCSCoOp 从优化视角切入：指出 trade-off 取决于 **loss 值 + loss sharpness** 两者，同时发现现有方法优化梯度难以同时对齐二者；因此提出 **Gradient-Constrained 的 SAM 风格 prompt 优化**，动态约束梯度以同时优化“低损失 + 平坦性”，缓解“提升 unseen 类别但牺牲 seen 类别”的问题。
@@ -975,6 +981,7 @@ GCSCoOp 从优化视角切入：指出 trade-off 取决于 **loss 值 + loss sha
 > 用于：仓库给出的 **Five Task（Rain/Haze/Noise/GoPro/LOL）** 五任务设置（通常对应去雨/去雾/去噪/去模糊/低照度增强）。
 
 **创新点：**
+
 DPPD 针对 all-in-one 恢复里“静态 prompts 容易学到退化平均分布、难刻画输入特性”的问题，提出 **动态 prompt**：
 
 * **DPA（Degradation Prototype Assignment）**：把退化表征锚定到预定义原型，提升判别性与可扩展性；
@@ -990,7 +997,10 @@ DPPD 针对 all-in-one 恢复里“静态 prompts 容易学到退化平均分布
 ### 📖Re-Boosting Self-Collaboration Parallel Prompt GAN for Unsupervised Image Restoration（TPAMI 2025，RSCP2GAN）
 
 **数据集：**
-（论文摘要强调“不需要 paired 数据”，但摘要/当前可抓取片段未逐一列出具体 benchmark 名称；若你希望我按模板把数据集逐项列出，请把论文 PDF 的“Experiments/Datasets”那一页截图给我，我可以严格按原文补全。）
+
+[Rain100L](https://service.tib.eu/ldmservice/dataset/rain100l) / [Rain12](https://github.com/nnUyi/DerainZoo) / [RealRainL](https://github.com/hiker-lw/RealRain-1k) / [SIDD](https://www.eecs.yorku.ca/~kamel/sidd/) / [DND](https://noise.visinf.tu-darmstadt.de/) / [PolyU](https://github.com/csjunxu/PolyU-Real-World-Noisy-Images-Dataset)
+
+> 用于：论文的 **去雨（Rain100L/Rain12/RealRainL）** 与 **真实噪声去噪（SIDD/DND/PolyU）**评测。
 
 **创新点：**
 提出 **Self-Collaboration（SC）** 训练策略：由“prompt learning 模块 + restorer”组成，迭代地用更强的 restorer 替换旧 restorer，让 PL 模块生成更好的伪配对数据，从而逐轮提升恢复器；并提出 **re-boosting**，把 self-ensemble 的收益融入 SC 训练流程，同时保持**推理阶段不增加复杂度**。
@@ -1005,8 +1015,10 @@ DPPD 针对 all-in-one 恢复里“静态 prompts 容易学到退化平均分布
 ### 📖Explicit Visual Prompting for Universal Foreground Segmentations（TPAMI 扩展版：2025/2026；EVP）
 
 **数据集：**
-（EVP 的 arXiv 摘要写明：覆盖 **5 类前景分割任务、共 14 个数据集**，但摘要本身不逐一列名。
-如果你接受用其 CVPR 2023 版本（“Low-Level Structure Segmentations”）来填充“具体数据集清单”，我可以在你把那篇论文 PDF 的 datasets 表格页发来后，逐项按原文把 4 个任务对应的所有数据集 + 链接 + 用途写全不造假。）
+
+[DUTS](https://www.kaggle.com/datasets/balraj98/duts-saliency-detection-dataset) / [DUT-OMRON](https://saliencydetection.net/dut-omron/) / [HKU-IS](https://www.cs.hku.hk/~yzyu/research/deep_saliency.html) / [ECSSD](https://www.cse.cuhk.edu.hk/leojia/projects/hsaliency/dataset.html) / [PASCAL-S](https://cbs.ic.gatech.edu/salobj/) / [DUT](http://ice.dlut.edu.cn/ZhaoWenda/BTBCRLNet.html) / [CUHK](http://www.cse.cuhk.edu.hk/leojia/projects/dblurdetect/) / [IMD2020](http://staff.utia.cas.cz/novozada/db/) / [CAISA](https://github.com/namtpham/casia2groundtruth) / [ISTD](https://github.com/DeepInsight-PCALab/ST-CGAN) / [SBU](https://www3.cs.stonybrook.edu/~cvl/projects/shadow_noisy_label/index.html) / [CHAMELEON](https://www.polsl.pl/rau6/datasets/) / [CAMO](https://drive.google.com/open?id=1h-OqZdwkuPhBvGcVAwmh0f1NGqlH_4B6) / [COD10K](https://github.com/DengPingFan/SINet/)
+
+> 用于：论文的 **通用前景分割评测**，共 **5 类任务、14 个数据集**：显著性（DUTS/DUT-OMRON/HKU-IS/ECSSD/PASCAL-S）、散焦（DUT/CUHK）、篡改（IMD2020/CAISA）、阴影（ISTD/SBU）、伪装（CHAMELEON/CAMO/COD10K）。 
 
 **创新点：**
 EVP 的关键洞见是让 prompt 参数聚焦在“**每张图的显式视觉内容**”：结合 **冻结的 patch embedding 特征**与**输入的高频成分**作为显式提示信号；冻结预训练主干，仅用少量可调参数学习任务知识，从而把多种前景分割任务统一到一个 prompt-tuning 框架。
