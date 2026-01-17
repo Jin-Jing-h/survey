@@ -937,10 +937,15 @@ TIPPLE 面向**只有无标注测试数据**的情况下，提出两阶段：
 > 用于：FCPrompt 的开源实现**基于 CoOp**，通常沿用该方向的标准 **11-dataset** VLM prompt-learning 基准做评测与复现。
 
 **创新点：**
-FCPrompt 的核心是把 transformer 视觉编码器输出特征做 **DCT 频域变换**来挖掘更“局部且判别”的信息，并用 **双分支（全局/频域局部）**对齐到不同文本 prompts，同时用 **coarse-to-fine** 的 prompts 描述视觉概念。
+
+1. **频域化**：把视觉特征从空间域变到频域，用频率来更清楚地拆分图像信息。
+2. **选频提局部**：只取关键频率分量来表示局部细节，使信息更紧凑、更少冗余、更不易混在一起。
+3. **双分支对齐**：用两套 prompt 分别对齐全局语义和频域局部细节，再把两者融合起来。
+4. **多 prompt 粗到细**：学习多条不同粒度的 prompt，让模型既能抓大概类别也能抓细节特征。
+
 
 **不足点：**
-论文动机强调 transformer 视觉编码器“不自然提供判别性局部信息”，因此方法强依赖“频域局部分支 + prompt 设计”来补足；当任务需要的关键信息并非由频域局部成分捕获时，收益可能受限（属于其方法设定的适用边界，具体以论文消融/失败案例为准）。
+论文动机强调 transformer 视觉编码器不自然提供判别性局部信息，因此方法强依赖“频域局部分支 + prompt 设计”来补足；当任务需要的关键信息并非由频域局部成分捕获时，收益可能受限。
 
 
 
@@ -983,8 +988,8 @@ GCSCoOp 从优化视角切入：指出 trade-off 取决于 **loss 值 + loss sha
 
 DPPD 针对 all-in-one 恢复里“静态 prompts 容易学到退化平均分布、难刻画输入特性”的问题，提出 **动态 prompt**：
 
-* **DPA（Degradation Prototype Assignment）**：把退化表征锚定到预定义原型，提升判别性与可扩展性；
-* **PDL（Prompt Distribution Learning）**：把 prompt 建模为**分布**而非固定参数，支持动态采样以适配不同输入。
+* **DPA（Degradation Prototype Assignment）**：把每张图的退化特征对齐到一组预定义的退化原型上，从而更容易区分不同退化并扩展到更多退化类型。
+* **PDL（Prompt Distribution Learning）**：把 prompt 从固定一套参数改为一个可采样的分布，让模型能为不同输入动态生成更匹配的 prompt。
 
 **不足点：**
 方法显式依赖 **预定义退化原型**（DPA 的 design choice），原型设计/数量/覆盖度会影响“退化表示是否足够可分、是否覆盖真实退化多样性”。
@@ -1002,16 +1007,16 @@ DPPD 针对 all-in-one 恢复里“静态 prompts 容易学到退化平均分布
 > 用于：论文的 **去雨（Rain100L/Rain12/RealRainL）** 与 **真实噪声去噪（SIDD/DND/PolyU）**评测。
 
 **创新点：**
-提出 **Self-Collaboration（SC）** 训练策略：由“prompt learning 模块 + restorer”组成，迭代地用更强的 restorer 替换旧 restorer，让 PL 模块生成更好的伪配对数据，从而逐轮提升恢复器；并提出 **re-boosting**，把 self-ensemble 的收益融入 SC 训练流程，同时保持**推理阶段不增加复杂度**。
+提出 **Self-Collaboration（SC）** 训练策略：由prompt learning 模块 + restorer（退化图像恢复成更清晰可用的图像，并在无配对训练（没有同一场景对比照片）中用更好的恢复结果生成更高质量的伪监督来逐轮增强模型）组成，迭代地用更强的 restorer替换旧restorer生成更好的伪配对数据（在原本没有真实成对数据时，人为生成出来的近似输入–目标对，让模型可以像有监督学习那样训练），从而逐轮提升restorer；并提出 **re-boosting**，把 self-ensemble（同一个模型在推理时对同一张输入做多次翻转或者旋转，分别得到多份输出，再把这些输出融合成最终结果）的收益融入 SC 训练流程，同时保持**推理阶段不增加复杂度**。
 
 **不足点：**
-方法收益来自多阶段自协作迭代与伪配对生成，训练流程更复杂；论文重点保证“推理不增复杂度”，但训练侧的迭代开销与稳定性（如伪配对质量）是其天然关注点（摘要层面能确认其“多阶段迭代”设定）。
+方法收益来自多阶段自协作迭代与伪配对生成，训练流程更复杂；
 
 
 
 <a id="explicit-visual-prompting-for-universal-foreground-segmentations-tpami-2026"></a>
 
-### 📖Explicit Visual Prompting for Universal Foreground Segmentations（TPAMI 扩展版：2025/2026；EVP）
+### 📖Explicit Visual Prompting for Universal Foreground Segmentations（TPAMI 2025）
 
 **数据集：**
 
@@ -1020,10 +1025,10 @@ DPPD 针对 all-in-one 恢复里“静态 prompts 容易学到退化平均分布
 > 用于：论文的 **通用前景分割评测**，共 **5 类任务、14 个数据集**：显著性（DUTS/DUT-OMRON/HKU-IS/ECSSD/PASCAL-S）、散焦（DUT/CUHK）、篡改（IMD2020/CAISA）、阴影（ISTD/SBU）、伪装（CHAMELEON/CAMO/COD10K）。 
 
 **创新点：**
-EVP 的关键洞见是让 prompt 参数聚焦在“**每张图的显式视觉内容**”：结合 **冻结的 patch embedding 特征**与**输入的高频成分**作为显式提示信号；冻结预训练主干，仅用少量可调参数学习任务知识，从而把多种前景分割任务统一到一个 prompt-tuning 框架。
+EVP 的关键是让 prompt 参数聚焦在“**每张图的显式视觉内容**”（prompt不要只学经验，要把这张图里哪里有边界、哪里是细节给模型当提示。）：结合 **冻结的 patch embedding 特征（用一个预训练大模型提取 patch tokens，但不更新这些大模型参数）**与**输入的高频成分（图像中变化快的部分：边缘、细纹理、噪声、细小结构）**作为显式提示信号（有明确物理、视觉含义的信号）；冻结预训练主干（大模型不变，只训练一小部分 prompt 参数），仅用少量可调参数学习任务知识，从而把多种前景分割任务统一到一个 prompt-tuning 框架（几乎不改动预训练大模型本体，只训练一小段prompt参数来适配下游任务的一种轻量微调方法）。
 
 **不足点：**
-论文设定聚焦于“前景分割任务族（salient/forgery/defocus/shadow/camouflage 等）”，属于“统一多任务”但仍在该任务族内；当迁移到完全不同的 dense prediction 定义时，仍需要重新设计/对齐 prompt 形式与监督。
+论文设定聚焦于“前景分割任务族（salient/forgery/defocus/shadow/camouflage 等）”，属于“统一多任务”但仍在该任务族内；当迁移到完全不同的 dense prediction 定义时，仍需要重新设计 prompt 形式与监督。
 
 
 
