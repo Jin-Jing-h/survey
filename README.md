@@ -897,13 +897,13 @@ CoOp 把“手工写 prompt”变成“**可学习的连续上下文 tokens**”
 
 [ImageNetV2](https://github.com/modestyachts/ImageNetV2) / [ImageNet-Sketch](https://github.com/HaohanWang/ImageNet-Sketch) / [ImageNet-A](https://github.com/hendrycks/natural-adv-examples) / [ImageNet-R](https://github.com/hendrycks/imagenet-r)
 
-> 用于：论文的 **分布偏移鲁棒性评测**（source=ImageNet，target=四个 OOD 变体）。
+> 用于：论文的 **分布偏移鲁棒性评测**（source=ImageNet，target=四个 OOD(Out-Of-Distribution) 变体）。
 
 **创新点：**
-DPT 强调“只调文本 prompt 只能改合成分类器，难以影响视觉特征”，因此提出 **文本 prompt + 视觉 prompt 的双模态提示调优**；并进一步提出 **CAVPT**：用 **cross-attention** 在文本 prompt 特征与图像 patch tokens 之间生成**类感知视觉 prompt**，把“任务信息 + 实例视觉信息”显式注入视觉端。
+DPT 提出 **文本 prompt + 视觉 prompt 的双模态提示调优**；并进一步提出 **CAVPT(Class-Aware Visual Prompt Tuning)**：用 **cross-attention** 在文本 prompt 特征与图像 patch tokens(把一张图片先切成很多patch，再把每个小块编码成一个向量；这些每个小块的向量为patch tokens。) 之间生成**类感知视觉 prompt**(在视觉侧把要找哪个类别信息显式注入进去)，把任务信息与 实例视觉信息显式注入视觉端。
 
 **不足点：**
-论文在分布偏移实验里指出：相较其它 OOD 集，方法在 **ImageNet-A（自然对抗样本）**上“更不有效/更脆弱”（less effective / more vulnerable），说明对对抗性分布的鲁棒性仍是短板。
+论文在实验里指出：方法在ImageNet-A上更低效，说明对抗性分布的鲁棒性仍是短板。
 
 
 <a id="task-to-instance-prompt-learning-for-vision-language-models-at-test-time-tip-2025"></a>
@@ -916,15 +916,14 @@ DPT 强调“只调文本 prompt 只能改合成分类器，难以影响视觉�
 > 用于：论文明确提到“task-oriented prompt”可在 ImageNet 上学习，并展示其对其它数据集的可迁移性（transferable）。
 
 
-
 **创新点：**
-TIPPLE 面向“**只有无标注测试数据**”的 test-time prompt learning，提出两阶段：
+TIPPLE 面向**只有无标注测试数据**的情况下，提出两阶段：
 
-* **Stage I（task-oriented）**：基于在线伪标签范式，同时引入两个组件：**辅助文本分类任务**（提供无噪声文本监督）与**多样性正则**（避免盲信伪标签），学习任务级 prompt。
-* **Stage II（instance-oriented）**：在任务级 prompt 上，为每个测试样本学习一个**可调残差**，把任务级与实例级知识结合。
+* **Stage I（task-oriented）**：在只有无标注测试数据时，用伪标签 + 文本监督 + 多样性正则，先学出适配整批测试数据共性的任务级 prompt
+* **Stage II（instance-oriented）**：在任务级 prompt 基础上，为每张测试图再学一个小的残差 prompt做个性化微调，把共性与个性结合起来。
 
 **不足点：**
-论文自己也强调：Stage I 的视觉监督来自 **online pseudo-labels**，这类监督天然可能带噪；TIPPLE 虽用“文本监督 + 多样性正则”缓解，但方法依赖该范式本身（伪标签质量仍会影响适配过程）。
+论文自己也强调：Stage I 的视觉监督来自 **online pseudo-labels（在线伪标签：在没有真实标签的情况下，模型在测试过程中边预测、边把自己的预测当成临时标签来继续更新自己，并且这些伪标签会随着模型变动而实时刷新）**，这类监督天然可能带噪；TIPPLE 虽用文本监督（在没有真实标签的情况下，额外加入一个由文本侧提供的稳定学习信号，让 prompt 的学习不至于只跟着伪标签跑偏） + 多样性正则（加强区分度）缓解，但方法依赖该范式本身（伪标签质量仍会影响适配过程）。
 
 
 <a id="frequency-based-comprehensive-prompt-learning-for-vision-language-models-tpami-2025"></a>
