@@ -351,16 +351,16 @@ class ImageCleanModel(BaseModel):
         l_cls_w = w * l_cls
         loss_dict['l_cls_w'] = l_cls_w
         loss_dict['cls_w']   = w.detach() 
+        p = torch.sigmoid(logits)
+        loss_mono = F.relu(p[:, 1] - p[:, 0]).mean() + F.relu(p[:, 2] - p[:, 1]).mean()
 
-        # loss = l_pix + l_cls_w   # + 你其它 loss
-        # if current_iter < start:
-        #     w_cls = 0.0
-        # else:
-        #     t = min(1.0, (current_iter - start) / float(ramp))
-        #     w_cls = base * t
-        # loss_dict['l_cls_w'] = w_cls * l_cls
-        # loss_total = l_pix + l_pear + l_cls_w 
-        loss_total = l_cls * 1.0 + l_pix * 0.1 # 给一点点 pix loss 作为 backbone 的正则化
+        # 3. 连续性误差 (减少跨级误判)
+        pred_level_soft = p.sum(dim=1)
+        loss_mae = F.l1_loss(pred_level_soft, self.level.float())
+
+        # 4. 综合 Loss (注意权重分配)
+        loss_total = l_cls + 1.0 * loss_mono + 0.5 * loss_mae+ l_pix * 0.1
+        # loss_total = l_cls * 1.0 + l_pix * 0.1 # 给一点点 pix loss 作为 backbone 的正则化
         loss_dict['loss_total'] = loss_total
         if current_iter % 500 == 0 and logits is not None and self.level is not None:
             gt = self.level.view(-1).long()
