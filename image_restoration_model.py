@@ -113,8 +113,8 @@ class ImageCleanModel(BaseModel):
 #            from audtorch.metrics.functional import pearsonr
 #            self.cri_seq = pearsonr
             self.cri_seq = self.pearson_correlation_loss #
-        w = torch.tensor([1.0, 1.0, 1.2, 1.2], device=self.device)  # 先轻微拉一下 2/3
-        self.cri_celoss = torch.nn.CrossEntropyLoss(weight=w)
+        # w = torch.tensor([1.0, 1.0, 1.2, 1.2], device=self.device)  # 先轻微拉一下 2/3
+        self.cri_ord = torch.nn.BCEWithLogitsLoss()
         # set up optimizers and schedulers
         self.setup_optimizers()
         self.setup_schedulers()
@@ -220,11 +220,49 @@ class ImageCleanModel(BaseModel):
         return x
     def compute_correlation_loss(self, x1, x2):
         b, c = x1.shape[0:2]
-        x1 = x1.view(b, -1)
-        x2 = x2.view(b, -1)
+        x1 = x1.reshape(b, -1)
+        x2 = x2.reshape(b, -1)
 #        print(x1, x2)
         pearson = (1. - self.cri_seq(x1, x2)) / 2.
         return pearson[~pearson.isnan()*~pearson.isinf()].mean()
+    def compute_losses(self, output, gt, logits, level_gt):
+        """Return dict of tensor losses (on current device)."""
+        loss_dict = OrderedDict()
+
+        l_pix = self.cri_pix(output, gt)
+        loss_dict['l_pix'] = l_pix
+
+        l_pear = self.compute_correlation_loss(output, gt)
+        loss_dict['l_pear'] = l_pear
+
+        # cls (ordinal)
+        if logits is None or level_gt is None:
+            l_cls = output.new_tensor(0.0)
+            w = output.new_tensor(0.0)
+        else:
+            gt_lv = level_gt.view(-1).long()
+            t = torch.stack([(gt_lv >= 1), (gt_lv >= 2), (gt_lv >= 3)], dim=1).float()
+            l_cls = self.cri_ord(logits, t)
+
+            # auto-balance weight (same as train)
+            r = self.opt['train'].get('cls_ratio', 0.1)
+            eps = 1e-8
+            w_min = self.opt['train'].get('cls_w_min', 0.0)
+            w_max = self.opt['train'].get('cls_w_max', 0.05)
+            # val：使用 train 的 EMA 权重（不更新，只读取），保证 train/val 的 l_cls_w 可比
+            w = getattr(self, 'cls_w_ema', None)
+            if w is None:
+                # 如果 val 先于 train 被调用（极少见），fallback 到即时权重
+                w = (r * l_pix.detach()) / (l_cls.detach() + eps)
+                w = torch.clamp(w, w_min, w_max)
+
+
+        loss_dict['l_cls'] = l_cls
+        loss_dict['cls_w'] = w.detach()
+        loss_dict['l_cls_w'] = w * l_cls
+
+        loss_dict['loss_total'] = loss_dict['l_pix'] + loss_dict['l_pear'] + loss_dict['l_cls_w']
+        return loss_dict
 
     def optimize_parameters(self, current_iter):
         self.optimizer_g.zero_grad()
@@ -244,58 +282,101 @@ class ImageCleanModel(BaseModel):
     # cls loss：同时保证 logits 不是 None
         # cls loss
         # cls loss
-        if logits is None:
+        if logits is None or level_gt is None:
             l_cls = self.output.new_tensor(0.0)
         else:
-            # logits 可能是 Tensor，也可能是 (logit1, logit2)
-            if level_gt is None:
-                # 保证图连通（梯度为0而不是None）
-                if isinstance(logits, (tuple, list)):
-                    l_cls = 0.0 * (logits[0].sum() + logits[1].sum())
-                else:
-                    l_cls = 0.0 * logits.sum()
-            else:
-                gt = level_gt.view(-1).long()
-                if logits is None or level_gt is None:
-                    l_cls = self.output.new_tensor(0.0)
-                else:
-                    gt = level_gt.view(-1).long()
-                    l_cls = self.cri_celoss(logits, gt)
+            # gt: [B] in {0,1,2,3}
+            gt = level_gt.view(-1).long()
+
+            # 生成 ordinal targets: [B,3]
+            # t0 = (gt>=1), t1=(gt>=2), t2=(gt>=3)
+            t = torch.stack([(gt >= 1), (gt >= 2), (gt >= 3)], dim=1).float()
+
+            # logits: [B,3]
+            l_cls = self.cri_ord(logits, t)
+
+        # if logits is None or level_gt is None:
+        #     l_cls = self.output.new_tensor(0.0)
+        # else:
+        #     # gt: [B] in {0,1,2}
+        #     gt = level_gt.view(-1).long()
+
+        #     # ordinal targets: [B,2]
+        #     # t0=(gt>=1), t1=(gt>=2)
+        #     t = torch.stack([(gt >= 1), (gt >= 2)], dim=1).float()
+
+        #     # logits should be [B,2]
+        #     l_cls = self.cri_ord(logits, t)
 
 
         loss_dict['l_cls'] = l_cls
+        # if current_iter == 10:   # 只打印一次/某次
+        #     x = self.lq
+        #     print("[DBG] lq range:", float(x.min()), float(x.max()),
+        #         "mean:", float(x.mean()), "std:", float(x.std()))
+        # if current_iter == 10:
+        #     if level_gt is None:
+        #         print("DEBUG level: None")
+        #     else:
+        #         print("DEBUG level:", level_gt[:8].detach().cpu().numpy(), "dtype:", level_gt.dtype)
 
-        if current_iter == 10:
-            if level_gt is None:
-                print("DEBUG level: None")
-            else:
-                print("DEBUG level:", level_gt[:8].detach().cpu().numpy(), "dtype:", level_gt.dtype)
+        #     if logits is None:
+        #         print("DEBUG logits: None")
+        #     elif isinstance(logits, (tuple, list)):
+        #         info = []
+        #         for i, lg in enumerate(logits):
+        #             info.append((i, tuple(lg.shape), float(lg.abs().mean().detach().cpu())))
+        #         print("DEBUG logits(tuple):", info)
+        #     else:
+        #         print("DEBUG logits:", (tuple(logits.shape), float(logits.abs().mean().detach().cpu())))
+        # if current_iter % 100 == 0:
+        #     gt = self.level.detach().cpu().view(-1)
+        #     print("level batch:", gt.tolist(), "unique:", torch.unique(gt).tolist())
+        # if current_iter % 1000 == 0:
+        #     print("level_hist:", self.level_hist.tolist())
+        base = self.opt['train'].get('cls_loss_weight', 0.01)
+        start = self.opt['train'].get('cls_warmup_start', 3000)
+        ramp  = self.opt['train'].get('cls_warmup_iters', 3000)  # 3000 iter 内爬满
+        r = self.opt['train'].get('cls_ratio', 0.1)          # 想让 cls_w ~ 10% pixel
+        eps = 1e-8
+        w_min = self.opt['train'].get('cls_w_min', 0.0)
+        w_max = self.opt['train'].get('cls_w_max', 0.05)     # 上限防止喧宾夺主
+        w_inst = (r * l_pix.detach()) / (l_cls.detach() + eps)
+        w_inst = torch.clamp(w_inst, w_min, w_max)
+        if not hasattr(self, 'cls_w_ema'):
+            self.cls_w_ema = w_inst
+        ema = self.opt['train'].get('cls_w_ema', 0.9)        # 0.9~0.99 都行
+        self.cls_w_ema = ema * self.cls_w_ema + (1 - ema) * w_inst
+        w = self.cls_w_ema
+        l_cls_w = w * l_cls
+        loss_dict['l_cls_w'] = l_cls_w
+        loss_dict['cls_w']   = w.detach() 
 
-            if logits is None:
-                print("DEBUG logits: None")
-            elif isinstance(logits, (tuple, list)):
-                info = []
-                for i, lg in enumerate(logits):
-                    info.append((i, tuple(lg.shape), float(lg.abs().mean().detach().cpu())))
-                print("DEBUG logits(tuple):", info)
-            else:
-                print("DEBUG logits:", (tuple(logits.shape), float(logits.abs().mean().detach().cpu())))
-        if current_iter % 100 == 0:
-            gt = self.level.detach().cpu().view(-1)
-            print("level batch:", gt.tolist(), "unique:", torch.unique(gt).tolist())
-        if current_iter % 1000 == 0:
-            print("level_hist:", self.level_hist.tolist())
-
-        w_cls = self.opt['train'].get('cls_loss_weight', 0.01)
-        loss_total = l_pix + l_pear + w_cls * torch.clamp(l_cls, min=0.05)
+        # loss = l_pix + l_cls_w   # + 你其它 loss
+        # if current_iter < start:
+        #     w_cls = 0.0
+        # else:
+        #     t = min(1.0, (current_iter - start) / float(ramp))
+        #     w_cls = base * t
+        # loss_dict['l_cls_w'] = w_cls * l_cls
+        # loss_total = l_pix + l_pear + l_cls_w 
+        loss_total = l_cls * 1.0 + l_pix * 0.1 # 给一点点 pix loss 作为 backbone 的正则化
+        loss_dict['loss_total'] = loss_total
         if current_iter % 500 == 0 and logits is not None and self.level is not None:
             gt = self.level.view(-1).long()
-            pred = logits.argmax(dim=1)
+            p = torch.sigmoid(logits)
+            pred = (p > 0.5).long().sum(dim=1)
             acc = (pred == gt).float().mean().item()
             print("cls_acc:", acc, "logits_mean_abs:", float(logits.abs().mean().detach().cpu()))
+            mae = (pred - gt).abs().float().mean().item()
+            print("cls_acc:", acc, "mae:", mae)
+
         if current_iter % 200 == 0 and logits is not None and self.level is not None:
             gt = self.level.view(-1).long()
-            pred = logits.argmax(dim=1)
+            p = torch.sigmoid(logits)
+            pred = (p > 0.5).long().sum(dim=1)
+            print("p_mean:", p.mean(0).detach().cpu().numpy(), "pred_hist:", torch.bincount(pred, minlength=4))
+
 
             acc = (pred == gt).float().mean().item()
             print("gt:", gt.tolist(), "pred:", pred.tolist(),
@@ -347,6 +428,31 @@ class ImageCleanModel(BaseModel):
                 pred = pred[-1]
             self.output = pred
             self.net_g.train()
+    def forward_with_pad_and_cls(self, img, window_size=0):
+        """Forward once, optionally pad to window_size, return (output, logits)."""
+        if window_size and window_size > 0:
+            _, _, h, w = img.size()
+            mod_pad_h = (window_size - h % window_size) % window_size
+            mod_pad_w = (window_size - w % window_size) % window_size
+            img_pad = F.pad(img, (0, mod_pad_w, 0, mod_pad_h), mode='reflect')
+        else:
+            mod_pad_h = 0
+            mod_pad_w = 0
+            img_pad = img
+
+        # 选择用哪个网络做验证输出：如果你希望验证/保存图跟原来一致，就保持原来的逻辑
+        # 原来的 test() 有 net_g_ema 就用 ema，否则用 net_g
+        net = self.net_g_ema if hasattr(self, 'net_g_ema') else self.net_g
+        was_training = net.training
+        net.eval()
+        output, logits = net(img_pad, level_gt=None, return_cls=True)
+
+        # crop 回原图尺寸（保证和 pad_test 一致）
+        if mod_pad_h > 0 or mod_pad_w > 0:
+            output = output[:, :, :output.shape[2] - mod_pad_h, :output.shape[3] - mod_pad_w]
+        if was_training:
+            net.train()
+        return output, logits
 
     def dist_validation(self, dataloader, current_iter, tb_logger, save_img, rgb2bgr, use_image):
         if os.environ['LOCAL_RANK'] == '0':
@@ -373,15 +479,35 @@ class ImageCleanModel(BaseModel):
             test = self.nonpad_test
 
         cnt = 0
+        val_loss_sum = OrderedDict()
+        val_loss_cnt = 0
 
         for idx, val_data in enumerate(dataloader):
             if idx >= 60:
                 break
             img_name = osp.splitext(osp.basename(val_data['lq_path'][0]))[0]
 
+            _mixing_backup = self.mixing_flag
+            self.mixing_flag = False
             self.feed_data(val_data)
-            test()
+            self.mixing_flag = _mixing_backup
+            # test()
+            with torch.no_grad():
+                # 你现在的 test() 只跑了 restoration forward
+                # 为了拿 logits，你需要在 val 也用 return_cls=True 跑一次
+                # 最省事：直接再 forward 一次（只用于算 loss，不保存图）
+                # output, logits = self.net_g(self.lq, level_gt=self.level, return_cls=True)
 
+                # 用刚 forward 的 output 替换 self.output（保证一致）
+                output, logits = self.forward_with_pad_and_cls(self.lq, window_size=window_size)
+                self.output = output
+
+                # 计算 loss
+                ld = self.compute_losses(output, self.gt, logits, self.level)
+
+            for k, v in ld.items():
+                val_loss_sum[k] = val_loss_sum.get(k, 0.0) + float(v.detach().cpu())
+            val_loss_cnt += 1
             visuals = self.get_current_visuals()
             sr_img = tensor2img([visuals['result']], rgb2bgr=rgb2bgr)
             if 'gt' in visuals:
@@ -431,7 +557,12 @@ class ImageCleanModel(BaseModel):
                             metric_module, metric_type)(visuals['result'], visuals['gt'], **opt_)
 
             cnt += 1
-
+        if tb_logger and val_loss_cnt > 0:
+            for k, s in val_loss_sum.items():
+                avg = s / val_loss_cnt
+                tb_logger.add_scalar(f'losses_val/{k}', avg, current_iter)
+                if hasattr(self, 'current_epoch'):
+                    tb_logger.add_scalar(f'losses_val/{k}_epoch', avg, self.current_epoch)
         current_metric = 0.
         if with_metrics:
             for metric in self.metric_results.keys():
@@ -456,7 +587,10 @@ class ImageCleanModel(BaseModel):
         if tb_logger:
             for metric, value in self.metric_results.items():
                 tb_logger.add_scalar(f'metrics/{metric}', value, current_iter)
-
+                tb_logger.add_scalar(f'metrics/{metric}_epoch', value, self.current_epoch)
+        if hasattr(self, 'current_epoch'):
+                    for metric, value in self.metric_results.items():
+                        tb_logger.add_scalar(f'metrics/{metric}_epoch', value, self.current_epoch)
     def get_current_visuals(self):
         out_dict = OrderedDict()
         out_dict['lq'] = self.lq.detach().cpu()
